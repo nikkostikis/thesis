@@ -1,0 +1,91 @@
+\documentclass[12pt]{book}
+
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+
+%load this to indent paragraph after title
+%\usepackage{indentfirst}
+
+\doublespacing
+\geometry
+{ 
+	a4paper,
+	top=3cm, 
+	bottom=3cm, 
+	left=2.5cm, 
+	right=2.5cm,
+	heightrounded, 
+	headheight=15pt
+}
+
+% for space of first line of new text block
+\setlength{\parindent}{2em} 
+\setlength{\parskip}{0em}
+\renewcommand{\baselinestretch}{1.3}
+\sloppy % for writing with hyphenless justification (tries to)
+\hyphenation{}
+\hyphenpenalty=0
+%\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+\usepackage[english]{babel}
+
+%needed for euro currency symbol
+\usepackage{eurosym}
+
+% needed for command eqref
+\usepackage{amsmath} 
+
+% needed for math fonts
+\usepackage{amssymb} 
+
+%Defining this before hyperref ditches links
+\usepackage[acronym, toc]{glossaries}
+
+% needed for creating hyperlinks in the document, the option colorlinks=true gets rid of the awful boxes, breaklinks breaks long links (list of figures)
+\usepackage[colorlinks=false, breaklinks]{hyperref}
+%\usepackage[colorlinks=true,breaklinks]{hyperref} 
+
+\usepackage[usenames, dvipsnames]{xcolor}
+\usepackage{soul} %needed for \hl command, which is better than colobox because it wraps
+
+\usepackage{color}
+
+% needed for cite - doesn't work well with natbib
+%\usepackage{cite} 
+
+% needed for cite and abbrvnat bibliography style
+\usepackage[round, authoryear]{natbib} 
+
+% needed for displaying bibliography and other in the table of contents
+\usepackage[nottoc]{tocbibind} 
+
+\usepackage{graphicx} 
+\usepackage{longtable} 
+\usepackage{enumerate} 
+\usepackage{appendix}
+\usepackage{makeidx} 
+\usepackage{tikz}
+\usetikzlibrary{matrix,shapes.arrows,arrows.meta,backgrounds}
+
+\makeindex
+
+\DeclareRobustCommand{\hlcyan}[1]{{\sethlcolor{cyan}\hl{#1}}}
+\DeclareRobustCommand{\hlpink}[1]{{\sethlcolor{pink}\hl{#1}}}
+\DeclareRobustCommand{\hlorange}[1]{{\sethlcolor{orange}\hl{#1}}}
+
+\newcommand{\tbi}[1]{\textbf{\textit{#1}}}
+\newcommand{\imp}[1]{\underline{\textit{#1}}}
+
+%\usepackage{todonotes} 
+%\usepackage{bigstrut} % needed for the command \bigstrut
+%\definecolor{c1}{rgb}{0,0,1} % blue
+%\definecolor{c2}{rgb}{0,0.3,0.9} % light blue
+%\definecolor{c3}{rgb}{0.3,0,0.9} % red blue
+%\hypersetup{
+%    linkcolor={c1}, % internal links
+%    citecolor={c2}, % citations
+%    urlcolor={c3} % external links/urls
+%}
+%\usepackage[hyphenbreaks]{breakurl}
