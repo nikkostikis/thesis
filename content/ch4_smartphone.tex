@@ -122,6 +122,47 @@ Our web application, being written in PHP and JavaScript, is entirely independen
 
 \subsection{Collection Procedure}
 \label{subsec:smartCollection}
+The regimen that had to be followed during all smartphone-based clinical trials was the same, albeit a few minor modifications after the first trial. 
+Operationally, a user who wants to perform a measurement must have internet access enabled on their phone, and screen orientation must be “locked” to avoid mislabeling the data. The user then visits the website, optionally enters a few pieces of information (see Fig. 1), and then clicks on a link to start transmitting accelerometer and gyroscope data to the site. After a delay of 3 seconds, to allow the user to position the device as desired, data are collected for 12 seconds and then automatically submitted to the server, where they are saved in a file. The user is then redirected to the initial page, and may perform additional tests. At the server, the data are processed to extract information about possible movement disorders
+To proceed with data collection we designed a custom mounting glove for the phone using a wrist protection glove and a hard case for the device (see Fig. 2). It is possible to forgo the glove and have the user simply hold the phone. However, in the initial stages of this work we wanted to standardize the phone’s posture as much as possible and to eliminate any possible effects from the action of the fingers gripping the phone.
+During clinical tests, subjects were asked to wear the iPhone on their wrist, and sit with their arms extended horizontally in front of them, keeping that position for 12 seconds while data were recorded. The device was mounted on both their hands alternately, and each test was repeated at least twice for each subject. 
+
+In this work we are initially interested in resting tremor so we asked the subjects to “wear” an iPhone (fitted on a glove as in [3]) on top of their hand while sitting in a chair comfortably and resting both their hands on their lap, keeping that position for 30 seconds. The device was mounted on both their hands alternately, and each test was repeated twice for each subject. Immediately prior to data collection, an experienced physician examined each subject and recorded their UPDRS scores, which were to be correlated with our quantitative measurements. 
+The work in [3] used 12-second recorded signals. Here, we decided to increase the duration to 30 seconds after experimentation that showed that the longer signal gave vastly improved results under spectral analysis.
+
+We attached an iPhone on our volunteers’ hands using the same custom-made mounting glove (Fig. 1) from [15] and [16]. It consists of a perforated case into which the phone “locks”, and a wrist-supporting glove, both commercially available. The glove fits tightly on the volunteer’s hand and the case is tightly sewn on the glove using non-elastic thread, ensuring the stability of the device on top of the hand. With the device attached, each participant had to maintain each of two prescribed postures for 30 seconds, while acceleration and gyroscope data was recorded by the phone. The two postures we used were the same ones used during the clinical evaluation: a) “Extended”, i.e., seated with both hands extended in front of the torso (Postural Tremor of the Hands, component 3.15 of the MDS-UPDRS) and b) “Rest”, i.e., seated with both hands placed on the arms of the chair (Rest Hand Tremor, component 3.17 of the MDS-UPDRS). The procedure was then repeated for the subject’s other hand, in the same two postures. In the following, we will specify the combination of a patient’s hand (Right of Left upper extremity) during each position as rR, rL, eR, and eL for rest-right, rest-left, extended-right, and extended-left, respectively.
+
+As per the protocol described earlier, the volunteers were asked to maintain certain postures for 30 seconds, during which the application automatically collected the accelerometer and gyroscope data and sent them to our server. We then used the data to extract features which quantify and characterize the subjects’ tremor levels. The signals were sampled at 20Hz, which is sufficient to identify events occurring at 9Hz or less [20], such as PD-induced tremor. 
+
+$\alpha(i) = [\alpha_{x}(i),\alpha_{y}(i),\alpha_{z}(i)]^{T}$
+$\omega(i) = [\omega_{x}(i),\omega_{y}(i),\omega_{z}(i)]^{T}$
+
+%Equations
+\begin{equation}
+m_{\alpha} = \frac{\sum_{i=1}^{N} \|\alpha(i)\|^{2} }{N}
+\end{equation}
+
+\begin{equation}
+m_{\omega} = \frac{\sum_{i=1}^{N} \|\omega(i)\|^{2} }{N}
+\end{equation}
+
+\begin{equation}
+mag_{\alpha} = \sum_{i=1}^{N} \|\alpha(i)\|^{2}
+\end{equation}
+
+\begin{equation}
+mag_{\omega} = \sum_{i=1}^{N} \|\omega(i)\|^{2}
+\end{equation}
+
+\begin{equation}
+sd_{\alpha} = \sum_{i=1}^{N-1}\sum_{\kappa \in \{x,y,z\}} |\alpha_{\kappa}(i) - \alpha_{\kappa}(i+1)|
+\end{equation}
+
+\begin{equation}
+mAmp_{\omega} = \sum_{\kappa \in \{x,y,z\}} \max_{4 \leq \xi \leq 7} \hat{\omega}_{\kappa}(\xi)
+\end{equation}
+
+
 
 %The goal of this work is to investigate the use of a smartphone-based tool for assessing PD induced hand tremor. Our approach involves using the phone’s embedded accelerometer and gyroscope sensors to quantify PD hand tremor. Operationally, the patient simply visits a web site [14] and takes up simple postures much like those used in standardized clinical exams, with the smartphone mounted on their hand. The data thus recorded can then be used to classify a subject as healthy or not, and to track the severity of the tremor in PD patients. 
 %Preliminary versions of this work can be found in [15] and [16], where we presented proof-of-concept results for the tool discussed here. This paper substantially differs from and extends our previous work by i) including additional samples from healthy subjects which are age-matched to the PD patients used in our study, ii) including data on a small sample of patients off medication in order to quantitatively track the severity of their hand tremor, iii) exploring the correlation between our quantitative metrics results and the patients’ (subjective) clinical examination for all supported postures, and iv) using a machine learning feature classification approach to choose those metrics which are better at distinguishing between pathological and healthy signals, thus  increase our method’s accuracy. The accuracy in separating healthy from PD subjects attained in this work is on par with other works using smartphones’ accelerometers and short-duration data [12]. It is also very close to the sensitivity and specificity achieved in [17], where the authors used sensors of the SHIMMER platform to perform mobile gait analysis. There are works that achieve near 100\% accuracy but do so using day-long signals [18] which may not be practical in our setting. High accuracy (98.5\% sensitivity, 97.5\% specificity) is also achieved using smartphone accelerometer-based gait analysis, with a combination of tests and metrics [19]. 
