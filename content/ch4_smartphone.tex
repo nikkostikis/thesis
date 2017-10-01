@@ -63,8 +63,8 @@ The inclusion criteria for the \gls{SmartH1} group was the absence of any kind o
 
 (\textcolor{BurntOrange}{Table X Demographics of the CT1 population}).
 
-\subsubsection{Hardware And Software Setup}
-\label{subsubsec:smartCT1SetUp}
+\subsubsection{Procedure and Hardware}
+\label{subsubsec:smartCT1ProcHardware}
 
 Although our metrics and results from \gls{SmartCT1} were not to be compared with the clinical examination mainstay, the \gls{UPDRS}, we applied the same instruction regarding body posture as described in items 3.15 - Postural tremor of the hands and 3.17 - Rest tremor amplitude of the \gls{MDS}- \gls{UPDRS} (Goetz et al, 2008). More specifically, in order to assess postural hand tremor we instructed the volunteers to stretch the arms out in front of the body, keeping their palms facing the ground. The wrists were to be held straight and the fingers separated as to not touch each other, in a comfortable manner. This position was to be held for 12 seconds. To assess rest tremor we instructed the volunteers to sit comfortably in a chair, with the arms placed on the arms of the chair, without touching their lap, and the feet loosely placed on the floor. This position was to be held for 12 seconds, as well. Although both positions are kept for 10 seconds in the directive of the \gls{UPDRS}, we opted for two more seconds to allow for errors recorded before and after each session. 
 
@@ -73,10 +73,37 @@ In order to keep the presence of the smartphone as discreet as possible we built
 
 The result was an easy to put on and lightweight glove-case that would keep the phone attached on the patients' dorsal part of the hand, without hindering the positions to be assumed, according to the procedure described earlier. Unfortunately the weight of the device at 140 grams was not trivial and could potentially slightly dampen the symptoms, but at least it was the same for all participants across our smartphone-based clinical trials and it was not something we could eradicate. 
 
+The smartphone itself used in \gls{SmartCT1} was an Apple iPhone 4 GSM\footnote{iphone 4 technical specifications, accessed 01/10/2017 at: \url{https://support.apple.com/kb/sp587}}, powered by iOS version 4.2\footnote{iOS 4.2 software update, accessed 01/10/2017 at: \url{https://support.apple.com/kb/dl1061}}. 
+
 (\textcolor{BurntOrange}{Figure consisting of three parts a. the glove, b. the case, c. some thread and d. the final custom apparatus}).
 
-The smartphone used in \gls{SmartCT1} was an Apple iPhone 4 GSM\footnote{iphone 4 technical specifications, accessed 01/10/2017 at: \url{https://support.apple.com/kb/sp587}}, powered by iOS version 4.2\footnote{iOS 4.2 software update, accessed 01/10/2017 at: \url{https://support.apple.com/kb/dl1061}}. 
 
+%%>>>>>>>>>>> Check the following out to incorporate in the previous paragraph
+
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+
+The regimen that had to be followed during all smartphone-based clinical trials was the same, albeit a few minor modifications after the first trial. 
+
+Operationally, a user who wants to perform a measurement must have internet access enabled on their phone, and screen orientation must be “locked” to avoid mislabeling the data. The user then visits the website, optionally enters a few pieces of information (see Fig. 1), and then clicks on a link to start transmitting accelerometer and gyroscope data to the site. After a delay of 3 seconds, to allow the user to position the device as desired, data are collected for 12 seconds and then automatically submitted to the server, where they are saved in a file. The user is then redirected to the initial page, and may perform additional tests. At the server, the data are processed to extract information about possible movement disorders
+To proceed with data collection we designed a custom mounting glove for the phone using a wrist protection glove and a hard case for the device (see Fig. 2). It is possible to forgo the glove and have the user simply hold the phone. However, in the initial stages of this work we wanted to standardize the phone’s posture as much as possible and to eliminate any possible effects from the action of the fingers gripping the phone.
+During clinical tests, subjects were asked to wear the iPhone on their wrist, and sit with their arms extended horizontally in front of them, keeping that position for 12 seconds while data were recorded. The device was mounted on both their hands alternately, and each test was repeated at least twice for each subject. 
+
+In this work we are initially interested in resting tremor so we asked the subjects to “wear” an iPhone (fitted on a glove as in [3]) on top of their hand while sitting in a chair comfortably and resting both their hands on their lap, keeping that position for 30 seconds. The device was mounted on both their hands alternately, and each test was repeated twice for each subject. Immediately prior to data collection, an experienced physician examined each subject and recorded their UPDRS scores, which were to be correlated with our quantitative measurements. 
+The work in [3] used 12-second recorded signals. Here, we decided to increase the duration to 30 seconds after experimentation that showed that the longer signal gave vastly improved results under spectral analysis.
+
+We attached an iPhone on our volunteers’ hands using the same custom-made mounting glove (Fig. 1) from [15] and [16]. It consists of a perforated case into which the phone “locks”, and a wrist-supporting glove, both commercially available. The glove fits tightly on the volunteer’s hand and the case is tightly sewn on the glove using non-elastic thread, ensuring the stability of the device on top of the hand. With the device attached, each participant had to maintain each of two prescribed postures for 30 seconds, while acceleration and gyroscope data was recorded by the phone. The two postures we used were the same ones used during the clinical evaluation: a) “Extended”, i.e., seated with both hands extended in front of the torso (Postural Tremor of the Hands, component 3.15 of the MDS-UPDRS) and b) “Rest”, i.e., seated with both hands placed on the arms of the chair (Rest Hand Tremor, component 3.17 of the MDS-UPDRS). The procedure was then repeated for the subject’s other hand, in the same two postures. In the following, we will specify the combination of a patient’s hand (Right of Left upper extremity) during each position as rR, rL, eR, and eL for rest-right, rest-left, extended-right, and extended-left, respectively.
+
+As per the protocol described earlier, the volunteers were asked to maintain certain postures for 30 seconds, during which the application automatically collected the accelerometer and gyroscope data and sent them to our server. We then used the data to extract features which quantify and characterize the subjects’ tremor levels. The signals were sampled at 20Hz, which is sufficient to identify events occurring at 9Hz or less [20], such as PD-induced tremor. 
+
+
+%%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+\subsubsection{Software}
+\label{subsubsec:smartCT1Software}
 The software required for \gls{SmartCT1} consisted of the following components:
 
 \begin{enumerate}
@@ -109,25 +136,34 @@ The web application was designed to be as simple as possible, consisting of two 
 
 When the clinical trial associate or the support staff launched the recording, by submitting the form of the first view, the screen of the iPhone would turn red for 3 seconds and then automatically green, showing that the collection of the signals generated by the \gls{IMU} sensors was activated (~\ref{fig:webapp2}). After 12 seconds (resulting in a total of 15 from the form submission), the data collected from the sensors would automatically be posted to the Apache server in the form of a text file. The text files were then gathered and handled by a series of scripts built in MATLAB, in order to be cleaned, sorted and processed to extract the metrics and study the results, as will be explained later in this manuscript. 
 
-Gathering the signals generated by the smartphone's \gls{IMU} sensors was made possible via a web application by using a newly (then) adopted by mobile browsers vendors JavaScript \gls{API}s, the DeviceMotion\footnote{DeviceMotionEvent, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/devicemotionevent}} and DeviceOrientation\footnote{DeviceOrientationEvent, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/deviceorientationevent}} interfaces. These are Document object model (\gls{DOM})\footnote{JavaScript HTML DOM, accessed 01/10/2017 at: \url{https://www.w3schools.com/js/js_htmldom.asp}} interfaces, called via the \codeword{window}\footnote{The window object, accessed 01/10/2017 at: \url{https://www.w3schools.com/jsref/obj_window.asp}} object. To capture DeviceMotion events the \codeword{window.onDeviceMotion} event handler\footnote{ondevicemotion, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/domwindow/1632048-ondevicemotion}} must be used, whereas to capture DeviceOrientation events the \codeword{window.onDeviceOrientation} event handler\footnote{ondeviceorientation, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/domwindow/1628872-ondeviceorientation}} must be used. 
+Gathering the signals generated by the smartphone's \gls{IMU} sensors was made possible via a web application by using a newly (then) adopted by mobile browsers vendors JavaScript \gls{API}s, the DeviceMotion\footnote{DeviceMotionEvent, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/devicemotionevent}} and DeviceOrientation\footnote{DeviceOrientationEvent, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/deviceorientationevent}} interfaces. These are Document object model (\gls{DOM})\footnote{JavaScript HTML DOM, accessed 01/10/2017 at: \url{https://www.w3schools.com/js/js_htmldom.asp}} interfaces, called via the \codeword{window}\footnote{The window object, accessed 01/10/2017 at: \url{https://www.w3schools.com/jsref/obj_window.asp}} object. To capture DeviceMotion events the \codeword{window.onDeviceMotion} event handler\footnote{ondevicemotion, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/domwindow/1632048-ondevicemotion}} was used, whereas to capture DeviceOrientation events the \codeword{window.onDeviceOrientation} event handler\footnote{ondeviceorientation, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/domwindow/1628872-ondeviceorientation}} was used. 
 
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-The DeviceMotion interface supplies information on the acceleration of the device and 
+The DeviceMotion interface supplied information on the acceleration of the device. Through the \codeword{event.acceleration} and \codeword{event.accelerationIncludingGravity} properties\footnote{acceleration, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/devicemotionevent/1629483-acceleration}} the acceleration of the device in three planes, $x$, $y$, $z$ (see ~\ref{fig:iphoneAxes}) was recorded in $m/s^{2}$. 
 
-The DeviceOrientation event, supplies information on the physical orientation of the device. 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.7\linewidth]{content/images/iPhone_device_axes}
+	\caption{iPhone 4 \& 4S accelerometer axes (source: \url{https://developer.apple.com/documentation/uikit/uiacceleration})}
+	\label{fig:iphoneAxes}
+\end{figure}
 
-%\begin{figure}[h]	
-%	\includegraphics[scale = 0.3]{content/images/topic_iphone_4s}
-%	\centering
-%	\caption{This is a caption}
-%	\label{fig:webapp}
-%\end{figure}
+The DeviceOrientation interface supplied information on the physical orientation of the device. Through the \codeword{event.alpha}\footnote{alpha, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/deviceorientationevent/1629200-alpha}}, \codeword{event.beta}\footnote{beta, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/deviceorientationevent/1631254-beta}} and \codeword{event.gamma}\footnote{gamma, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/deviceorientationevent/1631656-gamma}} properties the angles of rotation of the device were recorded in degrees. 
+
+A very important metric provided by the combination of accelerometer and gyroscope of the device and made available as a property of the DeviceMotion event was the rotation rate, recorded through \codeword{event.rotationrate.alpha}, \codeword{event.rotationrate.beta} and \codeword{event.rotationrate.gamma} in degrees per second ($^{o}/sec$). The axes of the rotation rate were defined as alpha (yaw) for the rotation around the $z$-axis, beta (roll) for the rotation around the $x$-axis and gamma (pitch) for the rotation of the device around its $y$-axis (see ~\ref{fig:iphoneAxesGyro}). 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.7\linewidth]{content/images/iPhone_device_axes_gyro}
+	\caption{iPhone 4 \& 4S gyroscope axes (source: \url{https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/DesigningExpandedAdUnits/FeaturesforExpandedAdUnits/FeaturesforExpandedAdUnits.html})}
+	\label{fig:iphoneAxesGyro}
+\end{figure}
+
 
 The data filled in the form of the initial view would be used to construct the name of the 
-
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
 Our setup consists of four essential components:
 1. An iPhone 4 with iOS 4.2 or later, with Internet access enabled,
 2. A web site which collects data from the phone’s sensors when visited by the user,
@@ -155,21 +191,6 @@ The hardware setup was the same as the one used in our earlier work, [15] and [1
 4.	A MATLAB application for processing the signals received at the server.
 As per the protocol described earlier, the volunteers were asked to maintain certain postures for 30 seconds, during which the application automatically collected the accelerometer and gyroscope data and sent them to our server. We then used the data to extract features which quantify and characterize the subjects’ tremor levels. The signals were sampled at 20Hz, which is sufficient to identify events occurring at 9Hz or less [20], such as PD-induced tremor. 
 Our web application, being written in PHP and JavaScript, is entirely independent of the client's hardware or software platform. It only demands basic prerequisites such as an embedded accelerometer and gyroscope and one of the most popular smartphone operating systems, iOS or Android. We successfully tested it on a Samsung Galaxy S4 and a Google Nexus 5, both running Android 4.4.2. 
-
-\subsubsection{Collection Procedure}
-\label{subsubsec:smartCT1Collection}
-The regimen that had to be followed during all smartphone-based clinical trials was the same, albeit a few minor modifications after the first trial. 
-
-Operationally, a user who wants to perform a measurement must have internet access enabled on their phone, and screen orientation must be “locked” to avoid mislabeling the data. The user then visits the website, optionally enters a few pieces of information (see Fig. 1), and then clicks on a link to start transmitting accelerometer and gyroscope data to the site. After a delay of 3 seconds, to allow the user to position the device as desired, data are collected for 12 seconds and then automatically submitted to the server, where they are saved in a file. The user is then redirected to the initial page, and may perform additional tests. At the server, the data are processed to extract information about possible movement disorders
-To proceed with data collection we designed a custom mounting glove for the phone using a wrist protection glove and a hard case for the device (see Fig. 2). It is possible to forgo the glove and have the user simply hold the phone. However, in the initial stages of this work we wanted to standardize the phone’s posture as much as possible and to eliminate any possible effects from the action of the fingers gripping the phone.
-During clinical tests, subjects were asked to wear the iPhone on their wrist, and sit with their arms extended horizontally in front of them, keeping that position for 12 seconds while data were recorded. The device was mounted on both their hands alternately, and each test was repeated at least twice for each subject. 
-
-In this work we are initially interested in resting tremor so we asked the subjects to “wear” an iPhone (fitted on a glove as in [3]) on top of their hand while sitting in a chair comfortably and resting both their hands on their lap, keeping that position for 30 seconds. The device was mounted on both their hands alternately, and each test was repeated twice for each subject. Immediately prior to data collection, an experienced physician examined each subject and recorded their UPDRS scores, which were to be correlated with our quantitative measurements. 
-The work in [3] used 12-second recorded signals. Here, we decided to increase the duration to 30 seconds after experimentation that showed that the longer signal gave vastly improved results under spectral analysis.
-
-We attached an iPhone on our volunteers’ hands using the same custom-made mounting glove (Fig. 1) from [15] and [16]. It consists of a perforated case into which the phone “locks”, and a wrist-supporting glove, both commercially available. The glove fits tightly on the volunteer’s hand and the case is tightly sewn on the glove using non-elastic thread, ensuring the stability of the device on top of the hand. With the device attached, each participant had to maintain each of two prescribed postures for 30 seconds, while acceleration and gyroscope data was recorded by the phone. The two postures we used were the same ones used during the clinical evaluation: a) “Extended”, i.e., seated with both hands extended in front of the torso (Postural Tremor of the Hands, component 3.15 of the MDS-UPDRS) and b) “Rest”, i.e., seated with both hands placed on the arms of the chair (Rest Hand Tremor, component 3.17 of the MDS-UPDRS). The procedure was then repeated for the subject’s other hand, in the same two postures. In the following, we will specify the combination of a patient’s hand (Right of Left upper extremity) during each position as rR, rL, eR, and eL for rest-right, rest-left, extended-right, and extended-left, respectively.
-
-As per the protocol described earlier, the volunteers were asked to maintain certain postures for 30 seconds, during which the application automatically collected the accelerometer and gyroscope data and sent them to our server. We then used the data to extract features which quantify and characterize the subjects’ tremor levels. The signals were sampled at 20Hz, which is sufficient to identify events occurring at 9Hz or less [20], such as PD-induced tremor. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Data Collected}
