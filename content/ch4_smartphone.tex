@@ -46,7 +46,7 @@ In the following section we will describe the smartphone-based clinical trials w
 \label{subsubsec:smartCT1Rationale}
 In section \ref{sec:accelerometry} we reviewed the literature proving that accelerometers are great means of studying human motor behavior and quantifying symptoms of movement disorders. In paragraph \ref{subsec:smartphones} we reviewed the papers that proved smartphones featuring Inertial Measurement Units (\gls{IMU}) sensors could be considered viable options for quantifying and measuring \gls{PD} motor symptoms.
 
-Although accelerometers themselves and accelerometry-enabled smartphones were proven to work, the rationale of this clinical trial was to test the accuracy of a simple web-based tool in distinguishing healthy individuals from \gls{PD} patients, by assessing upper extremity rest and action postural tremor (see section \ref{subsec:tremor}) for a few seconds. Up until the inception of the trial's context by our team (late 2010), resources such as IMU sensors were only available in a mobile platform like Apple's iOS and Google's Android, through native applications, developed specifically for the particular target platform. Such an application would have to be downloaded and installed to properly function. Our approach was to harness a recently available (at the time) JavaScript specification, supported in Apple's iOS 4.2 Safari browser\footnote{DeviceOrientationEvent Specification, Accessed 18/09/2018 at: http://dev.w3.org/geo/api/spec-source-orientation.html}. Opting for a web-based solution meant that the user could follow our protocol without being required to install any application or even own the mobile device. A web-based solution built on a widely adopted specification would also mean that our tool would be compatible out of the box with a vast range of devices, with varying physical characteristics and operating systems. Finally, the web-based solution allowed us to seamlessly send the collected signal upon completion of the recording, absolving the user from the responsibility to handle the data and send them via e-mail, or be involved in any other way in the signal collection and transmission. 
+Although accelerometers themselves and accelerometry-enabled smartphones were proven to work, the rationale of this clinical trial was to test the accuracy of a simple web-based tool in distinguishing healthy individuals from \gls{PD} patients, by assessing upper extremity rest and action postural tremor (see section \ref{subsec:tremor}) for a few seconds. Up until the inception of the trial's context by our team (late 2010), resources such as IMU sensors were only available in a mobile platform like Apple's iOS and Google's Android, through native applications, developed specifically for the particular target platform. Such an application would have to be downloaded and installed to properly function. Our approach was to harness a recently available (at the time) JavaScript specification, supported in Apple's iOS 4.2 Safari browser\footnote{DeviceOrientation event specification, accessed 01/10/2017 at: \url{http://dev.w3.org/geo/api/spec-source-orientation.html}}. Opting for a web-based solution meant that the user could follow our protocol without being required to install any application or even own the mobile device. A web-based solution built on a widely adopted specification would also mean that our tool would be compatible out of the box with a vast range of devices, with varying physical characteristics and operating systems. Finally, the web-based solution allowed us to seamlessly send the collected signal upon completion of the recording, absolving the user from the responsibility to handle the data and send them via e-mail, or be involved in any other way in the signal collection and transmission. 
 
 Another novelty at the time (late 2010) was the combination of gyroscope as well as accelerometer signals. We were specifically interested in obtaining both acceleration and rotational velocity data because observations of patients with movement disorders show that tremor in their upper extremities may have a significant rotational component.
 
@@ -69,21 +69,65 @@ The inclusion criteria for the \gls{SmartH1} group was the absence of any kind o
 Although our metrics and results from \gls{SmartCT1} were not to be compared with the clinical examination mainstay, the \gls{UPDRS}, we applied the same instruction regarding body posture as described in items 3.15 - Postural tremor of the hands and 3.17 - Rest tremor amplitude of the \gls{MDS}- \gls{UPDRS} (Goetz et al, 2008). More specifically, in order to assess postural hand tremor we instructed the volunteers to stretch the arms out in front of the body, keeping their palms facing the ground. The wrists were to be held straight and the fingers separated as to not touch each other, in a comfortable manner. This position was to be held for 12 seconds. To assess rest tremor we instructed the volunteers to sit comfortably in a chair, with the arms placed on the arms of the chair, without touching their lap, and the feet loosely placed on the floor. This position was to be held for 12 seconds, as well. Although both positions are kept for 10 seconds in the directive of the \gls{UPDRS}, we opted for two more seconds to allow for errors recorded before and after each session. 
 
 The positions described above were performed while the volunteers were wearing a custom-made glove with an iPhone securely attached on it. We wanted to avoid having to compensate for unintentional movements, not related to the \gls{PD} symptoms, therefore we chose to keep the iPhone securely attached to the volunteers hands via a glove, and not have them hold it in their hand or place it loosely on their limbs. Having the participants hold the device would result in voluntary muscle activation, undermining the definition of postural and rest tremor. There are studies were the patient assumes a position similar to the one described above and in the \gls{MDS}-\gls{UPDRS} item 3.15, but having the patients hold the device in their hands (Kassavetis et al, 2015). This, while efficient in the context of symptoms' quantification, ultimately cannot be comparable to results from a \gls{UPDRS} examination. This was not acceptable in our setting, where validation of our tool would be a desired outcome, requiring correlation analysis with the clinical examination ``golden'' standard, the \gls{UPDRS}. 
-In order to keep the presence of the smartphone as discreet as possible we built an inexpensive apparatus consisting of an elastic glove, a perforated rigid smartphone shell case and some non-elastic thread. 
-
-(\textcolor{BurntOrange}{Should I mention here that the glove was worn over a silicone single-use glove to avoid skin irritation and biocontamination?}). 
+In order to keep the presence of the smartphone as discreet as possible we built an inexpensive apparatus consisting of an elastic glove, a perforated rigid smartphone shell case and some non-elastic thread.  
 
 The result was an easy to put on and lightweight glove-case that would keep the phone attached on the patients' dorsal part of the hand, without hindering the positions to be assumed, according to the procedure described earlier. Unfortunately the weight of the device at 140 grams was not trivial and could potentially slightly dampen the symptoms, but at least it was the same for all participants across our smartphone-based clinical trials and it was not something we could eradicate. 
 
 (\textcolor{BurntOrange}{Figure consisting of three parts a. the glove, b. the case, c. some thread and d. the final custom apparatus}).
 
-The smartphone used in \gls{SmartCT1} was an Apple iPhone 4 GSM\footnote{https://support.apple.com/kb/sp587}, powered by iOS version 4.2\footnote{https://support.apple.com/kb/dl1061}. 
+The smartphone used in \gls{SmartCT1} was an Apple iPhone 4 GSM\footnote{iphone 4 technical specifications, accessed 01/10/2017 at: \url{https://support.apple.com/kb/sp587}}, powered by iOS version 4.2\footnote{iOS 4.2 software update, accessed 01/10/2017 at: \url{https://support.apple.com/kb/dl1061}}. 
 
 The software required for \gls{SmartCT1} consisted of the following components:
+
+\begin{enumerate}
+\item A custom made web application, built with PHP, HTML and JavaScript.
+\item An Apache web server which hosts the web application and allows it to store simple text files.
+\item A data processing pipeline written in MATLAB (various versions).
+\end{enumerate}
+
+The web application was designed to be as simple as possible, consisting of two views. The landing page was a simple view containing a form where the clinical trial associate or the support staff would fill in an anonymized unique identifier for the patient and details about the posture assumed for every recording session, i.e. 3.15 or 3.17 posture and left or right hand. All but one the controls of the form would be hidden at first and revealed gradually to enforce a step-by-step data entry procedure, discouraging the submission of partially filled forms (~\ref{fig:webapp1}). The button submitting the form would be the last one to be displayed, allowing the initiation of the collection. At that point the volunteer should already have resumed the required posture for the signal recording. 
+
+(\textcolor{BurntOrange}{Figure consisting of as many parts as the screens of the application i.e. 2}). 
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.4\linewidth]{content/images/topic_iphone_4s}
+  \caption{Landing page}
+  \label{fig:webapp1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.4\linewidth]{content/images/topic_iphone_4s}
+  \caption{Screen during collection}
+  \label{fig:webapp2}
+\end{subfigure}
+\caption{The web application screens}
+\label{fig:webapp}
+\end{figure}
+
+When the clinical trial associate or the support staff launched the recording, by submitting the form of the first view, the screen of the iPhone would turn red for 3 seconds and then automatically green, showing that the collection of the signals generated by the \gls{IMU} sensors was activated (~\ref{fig:webapp2}). After 12 seconds (resulting in a total of 15 from the form submission), the data collected from the sensors would automatically be posted to the Apache server in the form of a text file. The text files were then gathered and handled by a series of scripts built in MATLAB, in order to be cleaned, sorted and processed to extract the metrics and study the results, as will be explained later in this manuscript. 
+
+Gathering the signals generated by the smartphone's \gls{IMU} sensors was made possible via a web application by using a newly (then) adopted by mobile browsers vendors JavaScript \gls{API}s, the DeviceMotion\footnote{DeviceMotionEvent, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/devicemotionevent}} and DeviceOrientation\footnote{DeviceOrientationEvent, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/deviceorientationevent}} interfaces. These are Document object model (\gls{DOM})\footnote{JavaScript HTML DOM, accessed 01/10/2017 at: \url{https://www.w3schools.com/js/js_htmldom.asp}} interfaces, called via the \codeword{window}\footnote{The window object, accessed 01/10/2017 at: \url{https://www.w3schools.com/jsref/obj_window.asp}} object. To capture DeviceMotion events the \codeword{window.onDeviceMotion} event handler\footnote{ondevicemotion, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/domwindow/1632048-ondevicemotion}} must be used, whereas to capture DeviceOrientation events the \codeword{window.onDeviceOrientation} event handler\footnote{ondeviceorientation, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/domwindow/1628872-ondeviceorientation}} must be used. 
+
 %--------------------------------------->>>>>>>>>>
 %--------------------------------------->>>>>>>>>>
 %--------------------------------------->>>>>>>>>>
 %--------------------------------------->>>>>>>>>>
+The DeviceMotion interface supplies information on the acceleration of the device and 
+
+The DeviceOrientation event, supplies information on the physical orientation of the device. 
+
+%\begin{figure}[h]	
+%	\includegraphics[scale = 0.3]{content/images/topic_iphone_4s}
+%	\centering
+%	\caption{This is a caption}
+%	\label{fig:webapp}
+%\end{figure}
+
+The data filled in the form of the initial view would be used to construct the name of the 
+
 Our setup consists of four essential components:
 1. An iPhone 4 with iOS 4.2 or later, with Internet access enabled,
 2. A web site which collects data from the phone’s sensors when visited by the user,
