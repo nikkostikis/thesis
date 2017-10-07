@@ -27,7 +27,7 @@ Our approach was based on the following pillars:
 To validate our symptoms quantification approach we conducted two separate clinical trials: 
 
 \begin{enumerate}
-\item The first was a small-scale case control pilot clinical trial (\gls{SmartCT1}), which would serve as proof-of-concept for our approach (Kostikis et al, 2011). It consisted of 10 patients with idiopathic \gls{PD}, defined as group \gls{SmartMD1}, and 10 age-matched healthy volunteers, defined as group \gls{SmartH1}. The data collected were post-processed using signal processing and statistically analyzed, to calculate quantifying metrics and establish their significance. 
+\item The first was a small-scale case control pilot clinical trial (\gls{SmartCT1}), which would serve as proof-of-concept for our approach (Kostikis et al, 2011). It consisted of 10 patients with idiopathic \gls{PD}, defined as group \gls{SmartPD1}, and 10 age-matched healthy volunteers, defined as group \gls{SmartH1}. The data collected were post-processed using signal processing and statistically analyzed, to calculate quantifying metrics and establish their significance. 
 \item The second was a larger case control clinical trial (\gls{SmartCT2}), were 23 patients with idiopathic \gls{PD}, defined as group \gls{SmartPD2}, and 20 age-matched healthy volunteers, defined as group \gls{SmartH2}, were recruited. In a preliminary validation study, we used the data collected from \gls{SmartPD2} to compare the quantification calculated by our tool, to the patients' \gls{UPDRS} scores (Kostikis et al, 2014). Later on, both the \gls{SmartPD2} and \gls{SmartH2} groups' data were processed and used to perform statistical analysis and build machine learning models to establish our tool's potential as a classification platform for \gls{PD} patients (Kostikis et al, 2015). During the second clinical trial we also conducted a small longitudinal trial (\gls{SmartCT2L}) recruiting two idiopathic \gls{PD} patients, defined as \gls{SmartPD2L}. They were inpatients and were screened with our tool twice, once before, and once after medication. 
 \end{enumerate}
 
@@ -52,12 +52,12 @@ Another novelty at the time (late 2010) was the combination of gyroscope as well
 
 We chose to conduct a control study and not a one-population validation study because there was complete lack of literature evidence that this method of collecting inertial signals would work, or even be robust enough for us to gather usable data, and detection of a motor anomaly should be the first step before attempting to evaluate its severity. 
 
-Therefore, the expected outcome of \gls{SmartCT1} was to collect data using a novel tool on a small target population (\gls{SmartMD1}), examine the signals, calculate basic metrics and explore the statistical significance of the metrics when compared to a size-matched control population (\gls{SmartH1}). Most importantly, we wanted to gain significant insight concerning the optimization of the protocol of our next scheduled larger clinical trial (\gls{SmartCT2}).
+Therefore, the expected outcome of \gls{SmartCT1} was to collect data using a novel tool on a small target population (\gls{SmartPD1}), examine the signals, calculate basic metrics and explore the statistical significance of the metrics when compared to a size-matched control population (\gls{SmartH1}). Most importantly, we wanted to gain significant insight concerning the optimization of the protocol of our next scheduled larger clinical trial (\gls{SmartCT2}).
 
 \subsubsection{Volunteers}
 \label{subsubsec:smartCT1Volunteers}
 
-To conduct \gls{SmartCT1} we recruited 20 volunteers. Ten of them were healthy control subjects (\gls{SmartH1}) and 10 patients (\gls{SmartMD1}). The latter population was recruited from the outpatient clinic of the 1st Department of Neurology of AHEPA University General Hospital, located in the territory of the Aristotle University of Thessaloniki. All subjects agreed to participate in this research after a detailed explanation of its aims and of the testing procedure. Eight out of 10 volunteers of the \gls{SmartMD1} group were \gls{PD} patients. One suffered from cerebellar tremor and one had psychogenic parkinsonism. All \gls{SmartMD1} volunteers were under medication for the alleviation of their symptoms.
+To conduct \gls{SmartCT1} we recruited 20 volunteers. Ten of them were healthy control subjects (\gls{SmartH1}) and 10 patients (\gls{SmartPD1}). The latter population was recruited from the outpatient clinic of the 1st Department of Neurology of AHEPA University General Hospital, located in the territory of the Aristotle University of Thessaloniki. All subjects agreed to participate in this research after a detailed explanation of its aims and of the testing procedure. Eight out of 10 volunteers of the \gls{SmartPD1} group were \gls{PD} patients. One suffered from cerebellar tremor and one had psychogenic parkinsonism. All \gls{SmartPD1} volunteers were under medication for the alleviation of their symptoms.
 
 The inclusion criteria for the \gls{SmartH1} group was the absence of any kind of parkinsonism, whether idiopathic, atypical or secondary (see \ref{sec:parkinsonism}), both regarding themselves and their close relatives. The \gls{SmartH1} were not age-matched because our main goal was to compare pathological signals against healthy ones, and not explore the correlation between the signals collected and the patients' status. 
 
@@ -66,26 +66,15 @@ The inclusion criteria for the \gls{SmartH1} group was the absence of any kind o
 \subsubsection{Procedure and Hardware}
 \label{subsubsec:smartCT1ProcHardware}
 
-Although our metrics and results from \gls{SmartCT1} were not to be compared with the clinical examination mainstay, the \gls{UPDRS}, we applied the same instructions regarding body posture as described in items 3.15 - Postural tremor of the hands and 3.17 - Rest tremor amplitude of the \gls{MDS}-\gls{UPDRS} (Goetz et al, 2008). More specifically, in order to assess postural hand tremor we instructed the volunteers to stretch their arms out in front of the body, keeping their palms facing the ground. The wrists were to be held straight and the fingers separated as to not touch each other, in a comfortable manner. This position was to be held for 12 seconds. To assess rest tremor we instructed the volunteers to sit comfortably in a chair, with their arms placed on the arms of the chair, without touching their lap, and their feet loosely placed on the floor. This position was to be held for 12 seconds, as well. Although both positions are kept for 10 seconds in the directive of the \gls{UPDRS}, we opted for two more seconds to allow for errors recorded before and after each session. 
+Although our metrics and results from \gls{SmartCT1} were not to be compared with the clinical examination mainstay, the \gls{UPDRS}, we applied the same instructions regarding body posture as described in item 3.15 - Postural tremor of the hands of the \gls{MDS}-\gls{UPDRS} (Goetz et al, 2008). More specifically, in order to assess postural hand tremor we instructed the volunteers to stretch their arms out in front of the body, keeping their palms facing the ground. The wrists were to be held straight and the fingers separated as to not touch each other, in a comfortable manner. This position was to be held for 12 seconds. Although the position is kept for 10 seconds in the directive of the \gls{UPDRS}, we opted for two more seconds to allow for errors recorded before and after each session. 
 
-The positions described above were performed while the volunteers were wearing a custom-made glove with an iPhone securely attached on it. Internet access had to be enabled on the phone, and screen orientation had to be “locked” to avoid mislabeling the data. We wanted to avoid having to compensate for unintentional movements, not related to the \gls{PD} symptoms, therefore we chose to keep the iPhone securely attached to the volunteers hands via a glove, and not have them hold it in their hand or place it loosely on their limbs. Having the participants hold the device would result in voluntary muscle activation, undermining the definition of postural and rest tremor. There are studies were the patient assumes a position similar to the one described above and in the \gls{MDS}-\gls{UPDRS} item 3.15, but having the patients hold the device in their hands (Kassavetis et al, 2015). This, while efficient in the context of symptoms' quantification, ultimately cannot be comparable to results from a \gls{UPDRS} examination. This was not acceptable in our setting, where validation of our tool would be a desired outcome, requiring correlation analysis with the clinical examination ``golden'' standard, the \gls{UPDRS} at later stages of our research. 
+The position described above was performed while the volunteers were wearing a custom-made glove with an iPhone securely attached on it. Internet access had to be enabled on the phone, and screen orientation had to be ``locked'' to avoid mislabeling the data. We wanted to avoid having to compensate for unintentional movements, not related to the \gls{PD} symptoms, therefore we chose to keep the iPhone securely attached to the volunteers hands via a glove, and not have them hold it in their hand or place it loosely on their limbs. Having the participants hold the device would result in voluntary muscle activation, undermining the definition of postural tremor. There are studies were the patient assumes a position similar to the one described above and in the \gls{MDS}-\gls{UPDRS} item 3.15, but having the patients hold the device in their hands (Kassavetis et al, 2015). This, while efficient in the context of symptoms' quantification, ultimately cannot be comparable to results from a \gls{UPDRS} examination. This was not acceptable in our setting, where validation of our tool would be a desired outcome, requiring correlation analysis with the clinical examination ``golden'' standard, the \gls{UPDRS} at later stages of our research. 
 
-In order to keep the presence of the smartphone as discreet as possible we built an inexpensive apparatus consisting of an elastic glove, a perforated, rigid smartphone shell case and some non-elastic thread. The result was an easy to put on and lightweight glove-case that would keep the phone attached on the patients' dorsal part of the hand, without hindering the positions to be assumed, according to the procedure described earlier. Unfortunately the weight of the device at 140 grams was not trivial and could potentially slightly dampen the symptoms, but at least it was the same for all participants across our smartphone-based clinical trials and it was not something we could eradicate. 
+In order to keep the presence of the smartphone as discreet as possible we built an inexpensive apparatus consisting of an elastic glove, a perforated, rigid smartphone shell case and some non-elastic thread. The result was an easy to put on and lightweight glove-case that would keep the phone attached on the patients' dorsal part of the hand, without hindering the position to be assumed, according to the procedure described earlier. Unfortunately the weight of the device at 140 grams was not trivial and could potentially slightly dampen the symptoms, but at least it was the same for all participants across our smartphone-based clinical trials and it was not something we could eradicate. 
 
 (\textcolor{BurntOrange}{Figure consisting of three parts a. the glove, b. the case, c. some thread and d. the final custom apparatus}).
 
 The smartphone itself used in \gls{SmartCT1} was an Apple iPhone 4 GSM\footnote{iphone 4 technical specifications, accessed 01/10/2017 at: \url{https://support.apple.com/kb/sp587}}, powered by iOS version 4.2\footnote{iOS 4.2 software update, accessed 01/10/2017 at: \url{https://support.apple.com/kb/dl1061}}. 
-
-
-%%>>>>>>>>>>> Check the following out to incorporate in the previous paragraph
-
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-
-
-%%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
 \subsubsection{Software}
@@ -98,74 +87,119 @@ The software required for \gls{SmartCT1} consisted of the following components:
 \item A data processing pipeline written in MATLAB\footnote{Matlab, accessed 02/10/2017 at: \url{https://www.mathworks.com/products/matlab.html}} (various versions).
 \end{enumerate}
 
-The web application was designed to be as simple as possible, consisting of two views. The landing page was a simple view containing a form where the clinical trial associate or the support staff would fill in an anonymized unique identifier for the patient and details about the posture assumed for every recording session, i.e. 3.15 or 3.17 posture and left or right hand. All but one the controls of the form would be hidden at first and revealed gradually to enforce a step-by-step data entry procedure, discouraging the submission of partially filled forms (~\ref{fig:webapp1}). The button submitting the form would be the last one to be displayed, allowing the initiation of the collection. At that point the volunteer should already have resumed the required posture for the signal recording. 
+The web application was designed to be as simple as possible, consisting of two views. The landing page was a simple view containing a form where the clinical trial associate or the support staff would fill in an anonymized unique identifier for the patient (Figure \ref{fig:webAppForm1}), details about the posture assumed for every recording session, which for \gls{SmartCT1} was set by default to ``Extended'' (Figure \ref{fig:webAppForm2}), and left or right hand (Figure \ref{fig:webAppForm3}). All but one the controls of the form would be hidden at first and revealed gradually to enforce a step-by-step data entry procedure, discouraging the submission of partially filled forms (Figure \ref{fig:webAppForm}). The button submitting the form would be the last one to be displayed, allowing the initiation of the collection. At that point the volunteer should already have resumed the required posture for the signal recording. 
 
-(\textcolor{BurntOrange}{Figure consisting of as many parts as the screens of the application i.e. 2}). 
+\begin{figure}[h]
+\centering
+\begin{subfigure}{.33\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{content/images/screens/screenA1}
+  \caption{Filling in the identifier}
+  \label{fig:webAppForm1}
+\end{subfigure}%
+\begin{subfigure}{.33\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{content/images/screens/screenA2}
+  \caption{Filling in the posture}
+  \label{fig:webAppForm2}
+\end{subfigure}
+\begin{subfigure}{.33\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{content/images/screens/screenA3}
+  \caption{Filling in the side}
+  \label{fig:webAppForm3}
+\end{subfigure}
+\caption{The web application form progressive screens}
+\label{fig:webAppForm}
+\end{figure}
+
+When the clinical trial associate or the support staff launched the recording, by submitting the form of the first view, the screen of the iPhone would turn red for 3 seconds (Figure \ref{fig:webApp1}) and then automatically green, showing that the collection of the signals generated by the \gls{IMU} sensors was activated (Figure \ref{fig:webApp2}). After 12 seconds (resulting in a total of 15 from the form submission), the data collected from the sensors would automatically be posted to the Apache server in the form of a text file. The text files were then gathered and handled by a series of scripts built in MATLAB, in order to be cleaned, sorted and processed to extract the metrics and study the results, as will be explained later in this manuscript. 
 
 \begin{figure}[h]
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=.4\linewidth]{content/images/topic_iphone_4s}
-  \caption{Landing page}
-  \label{fig:webapp1}
+  \includegraphics[width=.7\linewidth]{content/images/screens/screenB1}
+  \caption{Form submitted, recording will start}
+  \label{fig:webApp1}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=.4\linewidth]{content/images/topic_iphone_4s}
-  \caption{Screen during collection}
-  \label{fig:webapp2}
+  \includegraphics[width=.7\linewidth]{content/images/screens/screenB2}
+  \caption{Recording started}
+  \label{fig:webApp2}
 \end{subfigure}
-\caption{The web application screens}
-\label{fig:webapp}
+\caption{The web application recording screens}
+\label{fig:webApp}
 \end{figure}
 
-When the clinical trial associate or the support staff launched the recording, by submitting the form of the first view, the screen of the iPhone would turn red for 3 seconds and then automatically green, showing that the collection of the signals generated by the \gls{IMU} sensors was activated (~\ref{fig:webapp2}). After 12 seconds (resulting in a total of 15 from the form submission), the data collected from the sensors would automatically be posted to the Apache server in the form of a text file. The text files were then gathered and handled by a series of scripts built in MATLAB, in order to be cleaned, sorted and processed to extract the metrics and study the results, as will be explained later in this manuscript. 
+Gathering the signals generated by the smartphone's \gls{IMU} sensors was made possible via the web application by using the newly (then) adopted by mobile browsers vendors JavaScript \gls{API}s, DeviceMotion\footnote{DeviceMotionEvent, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/devicemotionevent}} and DeviceOrientation\footnote{DeviceOrientationEvent, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/deviceorientationevent}} interfaces. These are Document object model (\gls{DOM})\footnote{JavaScript HTML DOM, accessed 01/10/2017 at: \url{https://www.w3schools.com/js/js_htmldom.asp}} interfaces, called via the \codeword{window}\footnote{The window object, accessed 01/10/2017 at: \url{https://www.w3schools.com/jsref/obj_window.asp}} object. To capture DeviceMotion events the \codeword{window.onDeviceMotion} event handler\footnote{ondevicemotion, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/domwindow/1632048-ondevicemotion}} was used, whereas to capture DeviceOrientation events the \codeword{window.onDeviceOrientation} event handler\footnote{ondeviceorientation, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/domwindow/1628872-ondeviceorientation}} was used. 
 
-Gathering the signals generated by the smartphone's \gls{IMU} sensors was made possible via a web application by using a newly (then) adopted by mobile browsers vendors JavaScript \gls{API}s, the DeviceMotion\footnote{DeviceMotionEvent, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/devicemotionevent}} and DeviceOrientation\footnote{DeviceOrientationEvent, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/deviceorientationevent}} interfaces. These are Document object model (\gls{DOM})\footnote{JavaScript HTML DOM, accessed 01/10/2017 at: \url{https://www.w3schools.com/js/js_htmldom.asp}} interfaces, called via the \codeword{window}\footnote{The window object, accessed 01/10/2017 at: \url{https://www.w3schools.com/jsref/obj_window.asp}} object. To capture DeviceMotion events the \codeword{window.onDeviceMotion} event handler\footnote{ondevicemotion, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/domwindow/1632048-ondevicemotion}} was used, whereas to capture DeviceOrientation events the \codeword{window.onDeviceOrientation} event handler\footnote{ondeviceorientation, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/domwindow/1628872-ondeviceorientation}} was used. 
-
-The DeviceMotion interface supplied information on the acceleration of the device. Through the \codeword{event.acceleration} and \codeword{event.accelerationIncludingGravity} properties\footnote{acceleration, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/devicemotionevent/1629483-acceleration}} the acceleration of the device in three planes, $x$, $y$, $z$ (see ~\ref{fig:iphoneAxes}) was recorded in $m/s^{2}$. 
+The DeviceMotion interface supplied information on the acceleration of the device. Through the \codeword{event.acceleration} and \codeword{event.accelerationIncludingGravity} properties\footnote{acceleration, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/devicemotionevent/1629483-acceleration}} the acceleration of the device in three planes, $x$, $y$, $z$ (Figure \ref{fig:iphoneAxes}) was recorded in $m/s^{2}$. The maximum rate at which the interface would sample the accelerometer was a read-only property of the interface set at 20Hz.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=.7\linewidth]{content/images/iPhone_device_axes}
+	\includegraphics[width=.7\linewidth]{content/images/phones/iPhone_device_axes}
 	\caption{iPhone 4 \& 4S accelerometer axes (source: \url{https://developer.apple.com/documentation/uikit/uiacceleration})}
 	\label{fig:iphoneAxes}
 \end{figure}
 
-The DeviceOrientation interface supplied information on the physical orientation of the device. Through the \codeword{event.alpha}\footnote{alpha, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/deviceorientationevent/1629200-alpha}}, \codeword{event.beta}\footnote{beta, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/deviceorientationevent/1631254-beta}} and \codeword{event.gamma}\footnote{gamma, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/deviceorientationevent/1631656-gamma}} properties the angles of rotation of the device were recorded in degrees. 
+The DeviceOrientation interface supplied information on the physical orientation of the device. Through the \codeword{event.alpha}\footnote{alpha, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/deviceorientationevent/1629200-alpha}}, \codeword{event.beta}\footnote{beta, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/deviceorientationevent/1631254-beta}} and \codeword{event.gamma}\footnote{gamma, accessed 01/10/2017 at: \url{https://developer.apple.com/documentation/webkitjs/deviceorientationevent/1631656-gamma}} properties the angles of rotation of the device were recorded in degrees. The sampling rate of the DeviceOrientation was a read-only property and, similarly to DeviceMotion, would max out at 20Hz. 
 
-A very important metric provided by the combination of accelerometer and gyroscope of the device and made available as a property of the DeviceMotion event was the rotation rate, recorded through \codeword{event.rotationrate.alpha}, \codeword{event.rotationrate.beta} and \codeword{event.rotationrate.gamma} in degrees per second ($^{o}/sec$). The axes of the rotation rate were defined as alpha (yaw) for the rotation around the $z$-axis, beta (roll) for the rotation around the $x$-axis and gamma (pitch) for the rotation of the device around its $y$-axis (see ~\ref{fig:iphoneAxesGyro}). 
+A very important metric provided by the combination of accelerometer and gyroscope of the device and made available as a property of the DeviceMotion event was the rotation rate, recorded through \codeword{event.rotationrate.alpha}, \codeword{event.rotationrate.beta} and \codeword{event.rotationrate.gamma} in degrees per second ($^{o}/sec$). The axes of the rotation rate were defined as alpha (yaw) for the rotation around the $z$-axis, beta (roll) for the rotation around the $x$-axis and gamma (pitch) for the rotation of the device around its $y$-axis (Figure \ref{fig:iphoneAxesGyro}). 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=.7\linewidth]{content/images/iPhone_device_axes_gyro}
-	\caption{iPhone 4 \& 4S gyroscope axes (source: \url{https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/DesigningExpandedAdUnits/FeaturesforExpandedAdUnits/FeaturesforExpandedAdUnits.html})}
+	\includegraphics[width=.7\linewidth]{content/images/phones/iPhone_device_axes_gyro}
+	\caption{iPhone 4 \& 4S gyroscope axes (adapted from: \url{https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/DesigningExpandedAdUnits/FeaturesforExpandedAdUnits/FeaturesforExpandedAdUnits.html})}
 	\label{fig:iphoneAxesGyro}
 \end{figure}
 
-The web application, was intended to be loaded by a device incorporating accelerometer and gyroscope. We used an iPhone 4 because it was one of the best-equipped smartphones at the time, featuring all necessary hardware and supporting the latest JavaScript specifications, as described earlier. However, the code running behind the web application was written with conditional clauses that would allow it to execute on devices lacking a gyroscope sensor, which was common at the time. When we developed the application only Apple's iOS supported the necessary \gls{API}s, but Google had recently announced that its Android operating system would also support these features in later releases. A few months later the Android version 4.4 (Kit Kat)\footnote{KitKat 4.4, accessed 02/10/2017 at: \url{https://www.android.com/versions/kit-kat-4-4/}} added the DeviceMotion and DeviceOrientation interfaces to its web browser, making every Android phone with the required sensors a suitable platform for our implementation “out of the box”. The web application developed for \gls{SmartCT1}, apart from the JavaScript \gls{API}s gathering the accelerometer and gyroscope signal, consisted of a PHP module which created a session to hold each recording's information and submitted the values of the acceleration, orientation and rotation rate to the Apache server. The Apache server was a simple web server installed in a machine located in the University of Macedonia, operating behind a firewall. 
+The web application, was intended to be loaded by a device incorporating accelerometer and gyroscope. We used an iPhone 4 because it was one of the best-equipped smartphones at the time, featuring all necessary hardware and supporting the latest JavaScript specifications, as described earlier. However, the code running behind the web application was written with conditional clauses that would allow it to execute on devices lacking a gyroscope sensor, which was common at the time. When we developed the application only Apple's iOS supported the necessary \gls{API}s, but Google had recently announced that its Android operating system would also support these features in later releases. A few months later the Android version 4.4 (Kit Kat)\footnote{KitKat 4.4, accessed 02/10/2017 at: \url{https://www.android.com/versions/kit-kat-4-4/}} added the DeviceMotion and DeviceOrientation interfaces to its web browser, making every Android phone with the required sensors a suitable platform for our implementation ``out of the box''. The web application developed for \gls{SmartCT1}, apart from the JavaScript \gls{API}s gathering the accelerometer and gyroscope signal, consisted of a PHP module which created a session to hold each recording's information, and posted the values of the acceleration, orientation and rotation rate to the Apache server. The Apache server was a simple web server installed in a machine located at the University of Macedonia, operating behind a firewall. 
 
-Functionality-wise, the clinical trial associate or the support staff would mount the iPhone on a participant's hand and load the web application. They would then fill in the necessary information in the step-by-step appearing form elements and have the participant assume the required position for the recording and submit the form. After a delay of 3 seconds, to allow the user to feel comfortable in the position, the iPhone would start recording data via the JavaScript interfaces DeviceMotion and DeviceOrientation. After 12 seconds the web application would submit acceleration and rotation data in a text file to the server, where they would be stored for post-processing. The name of the file would be a combination of the data filled in the form and a timestamp, rendering each file uniquely identifiable in the server. After persisting the file, the web application would immediately redirect to the landing page containing the form, this time already filled via the PHP session with the information of the previous recording. The staff could either choose to repeat the same recording, change the position or put the glove in the participant's opposite hand. The payload of the web application was about 10KB and each file to be uploaded was typically less than 40KB. The web application used no local storage on the smartphone. 
+Functionality-wise, the clinical trial associate or the support staff would mount the iPhone on a participant's hand and load the web application. They would then fill in the necessary information in the step-by-step appearing form elements, have the participant assume the required position for the recording, and submit the form. After a delay of 3 seconds, to allow the user to feel comfortable in the position, the iPhone would start recording data via the JavaScript interfaces DeviceMotion and DeviceOrientation. After 12 seconds the web application would post acceleration and rotation data in a text file to the server, where they would be stored for post-processing. The name of the file would be a combination of the data filled in the form and a timestamp, rendering each file uniquely identifiable in the server. After persisting the file, the web application would immediately redirect to the landing page containing the form, this time already filled via the PHP session with the information of the previous recording. The staff could either choose to repeat the same recording, or put the glove in the participant's opposite hand. The payload of the web application was about 10KB and each file to be uploaded was typically less than 40KB. The web application used no local storage on the smartphone. 
 
-Upon completion of the recordings of \gls{SmartCT1} the files collected were all downloaded from the server to a personal computer in the University of Macedonia running MATLAB. The data in the personal computer were anonymized and the only trail of identification could be followed using the clinical trial folders containing participants' demographics, disease progression information and the unique identifier used in the web application's initial form. The separation of data and anonymity of the signals were maintained for confidentiality and security reasons. We were handling information in the context of a ``need-to-know'' basis, minimizing the chances of sensitive information being exposed. 
+Upon completion of the recordings of \gls{SmartCT1}, the files collected were all downloaded from the server to a personal computer in the University of Macedonia running MATLAB. The data in the personal computer were anonymized and the only trail of identification could be followed using the clinical trial folders containing participants' demographics, disease progression information and the unique identifier used in the web application's initial form. The separation of data and anonymity of the signals were maintained for confidentiality and security reasons. We were handling information in the context of a ``need-to-know'' basis, minimizing the chances of sensitive information being exposed. 
 
 %--------------------------------------->>>>>>>>>>
 %--------------------------------------->>>>>>>>>>
 %--------------------------------------->>>>>>>>>>
 %--------------------------------------->>>>>>>>>>
 
-The regimen that had to be followed during all smartphone-based clinical trials was the same, albeit a few minor modifications after the first trial. 
-
-A web-based interface also makes our approach platform independent. The trade-off is that the necessary APIs [10] are currently available only in iOS 4.2; 
-
-At the server, the data are processed to extract information about possible movement disorders. Currently, that processing is done via a separate MATLAB application; however, our plan is to integrate its execution into the website, so that the results may be automatically obtained and communicated back to the user and/or their physician.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Data Collected}
 \label{subsec:SmartCT1Data}
-During clinical tests, subjects were asked to wear the iPhone on their wrist, and sit with their arms extended horizontally in front of them, keeping that position for 12 seconds while data were recorded. The device was mounted on both their hands alternately, and each test was repeated at least twice for each subject. From the data obtained, we formed the subject’s acceleration vector, $\alpha(i) = [\alpha_{x}(i),\alpha_{y}(i),\alpha_{z}(i)]^{T}$ (in m/s2) and angular velocity vector $\omega(i) = [\omega_{x}(i),\omega_{y}(i),\omega_{z}(i)]^{T}$ (in rad/s), with i denoting discrete time. Typical profiles of the two vectors (magnitude squared) are shown in Fig. 3.
-One challenge when using the iPhone’s current Javascript APIs is that the sampling rate (or rate at which the API may be triggered) is not adjustable, and stays at a default 20Hz, which is quite low. Furthermore, sampling of the on-board devices via JavaScript is subject to jitter (in some cases we measured a jitter of up to 5ms with a nominal sampling period of 50ms). In light of these considerations, we chose to explore very simple signal metrics (e.g., energy or power) for categorizing subjects as to whether they exhibited hand tremor or not. Specifically, we computed
+During each session of \gls{SmartCT1}, participants were asked to wear the glove-case securing the iPhone on their wrist, and follow the item 3.15 protocol defined in the \gls{MDS}-\gls{UPDRS}, i.e., stretch their arms out in front of them, keeping their palms facing the ground, the wrists straight and the fingers separated, in a comfortable manner. That position was maintained for for 12 seconds while data were recorded. The device was mounted on both their hands alternately, and each test was repeated at least twice for each participant. From the data obtained, we formed the participant's acceleration vector, $\alpha(i) = [\alpha_{x}(i),\alpha_{y}(i),\alpha_{z}(i)]^{T}$ (in $m/s^{2}$) and angular velocity vector $\omega(i) = [\omega_{x}(i),\omega_{y}(i),\omega_{z}(i)]^{T}$ (in $rad/s$), with $i$ denoting discrete sample. Of the 12 seconds collected at each session the first 2 seconds were discarded. For 10 seconds signals, at 20Hz sampling rate, each session would yield 200 samples for each axis. As a first signal characteristic we calculated both for the acceleration and the rotation rate, the squared magnitude for each sample as shown in equations \ref{eq: magSampleAlpha} and \ref{eq: magSampleOmega}. Typical profiles of the two vectors (magnitude squared) are shown in figure \ref{fig:signals}.
+
+\begin{equation} \label{eq: magSampleAlpha}
+\|\alpha\|^{2} = \alpha_{x}^{2} + \alpha_{y}^{2} + \alpha_{z}^{2}
+\end{equation}
+
+\begin{equation} \label{eq: magSampleOmega}
+\|\omega\|^{2} = \omega_{x}^{2} + \omega_{y}^{2} + \omega_{z}^{2}
+\end{equation}
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{1\textwidth}
+  \centering
+  \includegraphics[width=0.85\linewidth]{content/images/EMBC11/fig3a}
+  \caption{Acceleration (magnitude squared) for a control volunteer compared to a \gls{PD} patient}
+  \label{fig:accelSig}
+\end{subfigure}
+
+\begin{subfigure}{1\textwidth}
+  \centering
+  \includegraphics[width=0.85\linewidth]{content/images/EMBC11/fig3b}
+  \caption{Rotation rate (magnitude squared) for a control volunteer compared to a \gls{PD} patient}
+  \label{fig:rotSig}
+\end{subfigure}
+\caption{Acceleration and Rotation rate signal sample squared magnitudes}
+\label{fig:signals}
+\end{figure}
+
+One challenge when using the DeviceMotion and DeviceOrientation JavaScript interfaces when \gls{SmartCT1} was conducted was that the sampling rate was not adjustable, and was set at a default 20Hz, which was quite low. Furthermore, sampling of the on-board devices via JavaScript was subject to jitter (in some cases we measured a jitter of up to 5ms with a nominal sampling period of 50ms). In light of these considerations, we chose to explore very simple signal metrics (e.g., energy or power) for categorizing subjects as to whether they exhibited hand tremor or not. Specifically, we computed
 
 \begin{equation}
 m_{\alpha} = \frac{\sum_{i=1}^{N} \|\alpha(i)\|^{2} }{N}
@@ -175,15 +209,37 @@ m_{\alpha} = \frac{\sum_{i=1}^{N} \|\alpha(i)\|^{2} }{N}
 m_{\omega} = \frac{\sum_{i=1}^{N} \|\omega(i)\|^{2} }{N}
 \end{equation}
 
-where $N$ was the number of samples in the signal, and attempted to categorize subjects based on these two quantities. Here $m_{\alpha}$ and $m_{\omega}$ can be viewed as signal power, the signal being the length of the acceleration and rotational velocity vectors, respectively. Typical values of these metrics when the iPhone was at rest on the desktop were $m_{\alpha}=0.0127$ and  $m_{\omega}=0.0000$.
+where $N$ was the number of samples in the signal (i.e. 200), and attempted to categorize subjects based on these two quantities. Here $m_{\alpha}$ and $m_{\omega}$ can be viewed as signal power, the signal being the length of the acceleration and rotation rate vectors, respectively. Typical values of these metrics when the iPhone was at rest placed stationary on a desk $m_{\alpha}=0.0127$ and  $m_{\omega}=0.0000$.
 
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Comparisons / Data Analysis / Results}
 \label{subsec:SmartCT1Results}
 The purpose of this first study was to collect data by integrating a smartphone, as seamlessly as possible, to specific items of the gold standard of clinical evaluation (\gls{UPDRS})
 
-We first compared the mean values of the two metrics for our two populations, using all data (left and right hand) for each subject. The N population had an average acceleration power of 0.0915 (min=0.0338, max=0.1325), which was low compared to the MD mean of 0.1760. Statistical analysis (Mann-Whitney test) verified that differences between two populations were indeed significant. With respect to angular velocity power, the N population had a mean of 0.0039 (min=0.0020, max=0.0066), while the average for MD subjects was a much higher 0.0224. The 10th MD subject’s scores were much higher than the rest, and were excluded when calculating the mean for the MD group, in order to avoid “artificially” strong comparisons with the N group. As depicted in Figure 4, all MD subjects scored higher than the N-group (control) mean when considering the $m_{\omega}$ metric (in 4 cases they scored higher in both metrics).
-The acceleration and angular velocity metrics we computed, generally agreed with the severity of hand tremor as observed clinically. Because of space constraints we only present data for the MD group as compared to the mean and maximum values from the N group. The corresponding data for the healthy subjects can be found in [13]. One of our goals was to see how well we can detect movement disorders (in this case, hand tremor) using mα and mω. Towards that end, we explored the possibility of identifying subjects with hand tremor via two simple criteria. The first was whether either of a subject’s mean measurements (mα, mω) were above a certain threshold, namely the highest mean score encountered in the N group. Because it is known that movement disorders typically affect one side of the patient more severely than the other, we re-calculated each metric using data only from each subject’s “worst” hand, i.e., the hand which scored highest in each metric. By doing so, the highest acceleration and angular velocity scores for healthy subjects were 0.1515 and 0.0092, respectively. The identification of patients’ worst performing hands by comparing average metrics for their left vs. right hand as described above, gave the same results regardless of the metric used (acceleration or rotational velocity), and correctly identified the worst hand of every patient except subject 4. The comparisons between the subjects’ mean scores for their worst-performing hand and the thresholds (maximum scores) obtained from the N group are described in Figure 5. The thresholding criterion correctly “labels” nine of the ten subjects as being in the MD group. The one exception was subject 8 who does suffer from Parkinson’s disease, but his symptoms include mostly bradykinesia and rigidity, as opposed to pronounced hand tremor. We note that if we were to judge based on  mω alone, then the same nine subjects would be categorized as MD, whereas only four subjects exceeded the mα acceleration threshold. A second criterion for comparing the MD and N populations was the difference in mα (and mω) between hands. A healthy subject is not expected to have very different left vs. right mean scores, while the opposite is often true for patients with movement disorders. The control group (N) had an average hand-to-hand difference of 0.0232 in mα (max=0.0514, min=0.0123, std. dev.=0.0117) whereas MD subjects had an average difference of 0.1572 (std. dev.=0.2629). The corresponding numbers for mω were 0.0031 (max=0.0053, min=0.0006, std. dev.=0.0016) for the N group and 0.0185 (std. dev.=0.0147) for the MD group. Again, nine of the MD subjects had mean differences which exceeded the maximum encountered in the N group in either mα or mω, or both; they were the same nine identified via thresholding on worst-hand scores (see [13] for individual scores).
+We first compared the mean values of the two metrics for our two populations, using all data (left and right hand) for each subject. The \gls{SmartH1} population had an average acceleration power of 0.0915 (min=0.0338, max=0.1325), which was low compared to the \gls{SmartPD1} mean of 0.1760. Statistical analysis (Mann-Whitney test) verified that differences between two populations were indeed significant. With respect to rotation rate power, the \gls{SmartH1} population had a mean of 0.0039 (min=0.0020, max=0.0066), while the average for \gls{SmartPD1} subjects was a much higher 0.0224. The 10th \gls{SmartPD1} subject's scores were much higher than the rest, and were excluded when calculating the mean for the \gls{SmartPD1} group, in order to avoid ``artificially'' strong comparisons with the \gls{SmartH1} group. As depicted in figure \ref{fig:bars1}, all \gls{SmartPD1} subjects scored higher than the control mean when considering the $m_{\omega}$ metric (in 4 cases they scored higher in both metrics).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.9\linewidth]{content/images/EMBC11/fig4}
+	\caption{Bars represent the vlounteers' mean scores using measurements from both hands. For the $m_{\omega}$ metric the scores are scaled by 10.}
+	\label{fig:bars1}
+\end{figure}
+
+The acceleration and angular velocity metrics we computed, generally agreed with the severity of hand tremor, as observed clinically. One of our goals was to see how well we can detect movement disorders (in this case, hand tremor) using $m_{\alpha}$ and $m_{\omega}$. Towards that end, we explored the possibility of identifying subjects with hand tremor via two simple criteria. The first was whether either of a subject's mean measurements ($m_{\alpha}$, $m_{\omega}$) were above a certain threshold, namely the highest mean score encountered in the \gls{SmartH1} group. Because it is known that \gls{PD} typically affects one side of the patient more severely than the other, we re-calculated each metric using data only from each subject's ``worst-performing'' hand, i.e., the hand which scored highest in each metric. By doing so, the highest acceleration and rotation rate scores for healthy subjects were 0.1515 and 0.0092, respectively. The identification of patients’ worst-performing hands by comparing average metrics for their left vs. right hand as described above, gave the same results regardless of the metric used (acceleration or rotation rate), and correctly identified the worst hand of every patient except volunteer number 4. The comparisons between the subjects' mean scores for their worst-performing hand and the thresholds (maximum scores) obtained from the control group are described in figure \ref{fig:bars2}. The thresholding criterion correctly ``labels'' nine of the ten subjects as being in the \gls{SmartPD1} group. The one exception was volunteer number 8 who does suffer from \gls{PD}, but his symptoms include mostly bradykinesia and rigidity, as opposed to pronounced hand tremor. We note that if we were to judge based on  $m_{\omega}$ alone, then the same nine subjects would be true positives, whereas only four subjects exceeded the $m_{\alpha}$ acceleration threshold. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.9\linewidth]{content/images/EMBC11/fig5}
+	\caption{Bars represent the volunteers' mean scores using measurements only from worst-performing (highest-scoring) hand. For the $m_{\omega}$ metric the scores are scaled by 10.}
+	\label{fig:bars2}
+\end{figure}
+
+A second criterion for comparing the \gls{SmartPD1} and \gls{SmartH1} populations was the difference between hands for both $m_{\alpha}$ and $m_{\omega}$. A healthy volunteer would not be expected to have very different left versus right mean scores, while the opposite is often true for patients with parkinsonism. Regarding $m_{\alpha}$, the control group had an average hand-to-hand difference of 0.0232 (max=0.0514, min=0.0123, std. dev.=0.0117) whereas \gls{SmartPD1} participants had an average difference of 0.1572 (std. dev.=0.2629). The corresponding numbers for $m_{\omega}$ were 0.0031 (max=0.0053, min=0.0006, std. dev.=0.0016) for the \gls{SmartH1} group and 0.0185 (std. dev.=0.0147) for the \gls{SmartPD1} group. Again, nine of the patients had mean differences which exceeded the maximum encountered in the healthy group in either $m_{\alpha}$, $m_{\omega}$, or both; they were the same nine identified via thresholding on worst-hand scores.
+
 
 %Implications and conclusion
 We explored the use of recently-available smartphone technology for the purpose of diagnosing and quantifying the postural tremor which characterizes movement disorders such as Parkinson’s disease. Our method is based on the use of on-board accelerometer and gyroscope which are currently found in many smartphones and can be accessed via the web. Unlike previously proposed approaches, ours i) is web-based, meaning that the user simply visits a web page without installing software on their phone, or handling the data being collected, and ii) uses accelerometer and gyroscope data simultaneously in order to classify patients based on very simple signal metrics and thresholding. 
@@ -196,9 +252,20 @@ The fact that we are using a JavaScript API to control the smartphone’s hardwa
 \section{SmartCT2}
 \label{sec:SmartCT2}
 
+Although our metrics and results from \gls{SmartCT1} were not to be compared with the clinical examination mainstay, the \gls{UPDRS}, we applied the same instructions regarding body posture as described in items 3.15 - Postural tremor of the hands and 3.17 - Rest tremor amplitude of the \gls{MDS}-\gls{UPDRS} (Goetz et al, 2008). More specifically, in order to assess postural hand tremor we instructed the volunteers to stretch their arms out in front of the body, keeping their palms facing the ground. The wrists were to be held straight and the fingers separated as to not touch each other, in a comfortable manner. This position was to be held for 12 seconds. To assess rest tremor we instructed the volunteers to sit comfortably in a chair, with their arms placed on the arms of the chair, without touching their lap, and their feet loosely placed on the floor. This position was to be held for 12 seconds, as well. Although both positions are kept for 10 seconds in the directive of the \gls{UPDRS}, we opted for two more seconds to allow for errors recorded before and after each session. 
+
+The positions described above were performed while the volunteers were wearing a custom-made glove with an iPhone securely attached on it. Internet access had to be enabled on the phone, and screen orientation had to be ``locked'' to avoid mislabeling the data. We wanted to avoid having to compensate for unintentional movements, not related to the \gls{PD} symptoms, therefore we chose to keep the iPhone securely attached to the volunteers hands via a glove, and not have them hold it in their hand or place it loosely on their limbs. Having the participants hold the device would result in voluntary muscle activation, undermining the definition of postural and rest tremor. There are studies were the patient assumes a position similar to the one described above and in the \gls{MDS}-\gls{UPDRS} item 3.15, but having the patients hold the device in their hands (Kassavetis et al, 2015). This, while efficient in the context of symptoms' quantification, ultimately cannot be comparable to results from a \gls{UPDRS} examination. This was not acceptable in our setting, where validation of our tool would be a desired outcome, requiring correlation analysis with the clinical examination ``golden'' standard, the \gls{UPDRS} at later stages of our research. 
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Protocol}
 \label{subsec:SmartCT2Protocol}
+
+The regimen that had to be followed during all smartphone-based clinical trials was the same, albeit a few minor modifications after the first trial. 
+
+At the server, the data are processed to extract information about possible movement disorders. Currently, that processing is done via a separate MATLAB application; however, our plan is to integrate its execution into the website, so that the results may be automatically obtained and communicated back to the user and/or their physician.  
+
 
 \subsubsection{Rationale}
 \label{subsubsec:smartCT2Rationale}
@@ -267,7 +334,7 @@ The work in [3] used 12-second recorded signals. Here, we decided to increase th
 
 The UPDRS scores of the PD volunteers were assessed by the same physician (our third author), just before data collection. We attached an iPhone on our volunteers’ hands using the same custom-made mounting glove (Fig. 1) from [15] and [16]. It consists of a perforated case into which the phone “locks”, and a wrist-supporting glove, both commercially available. The glove fits tightly on the volunteer’s hand and the case is tightly sewn on the glove using non-elastic thread, ensuring the stability of the device on top of the hand. With the device attached, each participant had to maintain each of two prescribed postures for 30 seconds, while acceleration and gyroscope data was recorded by the phone. The two postures we used were the same ones used during the clinical evaluation: a) “Extended”, i.e., seated with both hands extended in front of the torso (Postural Tremor of the Hands, component 3.15 of the MDS-UPDRS) and b) “Rest”, i.e., seated with both hands placed on the arms of the chair (Rest Hand Tremor, component 3.17 of the MDS-UPDRS). The procedure was then repeated for the subject’s other hand, in the same two postures. In the following, we will specify the combination of a patient’s hand (Right of Left upper extremity) during each position as rR, rL, eR, and eL for rest-right, rest-left, extended-right, and extended-left, respectively.
 The hardware setup was the same as the one used in our earlier work, [15] and [16]: 
-1.	An iPhone 4S with the latest iOS, with Internet access enabled, and screen orientation locked in vertical,
+1.	An iPhone 4S with the latest iOS, with Internet access enabled, and screen orientation ``locked'' in vertical,
 2.	A web application to collect data from the smartphone’s sensors,
 3.	A web server to host the site and store the signals, and
 4.	A MATLAB application for processing the signals received at the server.
