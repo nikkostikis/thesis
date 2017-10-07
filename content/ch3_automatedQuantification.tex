@@ -33,6 +33,8 @@ There are multiple reasons supporting the need to quantify \gls{PD} motor sympto
 \item \textit{Biobanking}. Effective symptom monitoring, data on daily activities, medication performance and disease progress are recorded and, appropriately anonymized, remain available to medical researchers, pharmacists and biologists. These data stores can help scientists plan more effective treatment regimens, design detailed diagnostic protocols and deliver personalized and sophisticated pharmaceuticals. Using automated assessment tools, the adjustments and improvements made to the approaches of \gls{PD} symptoms alleviation for particular patients in combination with their profiles and general motor characteristics could be stored in centralized and easily accessible anonymized data pools for future cases to be treated efficiently even faster and in a more personalized and consistent manner.
 \end{enumerate}
 
+\hlorange{Table here summarizing the axes of innovation}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -151,20 +153,22 @@ In (Flash et al, 1992) the authors outlined a protocol to analyze the kinematic 
 \item The reaction time for \gls{PD} patients was twice as much as the time of the control subjects. Once again the target location was important; the average reaction time for distally directed movements was significantly longer (433ms longer) than the respective time in proximal efforts, indicating once again the difference in the two motion patterns' mechanics. Extension appeared to be more susceptible to impairment.
 \end{enumerate} 
 
-In 2017 our paper on a machine learning-based tool for the identification of simple line-drawing tasks performed by PD patients was published (Kotsavasiloglou et al, 2017). In it, we described an easy to follow protocol for the assessment of the performance of PD patients when drawing simple lines on a Wacom Bamboo pen tablet\footnote{Wacom pen tablets, accessed 05/10/2017 at:\url{http://www.wacom.com/en-us/products/pen-tablets}}. Our analysis showed that even a simple line-drawing task, once digitized, can generate valuable metrics for the detection of PD symptoms, and over 80\% accurate classification of pathological and healthy trajectories. 
+In 2017 our paper on a machine learning-based tool for the identification of simple line-drawing tasks performed by PD patients was published (Kotsavasiloglou et al, 2017). In it, we described an easy to follow protocol for the assessment of the performance of PD patients when drawing simple lines on a Wacom Bamboo pen tablet\footnote{Wacom pen tablets, accessed 05/10/2017 at:\url{http://www.wacom.com/en-us/products/pen-tablets}}. As will be discussed in detail in chapter \ref{ch:handwriting}, our analysis showed that even a simple line-drawing task, once digitized, can generate valuable metrics for the detection of PD symptoms, and over 80\% accurate classification of pathological and healthy trajectories. 
 
-\section{Our Approach - Put this in the following chapters}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Our Approach}
 \label{sec:ourApproach}
-
-\hlpink{Write the following to prepare for the next chapters}
-
-We based our approach on the following qualities:
+As was already mentioned, in a similar vein with some of the aforementioned studies we conducted our research on the quantification of \gls{PD} symptoms using \gls{IMU} sensors and handwriting kinematics analysis. 
+Taking under consideration the six axes of innovation derived from the state of the art (see section \ref{sec:axes}), and the needs arising for a more accurate, available and personalized clinical practice, we based our approach on the following qualities:
 
 \begin{enumerate}
-\item Low cost (Cost efficiency)
-\item Ubiquity (Availability)
-\item Comfort / User experience / Familiarity (Ease of use)
-\item High correlation to already established methods (Quality of diagnosis)
-\item Data persistence (Effective monitoring)
-\item Reproducible protocol (Biobanking)
+\item Cost efficiency. The solutions we propose are low cost.
+\item Availability. We mostly utilized ubiquitous devices and well established methods.
+\item Ease of use. The tools we built require no particular expertise to handle and are familiar to most people.
+\item Quality of diagnosis. Through clinical trials and statistical analysis we validated our methods and proved high correlation with the clinical practice mainstay.
+\item Effective monitoring. The solutions we designed allow for long term monitoring through data persistence.
+\item Biobanking. Our protocols can be easily reproduced and the data can easily bubble up to offer large datasets for more scientists and further analysis. 
 \end{enumerate}
+
+In the following chapters we will present the protocols and tools for \gls{PD} symptoms quantification we introduced, and discuss their design details, implementation and implications for clinical practice. 
