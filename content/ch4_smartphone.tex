@@ -24,6 +24,7 @@ Our approach was based on the following pillars:
 \item We opted for cloud based approaches that would ensure the persistence of the data and the availability of the results for post-processing and verification. 
 \end{enumerate}
 
+\noindent
 To validate our symptoms quantification approach we conducted two separate clinical trials: 
 
 \begin{enumerate}
@@ -74,8 +75,21 @@ In order to keep the presence of the smartphone as discreet as possible we built
 
 (\textcolor{BurntOrange}{Figure consisting of three parts a. the glove, b. the case, c. some thread and d. the final custom apparatus}).
 
-The smartphone itself used in \gls{SmartCT1} was an Apple iPhone 4 GSM\footnote{iphone 4 technical specifications, accessed 01/10/2017 at: \url{https://support.apple.com/kb/sp587}}, powered by iOS version 4.2\footnote{iOS 4.2 software update, accessed 01/10/2017 at: \url{https://support.apple.com/kb/dl1061}}. 
+\begin{figure}[h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.7\linewidth]{content/images/myHand/hand}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.7\linewidth]{content/images/myHand/figure_1_Color}
+\end{subfigure}
+\caption{The glove-case worn on hand with a device attached}
+\label{fig:glovCase}
+\end{figure}
 
+The smartphone itself used in \gls{SmartCT1} was an Apple iPhone 4 GSM\footnote{iphone 4 technical specifications, accessed 01/10/2017 at: \url{https://support.apple.com/kb/sp587}}, powered by iOS version 4.2\footnote{iOS 4.2 software update, accessed 01/10/2017 at: \url{https://support.apple.com/kb/dl1061}}. 
 
 \subsubsection{Software}
 \label{subsubsec:smartCT1Software}
@@ -161,16 +175,10 @@ Functionality-wise, the clinical trial associate or the support staff would moun
 
 Upon completion of the recordings of \gls{SmartCT1}, the files collected were all downloaded from the server to a personal computer in the University of Macedonia running MATLAB. The data in the personal computer were anonymized and the only trail of identification could be followed using the clinical trial folders containing participants' demographics, disease progression information and the unique identifier used in the web application's initial form. The separation of data and anonymity of the signals were maintained for confidentiality and security reasons. We were handling information in the context of a ``need-to-know'' basis, minimizing the chances of sensitive information being exposed. 
 
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Data Collected}
 \label{subsec:SmartCT1Data}
-During each session of \gls{SmartCT1}, participants were asked to wear the glove-case securing the iPhone on their wrist, and follow the item 3.15 protocol defined in the \gls{MDS}-\gls{UPDRS}, i.e., stretch their arms out in front of them, keeping their palms facing the ground, the wrists straight and the fingers separated, in a comfortable manner. That position was maintained for for 12 seconds while data were recorded. The device was mounted on both their hands alternately, and each test was repeated at least twice for each participant. From the data obtained, we formed the participant's acceleration vector, $\alpha(i) = [\alpha_{x}(i),\alpha_{y}(i),\alpha_{z}(i)]^{T}$ (in $m/s^{2}$) and angular velocity vector $\omega(i) = [\omega_{x}(i),\omega_{y}(i),\omega_{z}(i)]^{T}$ (in $rad/s$), with $i$ denoting discrete sample. Of the 12 seconds collected at each session the first 2 seconds were discarded. For 10 seconds signals, at 20Hz sampling rate, each session would yield 200 samples for each axis. As a first signal characteristic we calculated both for the acceleration and the rotation rate, the squared magnitude for each sample as shown in equations \ref{eq: magSampleAlpha} and \ref{eq: magSampleOmega}. Typical profiles of the two vectors (magnitude squared) are shown in figure \ref{fig:signals}.
+During each session of \gls{SmartCT1}, participants were asked to wear the glove-case securing the iPhone on their wrist, and follow the item 3.15 protocol defined in the \gls{MDS}-\gls{UPDRS}, i.e., stretch their arms out in front of them, keeping their palms facing the ground, the wrists straight and the fingers separated, in a comfortable manner. That position was maintained for 12 seconds while data were recorded. The device was mounted on both their hands alternately, and each test was repeated at least twice for each participant. From the data obtained, we formed the participant's acceleration vector, $\alpha(i) = [\alpha_{x}(i),\alpha_{y}(i),\alpha_{z}(i)]^{T}$ (in $m/s^{2}$) and angular velocity vector $\omega(i) = [\omega_{x}(i),\omega_{y}(i),\omega_{z}(i)]^{T}$ (in $rad/s$), with $i$ denoting discrete sample and axes $x$, $y$ and $z$ defined as in figures \ref{fig:iphoneAxes} and \ref{fig:iphoneAxesGyro}. Of the 12 seconds recorded at each session the first 2 seconds were discarded. For 10 seconds signals, at 20Hz sampling rate, each session would yield 200 samples for each axis. As a first signal characteristic we calculated both for the acceleration and the rotation rate, the squared magnitude for each sample as shown in equations \ref{eq: magSampleAlpha} and \ref{eq: magSampleOmega}. Typical profiles of the two vectors (magnitude squared) are shown in figure \ref{fig:signals}.
 
 \begin{equation} \label{eq: magSampleAlpha}
 \|\alpha\|^{2} = \alpha_{x}^{2} + \alpha_{y}^{2} + \alpha_{z}^{2}
@@ -201,26 +209,77 @@ During each session of \gls{SmartCT1}, participants were asked to wear the glove
 
 One challenge when using the DeviceMotion and DeviceOrientation JavaScript interfaces when \gls{SmartCT1} was conducted was that the sampling rate was not adjustable, and was set at a default 20Hz, which was quite low. Furthermore, sampling of the on-board devices via JavaScript was subject to jitter (in some cases we measured a jitter of up to 5ms with a nominal sampling period of 50ms). In light of these considerations, we chose to explore very simple signal metrics (e.g., energy or power) for categorizing subjects as to whether they exhibited hand tremor or not. Specifically, we computed
 
-\begin{equation}
+\begin{equation} \label{eq: magAlpha}
 m_{\alpha} = \frac{\sum_{i=1}^{N} \|\alpha(i)\|^{2} }{N}
 \end{equation}
 
-\begin{equation}
+\begin{equation} \label{eq: magOmega}
 m_{\omega} = \frac{\sum_{i=1}^{N} \|\omega(i)\|^{2} }{N}
 \end{equation}
 
-where $N$ was the number of samples in the signal (i.e. 200), and attempted to categorize subjects based on these two quantities. Here $m_{\alpha}$ and $m_{\omega}$ can be viewed as signal power, the signal being the length of the acceleration and rotation rate vectors, respectively. Typical values of these metrics when the iPhone was at rest placed stationary on a desk $m_{\alpha}=0.0127$ and  $m_{\omega}=0.0000$.
+\noindent 
+where $N$ was the number of samples in the signal (i.e. 200), and attempted to categorize subjects based on these two quantities. Here $m_{\alpha}$ and $m_{\omega}$ can be viewed as signal power, the signal being the length of the acceleration and rotation rate vectors, respectively. Typical values of these metrics when the iPhone was at rest placed stationary on a desk were $m_{\alpha}=0.0127$ and  $m_{\omega}=0.0000$.
 
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Comparisons / Data Analysis / Results}
-\label{subsec:SmartCT1Results}
-The purpose of this first study was to collect data by integrating a smartphone, as seamlessly as possible, to specific items of the gold standard of clinical evaluation (\gls{UPDRS})
+\subsection{Data Analysis}
+\label{subsec:SmartCT1Analysis}
+Mann-whitney non-parametric U test was used to explore the statistical significance of the difference between the $m_{\alpha}$ and $m_{\omega}$ values of the two populations. 
+We first compared the mean values of $m_{\alpha}$ for our two populations, using all data (left and right hand) for each subject. Volunteers performed 2 sessions for each hand, resulting in 4 data signals. Initially, each volunteer was assigned a single number calculated as the average value of $m_{\alpha}$ for all 4 data signals collected. The \gls{SmartH1} population had an average acceleration power $m_{\alpha}$ = 0.0915 (min = 0.0338, max = 0.1325), whereas the \gls{SmartPD1} had an average acceleration power $m_{\alpha}$ = 0.1760 (min = 0.0511, max = 0.6905). Although the max value of the \gls{SmartPD1} population is quite high and the mean values are different, the min values of the two populations suggest that there is an overlap. This is obvious in the boxplot as well (figure \ref{fig:boxAllA}). As expected, the Mann-Whitney U test could not reject the null hypothesis that the distributions of the values of the two populations are different and  confirmed that it would be equally likely that a randomly selected value from the \gls{SmartPD1} population would be greater than a randomly selected value from the \gls{SmartH1} population. 
 
-We first compared the mean values of the two metrics for our two populations, using all data (left and right hand) for each subject. The \gls{SmartH1} population had an average acceleration power of 0.0915 (min=0.0338, max=0.1325), which was low compared to the \gls{SmartPD1} mean of 0.1760. Statistical analysis (Mann-Whitney test) verified that differences between two populations were indeed significant. With respect to rotation rate power, the \gls{SmartH1} population had a mean of 0.0039 (min=0.0020, max=0.0066), while the average for \gls{SmartPD1} subjects was a much higher 0.0224. The 10th \gls{SmartPD1} subject's scores were much higher than the rest, and were excluded when calculating the mean for the \gls{SmartPD1} group, in order to avoid ``artificially'' strong comparisons with the \gls{SmartH1} group. As depicted in figure \ref{fig:bars1}, all \gls{SmartPD1} subjects scored higher than the control mean when considering the $m_{\omega}$ metric (in 4 cases they scored higher in both metrics).
+\begin{figure}[h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{content/images/analysis/boxAllA}
+  \caption{$m_{\alpha}$ distribution comparison}
+  \label{fig:boxAllA}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{content/images/analysis/boxAllOm}
+  \caption{$m_{\omega}$ distribution comparison}
+  \label{fig:boxAllOm}
+\end{subfigure}
+\caption{Distributions comparison using volunteers' both hands' mean values}
+\label{fig:boxAll}
+\end{figure}
+
+
+With respect to rotation rate power, the \gls{SmartH1} population had a mean of 0.0039 (min = 0.0020, max = 0.0066), whereas the average for \gls{SmartPD1} subjects was a much higher 0.0224 (min = 0.0041, max = 0.0510). In this case, the Mann-Whitney test rejected the null hypothesis with a p-value nearly equal to zero, confirming that a randomly selected value from the \gls{SmartPD1} population would most likely be larger than a randomly selected value from the control population. The boxplot confirms visually that the two distributions are different (figure \ref{fig:boxAllOm}). 
+
+In both cases, the 10th \gls{SmartPD1} subject's scores were much higher than the rest, and were excluded when calculating the mean for the \gls{SmartPD1} group, in order to avoid ``artificially'' strong comparisons with the \gls{SmartH1} group. All values calculated as means from both hands for each volunteer are shown in table \ref{tab: allH}. 
+
+\begin{table}
+\centering
+\begin{tabular}{||c c c c||} 
+ 	\hline
+ 	Col1 & Col2 & Col2 & Col3 \\ [0.5ex] 
+ 	\hline\hline
+ 	1 & 6 & 87837 & 787 \\ 
+ 	\hline
+ 	2 & 7 & 78 & 5415 \\
+	\hline
+	3 & 545 & 778 & 7507 \\
+ 	\hline
+ 	4 & 545 & 18744 & 7560 \\
+ 	\hline
+ 	5 & 88 & 788 & 6344 \\ [1ex] 
+ 	\hline
+  \end{tabular}
+  \caption{Numbers represent the volunteers' mean scores, using measurements from both hands}
+    \label{tab:allH}
+\end{table}
+
+
+
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+
+\hlorange{Table with values here}
+
+As depicted in figure \ref{fig:bars1}, all \gls{SmartPD1} subjects scored higher than the control mean when considering the $m_{\omega}$ metric (in 4 cases they scored higher in both metrics).
 
 \begin{figure}[h]
 	\centering
@@ -228,6 +287,8 @@ We first compared the mean values of the two metrics for our two populations, us
 	\caption{Bars represent the vlounteers' mean scores using measurements from both hands. For the $m_{\omega}$ metric the scores are scaled by 10.}
 	\label{fig:bars1}
 \end{figure}
+
+
 
 The acceleration and angular velocity metrics we computed, generally agreed with the severity of hand tremor, as observed clinically. One of our goals was to see how well we can detect movement disorders (in this case, hand tremor) using $m_{\alpha}$ and $m_{\omega}$. Towards that end, we explored the possibility of identifying subjects with hand tremor via two simple criteria. The first was whether either of a subject's mean measurements ($m_{\alpha}$, $m_{\omega}$) were above a certain threshold, namely the highest mean score encountered in the \gls{SmartH1} group. Because it is known that \gls{PD} typically affects one side of the patient more severely than the other, we re-calculated each metric using data only from each subject's ``worst-performing'' hand, i.e., the hand which scored highest in each metric. By doing so, the highest acceleration and rotation rate scores for healthy subjects were 0.1515 and 0.0092, respectively. The identification of patients’ worst-performing hands by comparing average metrics for their left vs. right hand as described above, gave the same results regardless of the metric used (acceleration or rotation rate), and correctly identified the worst hand of every patient except volunteer number 4. The comparisons between the subjects' mean scores for their worst-performing hand and the thresholds (maximum scores) obtained from the control group are described in figure \ref{fig:bars2}. The thresholding criterion correctly ``labels'' nine of the ten subjects as being in the \gls{SmartPD1} group. The one exception was volunteer number 8 who does suffer from \gls{PD}, but his symptoms include mostly bradykinesia and rigidity, as opposed to pronounced hand tremor. We note that if we were to judge based on  $m_{\omega}$ alone, then the same nine subjects would be true positives, whereas only four subjects exceeded the $m_{\alpha}$ acceleration threshold. 
 
@@ -242,6 +303,9 @@ A second criterion for comparing the \gls{SmartPD1} and \gls{SmartH1} population
 
 
 %Implications and conclusion
+
+The purpose of this first study was to collect data by integrating a smartphone, as seamlessly as possible, into the specific item of the gold standard of clinical evaluation, i.e., \gls{UPDRS}, which is used to assess postural tremor, and to explore whether these data could have value in quantifying and identifying \gls{PD} related tremor. 
+
 We explored the use of recently-available smartphone technology for the purpose of diagnosing and quantifying the postural tremor which characterizes movement disorders such as Parkinson’s disease. Our method is based on the use of on-board accelerometer and gyroscope which are currently found in many smartphones and can be accessed via the web. Unlike previously proposed approaches, ours i) is web-based, meaning that the user simply visits a web page without installing software on their phone, or handling the data being collected, and ii) uses accelerometer and gyroscope data simultaneously in order to classify patients based on very simple signal metrics and thresholding. 
 We tested our approach in a small clinical trial involving twenty subjects (half of them being the control group) and found that we correctly categorize nine of the ten patients, based on the power of their acceleration and rotational velocity signals, or the differences in performance between their two hands. The gyroscope data appear to be particularly useful in that regard.
 Our goal is to ultimately make our web application freely available on a dedicated server which will receive data and return the results to the user and their physician (securely, over SSL), for the purposes of providing remote diagnostic decision support and tracking of the patient’s condition over time. Towards that end, we are currently in the process of evaluating our approach in larger trials, with data obtained from additional types of subject movements and postures, alternative signal metrics, and comparison of the resulting scores to the patients’ UPDRS ratings. 
@@ -348,19 +412,19 @@ $\omega(i) = [\omega_{x}(i),\omega_{y}(i),\omega_{z}(i)]^{T}$
 
 %Equations
 
-\begin{equation}
+\begin{equation} \label{eq: magAlpha2}
 mag_{\alpha} = \sum_{i=1}^{N} \|\alpha(i)\|^{2}
 \end{equation}
 
-\begin{equation}
+\begin{equation} \label{eq: magOmega2}
 mag_{\omega} = \sum_{i=1}^{N} \|\omega(i)\|^{2}
 \end{equation}
 
-\begin{equation}
+\begin{equation} \label{eq: sdAlpha}
 sd_{\alpha} = \sum_{i=1}^{N-1}\sum_{\kappa \in \{x,y,z\}} |\alpha_{\kappa}(i) - \alpha_{\kappa}(i+1)|
 \end{equation}
 
-\begin{equation}
+\begin{equation} \label{eq: maxAmpOmega}
 mAmp_{\omega} = \sum_{\kappa \in \{x,y,z\}} \max_{4 \leq \xi \leq 7} \hat{\omega}_{\kappa}(\xi)
 \end{equation}
 
