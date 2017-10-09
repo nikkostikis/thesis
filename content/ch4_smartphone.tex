@@ -178,7 +178,7 @@ Upon completion of the recordings of \gls{SmartCT1}, the files collected were al
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Data Collected}
 \label{subsec:SmartCT1Data}
-During each session of \gls{SmartCT1}, participants were asked to wear the glove-case securing the iPhone on their wrist, and follow the item 3.15 protocol defined in the \gls{MDS}-\gls{UPDRS}, i.e., stretch their arms out in front of them, keeping their palms facing the ground, the wrists straight and the fingers separated, in a comfortable manner. That position was maintained for 12 seconds while data were recorded. The device was mounted on both their hands alternately, and each test was repeated at least twice for each participant. From the data obtained, we formed the participant's acceleration vector, $\alpha(i) = [\alpha_{x}(i),\alpha_{y}(i),\alpha_{z}(i)]^{T}$ (in $m/s^{2}$) and angular velocity vector $\omega(i) = [\omega_{x}(i),\omega_{y}(i),\omega_{z}(i)]^{T}$ (in $rad/s$), with $i$ denoting discrete sample and axes $x$, $y$ and $z$ defined as in figures \ref{fig:iphoneAxes} and \ref{fig:iphoneAxesGyro}. Of the 12 seconds recorded at each session the first 2 seconds were discarded. For 10 seconds signals, at 20Hz sampling rate, each session would yield 200 samples for each axis. As a first signal characteristic we calculated both for the acceleration and the rotation rate, the squared magnitude for each sample as shown in equations \ref{eq: magSampleAlpha} and \ref{eq: magSampleOmega}. Typical profiles of the two vectors (magnitude squared) are shown in figure \ref{fig:signals}.
+During each session of \gls{SmartCT1}, participants were asked to wear the glove-case securing the iPhone on their wrist, and follow the item 3.15 protocol defined in the \gls{MDS}-\gls{UPDRS}, i.e., stretch their arms out in front of them, keeping their palms facing the ground, the wrists straight and the fingers separated, in a comfortable manner. That position was maintained for 12 seconds while data were recorded. The device was mounted on both their hands alternately, and each test was repeated at least twice for each participant. From the data obtained, we formed the participant's acceleration vector, $\alpha(i) = [\alpha_{x}(i),\alpha_{y}(i),\alpha_{z}(i)]^{T}$ (in $m/s^{2}$) and angular velocity vector $\omega(i) = [\omega_{x}(i),\omega_{y}(i),\omega_{z}(i)]^{T}$ (in $rad/s$), with $i$ denoting discrete sample and axes $x$, $y$ and $z$ defined as in figures \ref{fig:iphoneAxes} and \ref{fig:iphoneAxesGyro}. Of the 12 seconds recorded at each session the first 2 seconds were discarded. For 10 seconds signals, at 20Hz sampling rate, each session would yield 200 samples for each axis. As a first signal characteristic we calculated both for the acceleration and the rotation rate, the squared magnitude for each sample as shown in \ref{eq: magSampleAlpha} and \ref{eq: magSampleOmega}. Typical profiles of the two vectors (magnitude squared) are shown in figure \ref{fig:signals}.
 
 \begin{equation} \label{eq: magSampleAlpha}
 \|\alpha\|^{2} = \alpha_{x}^{2} + \alpha_{y}^{2} + \alpha_{z}^{2}
@@ -244,40 +244,70 @@ We first compared the mean values of $m_{\alpha}$ for our two populations, using
 \label{fig:boxAll}
 \end{figure}
 
+\begin{table}[h]
+\centering
+\caption{\textsc{SmartH1 Mean Scores (Both Hands)}}
+\begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c  c  c}
+%\begin{tabular}{p{0.3\linewidth} p{0.3\linewidth} p{0.3\linewidth}}
+ 	\textit{Volunteers} & $m_{\alpha}$(\textit{Acceleration}) & $m_{\omega}$(\textit{Rotation Rate})\\
+	\hline 	\hline 		
+ 	Control Mean Value & 0.0915 & 0.0039 \\ 
+ 	\hline
+ 	\gls{SmartH1}$_{1}$ & 0.0348 & 0.0046\\ 
+ 	\gls{SmartH1}$_{2}$ & 0.1235 & 0.0032\\ 
+ 	\gls{SmartH1}$_{3}$ & 0.1025 & 0.0066\\ 
+ 	\gls{SmartH1}$_{4}$ & 0.1325 & 0.0062\\ 
+ 	\gls{SmartH1}$_{5}$ & 0.1258 & 0.0025\\ 
+ 	\gls{SmartH1}$_{6}$ & 0.0615 & 0.0020\\
+ 	\gls{SmartH1}$_{7}$ & 0.1064 & 0.0027\\
+ 	\gls{SmartH1}$_{8}$ & 0.0595 & 0.0039\\
+ 	\gls{SmartH1}$_{9}$ & 0.1139 & 0.0035\\
+ 	\gls{SmartH1}$_{10}$ & 0.0556 & 0.0037\\
+ 	 &  & \\
+	\multicolumn{3}{c}{Numbers represent the volunteers' mean scores, } 	\\
+	\multicolumn{3}{c}{using measurements from both hands} \\
+\end{tabular*}
+\label{table:allSmartH1}
+\end{table}
 
 With respect to rotation rate power, the \gls{SmartH1} population had a mean of 0.0039 (min = 0.0020, max = 0.0066), whereas the average for \gls{SmartPD1} subjects was a much higher 0.0224 (min = 0.0041, max = 0.0510). In this case, the Mann-Whitney test rejected the null hypothesis with a p-value nearly equal to zero, confirming that a randomly selected value from the \gls{SmartPD1} population would most likely be larger than a randomly selected value from the control population. The boxplot confirms visually that the two distributions are different (figure \ref{fig:boxAllOm}). 
 
-In both cases, the 10th \gls{SmartPD1} subject's scores were much higher than the rest, and were excluded when calculating the mean for the \gls{SmartPD1} group, in order to avoid ``artificially'' strong comparisons with the \gls{SmartH1} group. All values calculated as means from both hands for each volunteer are shown in table \ref{tab: allH}. 
-
-\begin{table}
+\begin{table}[h]
 \centering
-\begin{tabular}{||c c c c||} 
+\caption{\textsc{SmartPD1 Mean Scores (Both Hands)}}
+\begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c  c  c}
+%\begin{tabular}{p{0.3\linewidth} p{0.3\linewidth} p{0.3\linewidth}}
+ 	\textit{Volunteers} & $m_{\alpha}$(\textit{Acceleration}) & $m_{\omega}$(\textit{Rotation Rate})\\
+	\hline 	\hline 		
+ 	Control Mean Value & 0.0915 & 0.0039 \\ 
  	\hline
- 	Col1 & Col2 & Col2 & Col3 \\ [0.5ex] 
- 	\hline\hline
- 	1 & 6 & 87837 & 787 \\ 
- 	\hline
- 	2 & 7 & 78 & 5415 \\
-	\hline
-	3 & 545 & 778 & 7507 \\
- 	\hline
- 	4 & 545 & 18744 & 7560 \\
- 	\hline
- 	5 & 88 & 788 & 6344 \\ [1ex] 
- 	\hline
-  \end{tabular}
-  \caption{Numbers represent the volunteers' mean scores, using measurements from both hands}
-    \label{tab:allH}
+ 	\gls{SmartPD1}$_{1}$ & 0.0578 & 	0.0161 \\
+ 	\gls{SmartPD1}$_{2}$ & 0.0582 & 	0.0115 \\
+ 	\gls{SmartPD1}$_{3}$ & 0.3636 & 	0.0510 \\
+ 	\gls{SmartPD1}$_{4}$ & 0.0742 & 	0.0326 \\
+ 	\gls{SmartPD1}$_{5}$ & 0.1494 & 	0.0103 \\
+ 	\gls{SmartPD1}$_{6}$ & 0.0532 & 	0.0168 \\
+ 	\gls{SmartPD1}$_{7}$ & 0.0866 & 	0.0090 \\
+ 	\gls{SmartPD1}$_{8}$ & 0.0511 & 	0.0041 \\
+ 	\gls{SmartPD1}$_{9}$ & 0.6905 & 	0.0503 \\ \hline
+ 	\gls{SmartPD1}$_{10}$ & 72.3708 &	1.5445 \\
+ 	 &  & \\
+	\multicolumn{3}{c}{Numbers represent the volunteers' mean scores, } 	\\
+	\multicolumn{3}{c}{using measurements from both hands} \\
+\end{tabular*}
+\label{table:allSmartPD1}
 \end{table}
 
+In both cases, the 10th \gls{SmartPD1} subject's scores were much higher than the rest, and were excluded when calculating the mean for the \gls{SmartPD1} group, in order to avoid ``artificially'' strong comparisons with the \gls{SmartH1} group.
+
+All values calculated as means from both hands for each control volunteer and patient are shown in tables \ref{table:allSmartH1} and \ref{table:allSmartPD1}, respectively. 
 
 
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
 
-\hlorange{Table with values here}
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
 
 As depicted in figure \ref{fig:bars1}, all \gls{SmartPD1} subjects scored higher than the control mean when considering the $m_{\omega}$ metric (in 4 cases they scored higher in both metrics).
 
