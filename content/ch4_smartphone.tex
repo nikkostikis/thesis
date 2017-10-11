@@ -223,8 +223,10 @@ where $N$ was the number of samples in the signal (i.e. 200), and attempted to c
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Data Analysis}
 \label{subsec:SmartCT1Analysis}
+\subsubsection{Initial Comparison}
+\label{subsubsec:SmartCT1InitComp}
 Mann-whitney non-parametric U test was used to explore the statistical significance of the difference between the $m_{\alpha}$ and $m_{\omega}$ values of the two populations. 
-We first compared the mean values of $m_{\alpha}$ for our two populations, using all data (left and right hand) for each subject. Volunteers performed 2 sessions for each hand, resulting in 4 data signals. Initially, each volunteer was assigned a single number calculated as the average value of $m_{\alpha}$ for all 4 data signals collected. The \gls{SmartH1} population had an average acceleration power $m_{\alpha}$ = 0.0915 (min = 0.0338, max = 0.1325), whereas the \gls{SmartPD1} had an average acceleration power $m_{\alpha}$ = 0.1760 (min = 0.0511, max = 0.6905). Although the max value of the \gls{SmartPD1} population is quite high and the mean values are different, the min values of the two populations suggest that there is an overlap. This is obvious in the boxplot as well (figure \ref{fig:boxAllA}). As expected, the Mann-Whitney U test could not reject the null hypothesis that the distributions of the values of the two populations are different and  confirmed that it would be equally likely that a randomly selected value from the \gls{SmartPD1} population would be greater than a randomly selected value from the \gls{SmartH1} population. 
+We first compared the mean values of $m_{\alpha}$ for our two populations, using all data (left and right hand) for each subject. Volunteers performed 2 sessions for each hand, resulting in 4 data signals. Initially, each volunteer was assigned a single number calculated as the average value of $m_{\alpha}$ for all 4 data signals collected. The \gls{SmartH1} population had an average acceleration power $m_{\alpha}$ = 0.0915 (min = 0.0338, max = 0.1325), whereas the \gls{SmartPD1} had an average acceleration power $m_{\alpha}$ = 0.1760 (min = 0.0511, max = 0.6905). Although the max value of the \gls{SmartPD1} population is quite high and the mean values are different, the min values of the two populations suggest that there can be an overlap. This is obvious in the boxplot as well (figure \ref{fig:boxAllA}). As expected, the Mann-Whitney U test could not reject the null hypothesis that the distributions of the values of the two populations are not different, and  confirmed that a randomly selected \gls{SmartPD1} value could equally likely be greater or smaller than a randomly selected \gls{SmartH1} value. 
 
 \begin{figure}[h]
 \centering
@@ -270,9 +272,7 @@ We first compared the mean values of $m_{\alpha}$ for our two populations, using
 \label{table:allSmartH1}
 \end{table}
 
-With respect to rotation rate power, the \gls{SmartH1} population had a mean of 0.0039 (min = 0.0020, max = 0.0066), whereas the average for \gls{SmartPD1} subjects was a much higher 0.0224 (min = 0.0041, max = 0.0510). In this case, the Mann-Whitney test rejected the null hypothesis with a p-value nearly equal to zero, confirming that a randomly selected value from the \gls{SmartPD1} population would most likely be larger than a randomly selected value from the control population. The boxplot confirms visually that the two distributions are different (figure \ref{fig:boxAllOm}). 
-
-\begin{table}[h]
+\begin{table}[!hbp]
 \centering
 \caption{\textsc{SmartPD1 Mean Scores (Both Hands)}}
 \begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c  c  c}
@@ -280,6 +280,8 @@ With respect to rotation rate power, the \gls{SmartH1} population had a mean of 
  	\textit{Volunteers} & $m_{\alpha}$(\textit{Acceleration}) & $m_{\omega}$(\textit{Rotation Rate})\\
 	\hline 	\hline 		
  	Control Mean Value & 0.0915 & 0.0039 \\ 
+ 	\hline
+ 	Control Max Value & 0.1325 & 0.0066 \\ 
  	\hline
  	\gls{SmartPD1}$_{1}$ & 0.0578 & 	0.0161 \\
  	\gls{SmartPD1}$_{2}$ & 0.0582 & 	0.0115 \\
@@ -289,7 +291,7 @@ With respect to rotation rate power, the \gls{SmartH1} population had a mean of 
  	\gls{SmartPD1}$_{6}$ & 0.0532 & 	0.0168 \\
  	\gls{SmartPD1}$_{7}$ & 0.0866 & 	0.0090 \\
  	\gls{SmartPD1}$_{8}$ & 0.0511 & 	0.0041 \\
- 	\gls{SmartPD1}$_{9}$ & 0.6905 & 	0.0503 \\ \hline
+ 	\gls{SmartPD1}$_{9}$ & 0.6905 & 	0.0503 \\
  	\gls{SmartPD1}$_{10}$ & 72.3708 &	1.5445 \\
  	 &  & \\
 	\multicolumn{3}{c}{Numbers represent the volunteers' mean scores, } 	\\
@@ -298,37 +300,90 @@ With respect to rotation rate power, the \gls{SmartH1} population had a mean of 
 \label{table:allSmartPD1}
 \end{table}
 
+With respect to rotation rate power, the \gls{SmartH1} population had a mean of 0.0039 (min = 0.0020, max = 0.0066), whereas the average for \gls{SmartPD1} subjects was a much higher 0.0224 (min = 0.0041, max = 0.0510). In this case, the Mann-Whitney U test rejected the null hypothesis of same distributions, with a p-value nearly equal to zero, confirming that a randomly selected value from the \gls{SmartPD1} population would most likely be larger than a randomly selected value from the control population. The boxplot confirms visually that the two distributions are different (figure \ref{fig:boxAllOm}). 
+
 In both cases, the 10th \gls{SmartPD1} subject's scores were much higher than the rest, and were excluded when calculating the mean for the \gls{SmartPD1} group, in order to avoid ``artificially'' strong comparisons with the \gls{SmartH1} group.
 
-All values calculated as means from both hands for each control volunteer and patient are shown in tables \ref{table:allSmartH1} and \ref{table:allSmartPD1}, respectively. 
+All values calculated as means from both hands for each control volunteer and each patient are shown in tables \ref{table:allSmartH1} and \ref{table:allSmartPD1}, respectively. 
 
+\subsubsection{Digging Deeper}
+\label{subsubsec:SmartCT1DigDeep}
+As depicted in figure \ref{fig:bars1}, all \gls{SmartPD1} subjects scored higher than the control mean when considering the $m_{\omega}$ metric (in 4 cases they scored higher in both metrics), and 9 out of 10 scored higher than the higher \gls{SmartH1} score (0.0066). 
 
-
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-
-As depicted in figure \ref{fig:bars1}, all \gls{SmartPD1} subjects scored higher than the control mean when considering the $m_{\omega}$ metric (in 4 cases they scored higher in both metrics).
-
-\begin{figure}[h]
+\begin{figure}[!htp]
 	\centering
-	\includegraphics[width=.9\linewidth]{content/images/EMBC11/fig4}
-	\caption{Bars represent the vlounteers' mean scores using measurements from both hands. For the $m_{\omega}$ metric the scores are scaled by 10.}
+	\includegraphics[width=1\linewidth]{content/images/EMBC11/fig4}
+	\caption{Bars represent the volunteers' mean scores using measurements from both hands. For the $m_{\omega}$ metric the scores are scaled by 10.}
 	\label{fig:bars1}
 \end{figure}
 
+\begin{table}[!htp]
+\centering
+\caption{\textsc{SmartH1 Mean Scores (Worst Hand)}}
+\begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c  c  c}
+ 	\textit{Volunteers} & $m_{\alpha}$(\textit{Acceleration}) & $m_{\omega}$(\textit{Rotation Rate})\\
+	\hline 	\hline 		
+ 	Control Max Value & 0.1515 & 0.0092 \\ 
+ 	\hline
+ 	\gls{SmartH1}$_{1}$ & 0.0432 & 0.0067\\ 
+ 	\gls{SmartH1}$_{2}$ & 0.1314 & 0.0035\\ 
+ 	\gls{SmartH1}$_{3}$ & 0.1087 & 0.0092\\ 
+ 	\gls{SmartH1}$_{4}$ & 0.1412 & 0.0075\\ 
+ 	\gls{SmartH1}$_{5}$ & 0.1515 & 0.0041\\ 
+ 	\gls{SmartH1}$_{6}$ & 0.0762 & 0.0030\\
+ 	\gls{SmartH1}$_{7}$ & 0.1221 & 0.0030\\
+ 	\gls{SmartH1}$_{8}$ & 0.0687 & 0.0060\\
+ 	\gls{SmartH1}$_{9}$ & 0.1258 & 0.0057\\
+ 	\gls{SmartH1}$_{10}$ & 0.0625 & 0.0054\\
+ 	 &  & \\
+	\multicolumn{3}{c}{Numbers represent the volunteers' mean scores, } 	\\
+	\multicolumn{3}{c}{using measurements from the worst hand} \\
+\end{tabular*}
+\label{table:worstSmartH1}
+\end{table}
 
+\begin{table}[!hp]
+\centering
+\caption{\textsc{SmartPD1 Mean Scores (Worst Hands)}}
+\begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c  c  c}
+ 	\textit{Volunteers} & $m_{\alpha}$(\textit{Acceleration}) & $m_{\omega}$(\textit{Rotation Rate})\\
+	\hline 	\hline 		
+ 	Control Max Value & 0.1515 & 0.0092 \\ 
+ 	\hline
+ 	\gls{SmartPD1}$_{1}$ & 0.0850 & 	0.0223 \\
+ 	\gls{SmartPD1}$_{2}$ & 0.0645 & 	0.0177 \\
+ 	\gls{SmartPD1}$_{3}$ & 0.4684 & 	0.0662 \\
+ 	\gls{SmartPD1}$_{4}$ & 0.1116 & 	0.0335 \\
+ 	\gls{SmartPD1}$_{5}$ & 0.2371 & 	0.0178 \\
+ 	\gls{SmartPD1}$_{6}$ & 0.0545 & 	0.0307 \\
+ 	\gls{SmartPD1}$_{7}$ & 0.1014 & 	0.0148 \\
+ 	\gls{SmartPD1}$_{8}$ & 0.0570 & 	0.0060 \\
+ 	\gls{SmartPD1}$_{9}$ & 1.1056 &  0.0746\\
+ 	\gls{SmartPD1}$_{10}$ & 144.6557 &	3.0720 \\
+ 	 &  & \\
+	\multicolumn{3}{c}{Numbers represent the volunteers' mean scores, } 	\\
+	\multicolumn{3}{c}{using measurements from both hands} \\
+\end{tabular*}
+\label{table:worstSmartPD1}
+\end{table}
 
-The acceleration and angular velocity metrics we computed, generally agreed with the severity of hand tremor, as observed clinically. One of our goals was to see how well we can detect movement disorders (in this case, hand tremor) using $m_{\alpha}$ and $m_{\omega}$. Towards that end, we explored the possibility of identifying subjects with hand tremor via two simple criteria. The first was whether either of a subject's mean measurements ($m_{\alpha}$, $m_{\omega}$) were above a certain threshold, namely the highest mean score encountered in the \gls{SmartH1} group. Because it is known that \gls{PD} typically affects one side of the patient more severely than the other, we re-calculated each metric using data only from each subject's ``worst-performing'' hand, i.e., the hand which scored highest in each metric. By doing so, the highest acceleration and rotation rate scores for healthy subjects were 0.1515 and 0.0092, respectively. The identification of patients’ worst-performing hands by comparing average metrics for their left vs. right hand as described above, gave the same results regardless of the metric used (acceleration or rotation rate), and correctly identified the worst hand of every patient except volunteer number 4. The comparisons between the subjects' mean scores for their worst-performing hand and the thresholds (maximum scores) obtained from the control group are described in figure \ref{fig:bars2}. The thresholding criterion correctly ``labels'' nine of the ten subjects as being in the \gls{SmartPD1} group. The one exception was volunteer number 8 who does suffer from \gls{PD}, but his symptoms include mostly bradykinesia and rigidity, as opposed to pronounced hand tremor. We note that if we were to judge based on  $m_{\omega}$ alone, then the same nine subjects would be true positives, whereas only four subjects exceeded the $m_{\alpha}$ acceleration threshold. 
+The acceleration and rotation rate metrics we computed, off-the-record, generally agreed with the severity of hand tremor, as observed clinically. One of our goals was to see how well we can detect movement disorders (in this case, parkinsonian hand tremor) using $m_{\alpha}$ and $m_{\omega}$. Towards that end, we explored the possibility of identifying subjects with hand tremor via two simple criteria. The first was whether either of a subject's mean measurements ($m_{\alpha}$, $m_{\omega}$) were above a certain threshold, namely the highest mean score encountered in the \gls{SmartH1} group across the trial. Because it is known that \gls{PD} typically affects one side of the patient more severely than the other (see section \ref{subsec:laterality} on laterality), we re-calculated each metric's mean value using data only from each subject's ``worst-performing'' hand, i.e., the hand which scored highest in each session (tables \ref{table:worstSmartH1} and \ref{table:worstSmartPD1}). By doing so, the highest acceleration and rotation rate scores for healthy subjects were $SmartH1m_{\alpha}Max=0.1515$ and $SmartH1m_{\omega}Max=0.0092$, respectively.  The comparisons between the subjects' mean scores for their worst-performing hand and the thresholds (maximum scores) obtained from the control group are described in figure \ref{fig:bars2}. The thresholding criterion correctly ``labels'' nine of the ten subjects as being in the \gls{SmartPD1} group. The one exception was \gls{PD} patient number 8 who's symptoms include mostly bradykinesia and rigidity, and not pronounced hand tremor.
 
-\begin{figure}[h]
+\begin{figure}[!hp]
 	\centering
-	\includegraphics[width=.9\linewidth]{content/images/EMBC11/fig5}
+	\includegraphics[width=1\linewidth]{content/images/EMBC11/fig5}
 	\caption{Bars represent the volunteers' mean scores using measurements only from worst-performing (highest-scoring) hand. For the $m_{\omega}$ metric the scores are scaled by 10.}
 	\label{fig:bars2}
 \end{figure}
 
+Similarly to working with all metrics' scores, Mann-Whtney U testing rejected the hypothesis that $m_{\omega}$ \gls{SmartH1} worst-hand scores and \gls{SmartPD1} worst-hand scores belong to the same distribution, calculating significantly different means. Contrary, isolating worst-hand performances did not affect the $m_{\alpha}$ scores, which regardless of population would probably belong to the same distribution, rendering their comparison insignificant. Means testing results were confirmed because if we were to judge based on  $m_{\omega}$ alone, then the same nine subjects as before (patients above the control mean in figure \ref{fig:bars1}) would be true positives, whereas only four subjects exceeded the $m_{\alpha}$ acceleration threshold, proving the $m_{\omega}$ to be a stronger separation criterion than the $m_{\alpha}$ alone.
+
+We must note that the identification of patients' worst-performing hand by comparing average metrics for their left vs. right hand, agreed for both metrics, and coincided with their actual most affected side for every patient except \gls{SmartPD1} volunteer number 4, yielding a 90\% accuracy in laterality identification.
+
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
 A second criterion for comparing the \gls{SmartPD1} and \gls{SmartH1} populations was the difference between hands for both $m_{\alpha}$ and $m_{\omega}$. A healthy volunteer would not be expected to have very different left versus right mean scores, while the opposite is often true for patients with parkinsonism. Regarding $m_{\alpha}$, the control group had an average hand-to-hand difference of 0.0232 (max=0.0514, min=0.0123, std. dev.=0.0117) whereas \gls{SmartPD1} participants had an average difference of 0.1572 (std. dev.=0.2629). The corresponding numbers for $m_{\omega}$ were 0.0031 (max=0.0053, min=0.0006, std. dev.=0.0016) for the \gls{SmartH1} group and 0.0185 (std. dev.=0.0147) for the \gls{SmartPD1} group. Again, nine of the patients had mean differences which exceeded the maximum encountered in the healthy group in either $m_{\alpha}$, $m_{\omega}$, or both; they were the same nine identified via thresholding on worst-hand scores.
 
 
