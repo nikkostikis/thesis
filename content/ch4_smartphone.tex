@@ -315,7 +315,7 @@ As depicted in figure \ref{fig:bars1}, all \gls{SmartPD1} subjects scored higher
 	\label{fig:bars1}
 \end{figure}
 
-\begin{table}[!htp]
+\begin{table}[h]
 \centering
 \caption{\textsc{SmartH1 Mean Scores (Worst Hand)}}
 \begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c  c  c}
@@ -340,9 +340,9 @@ As depicted in figure \ref{fig:bars1}, all \gls{SmartPD1} subjects scored higher
 \label{table:worstSmartH1}
 \end{table}
 
-\begin{table}[!hp]
+\begin{table}[!hbp]
 \centering
-\caption{\textsc{SmartPD1 Mean Scores (Worst Hands)}}
+\caption{\textsc{SmartPD1 Mean Scores (Worst Hand)}}
 \begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c  c  c}
  	\textit{Volunteers} & $m_{\alpha}$(\textit{Acceleration}) & $m_{\omega}$(\textit{Rotation Rate})\\
 	\hline 	\hline 		
@@ -367,21 +367,20 @@ As depicted in figure \ref{fig:bars1}, all \gls{SmartPD1} subjects scored higher
 
 The acceleration and rotation rate metrics we computed, off-the-record, generally agreed with the severity of hand tremor, as observed clinically. One of our goals was to see how well we can detect movement disorders (in this case, parkinsonian hand tremor) using $m_{\alpha}$ and $m_{\omega}$. Towards that end, we explored the possibility of identifying subjects with hand tremor via two simple criteria. The first was whether either of a subject's mean measurements ($m_{\alpha}$, $m_{\omega}$) were above a certain threshold, namely the highest mean score encountered in the \gls{SmartH1} group across the trial. Because it is known that \gls{PD} typically affects one side of the patient more severely than the other (see section \ref{subsec:laterality} on laterality), we re-calculated each metric's mean value using data only from each subject's ``worst-performing'' hand, i.e., the hand which scored highest in each session (tables \ref{table:worstSmartH1} and \ref{table:worstSmartPD1}). By doing so, the highest acceleration and rotation rate scores for healthy subjects were $SmartH1m_{\alpha}Max=0.1515$ and $SmartH1m_{\omega}Max=0.0092$, respectively.  The comparisons between the subjects' mean scores for their worst-performing hand and the thresholds (maximum scores) obtained from the control group are described in figure \ref{fig:bars2}. The thresholding criterion correctly ``labels'' nine of the ten subjects as being in the \gls{SmartPD1} group. The one exception was \gls{PD} patient number 8 who's symptoms include mostly bradykinesia and rigidity, and not pronounced hand tremor.
 
-\begin{figure}[!hp]
+Similarly to working with all metrics' scores, Mann-Whtney U testing rejected the hypothesis that $m_{\omega}$ \gls{SmartH1} worst-hand scores and \gls{SmartPD1} worst-hand scores belong to the same distribution, calculating significantly different means. Contrary, isolating worst-hand performances did not affect the $m_{\alpha}$ scores, which regardless of population would probably belong to the same distribution, rendering their comparison insignificant. Means testing results were confirmed because if we were to judge based on  $m_{\omega}$ alone, then the same nine subjects as before (patients above the control mean in figure \ref{fig:bars1}) would be true positives, whereas only four subjects exceeded the $m_{\alpha}$ acceleration threshold, proving the $m_{\omega}$ to be a stronger separation criterion than the $m_{\alpha}$ alone.
+
+\begin{figure}[!htp]
 	\centering
 	\includegraphics[width=1\linewidth]{content/images/EMBC11/fig5}
 	\caption{Bars represent the volunteers' mean scores using measurements only from worst-performing (highest-scoring) hand. For the $m_{\omega}$ metric the scores are scaled by 10.}
 	\label{fig:bars2}
 \end{figure}
 
-Similarly to working with all metrics' scores, Mann-Whtney U testing rejected the hypothesis that $m_{\omega}$ \gls{SmartH1} worst-hand scores and \gls{SmartPD1} worst-hand scores belong to the same distribution, calculating significantly different means. Contrary, isolating worst-hand performances did not affect the $m_{\alpha}$ scores, which regardless of population would probably belong to the same distribution, rendering their comparison insignificant. Means testing results were confirmed because if we were to judge based on  $m_{\omega}$ alone, then the same nine subjects as before (patients above the control mean in figure \ref{fig:bars1}) would be true positives, whereas only four subjects exceeded the $m_{\alpha}$ acceleration threshold, proving the $m_{\omega}$ to be a stronger separation criterion than the $m_{\alpha}$ alone.
-
 We must note that the identification of patients' worst-performing hand by comparing average metrics for their left versus right hand, agreed for both metrics, and coincided with their actual most affected side for every patient except \gls{SmartPD1} volunteer number 4, yielding a 90\% accuracy in laterality identification.
-
 
 A second criterion for comparing the \gls{SmartPD1} and \gls{SmartH1} populations was the difference between hands for both $m_{\alpha}$ and $m_{\omega}$. A healthy volunteer would not be expected to have very different left versus right mean scores, whereas, due to laterality (see section \ref{subsec:laterality}), the opposite should be true for patients with parkinsonism. Regarding $m_{\alpha}$, the control group had an average hand-to-hand difference of 0.0232 (max = 0.0514, min = 0.0123), whereas \gls{SmartPD1} participants had an average difference of 0.1572. The corresponding numbers for $m_{\omega}$ were 0.0031 (max = 0.0053, min = 0.0006) for the \gls{SmartH1} group and 0.0185 for the \gls{SmartPD1} group. If we consider the \gls{SmartH1} maximum difference between hands as a threshold, i.e., $SmartH1m_{\alpha}DifMax = 0.0514$ and $SmartH1m_{\omega}DifMax = 0.0053$, nine of the patients had mean differences which exceeded the maximum encountered in the healthy group in either $m_{\alpha}$, $m_{\omega}$, or both; they were the same nine identified via thresholding on worst-hand scores. The comparison of the difference in hands' scores for the two populations makes sense at a 5\% significance level, given that Mann-Whitney U testing revealed a significant means difference with $p = 0.0155$, only for the $m_{\omega}$ metric and same distributions for the $m_{\alpha}$ metric. As before, we excluded the 10th patient to avoid misinterpreting the results. In general, acceleration alone could not be trusted as a classification criteria at such low sampling rate i.e., 20Hz and using only signal power as a feature. The values of the differences between hands are shown in tables \ref{table:difSmartH1} and \ref{table:difSmartPD1} for \gls{SmartH1} and \gls{SmartPD1}, respectively. 
 
-\begin{table}[h]
+\begin{table}[!htp]
 \centering
 \caption{\textsc{SmartH1 Differences Between Hands}}
 \begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c  c  c}
@@ -401,14 +400,13 @@ A second criterion for comparing the \gls{SmartPD1} and \gls{SmartH1} population
  	\gls{SmartH1}$_{10}$ & 0.0138 & 0.0034\\
  	 &  & \\
 	\multicolumn{3}{c}{Numbers represent the volunteers' mean differences between hands} 	\\
-%	\multicolumn{3}{c}{between hands} \\
 \end{tabular*}
 \label{table:difSmartH1}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[!htp]
 \centering
-\caption{\textsc{SmartPD1 Mean Scores (Worst Hands)}}
+\caption{\textsc{SmartPD1 Differences Between Hands}}
 \begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c  c  c}
  	\textit{Volunteers} & $m_{\alpha}$(\textit{Acceleration}) & $m_{\omega}$(\textit{Rotation Rate})\\
 	\hline 	\hline 		
@@ -426,7 +424,6 @@ A second criterion for comparing the \gls{SmartPD1} and \gls{SmartH1} population
  	\gls{SmartPD1}$_{10}$ & 144.5698 &	3.0551 \\
  	 &  & \\
 	\multicolumn{3}{c}{Numbers represent the volunteers' mean differences between hands} 	\\
-%	\multicolumn{3}{c}{between hands} \\
 \end{tabular*}
 \label{table:difSmartPD1}
 \end{table}
@@ -435,23 +432,32 @@ A second criterion for comparing the \gls{SmartPD1} and \gls{SmartH1} population
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Discussion}
 \label{subsec:SmartCT1Discussion}
-The purpose of this first study was to collect data by integrating a smartphone, as seamlessly as possible, into item 3.15 of the gold standard of clinical evaluation, i.e., \gls{UPDRS}, which is used to assess postural tremor of the hands, and to explore whether these data could have value in quantifying and identifying \gls{PD} related tremor. 
+The purpose of this first study was to collect data by integrating a smartphone, as seamlessly as possible, into the clinical assessment of item 3.15 of the gold standard of clinical evaluation, i.e., \gls{UPDRS}, which is used to assess postural tremor of the hands, and to explore whether these data could have value in quantifying and identifying \gls{PD} related tremor. 
 
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>>
-%--------------------------------------->>>>>>>>>> 
+We explored the use of recently-available smartphone technology for the purpose of diagnosing and quantifying the postural tremor which is one of the cardinal symptoms of parkinsonism. Our method was based on the use of the accelerometer and gyroscope currently embedded in many smartphone models and accessible via web development technologies, i.e., JavaScript. 
+With \gls{SmartCT1} we particularly aimed at exploring the robustness of a tool that would be:
 
-We explored the use of recently-available smartphone technology for the purpose of diagnosing and quantifying the postural tremor which characterizes movement disorders such as Parkinson’s disease. Our method is based on the use of on-board accelerometer and gyroscope which are currently found in many smartphones and can be accessed via the web. Unlike previously proposed approaches, ours i) is web-based, meaning that the user simply visits a web page without installing software on their phone, or handling the data being collected, and ii) uses accelerometer and gyroscope data simultaneously in order to classify patients based on very simple signal metrics and thresholding. 
-We tested our approach in a small clinical trial involving twenty subjects (half of them being the control group) and found that we correctly categorize nine of the ten patients, based on the power of their acceleration and rotational velocity signals, or the differences in performance between their two hands. The gyroscope data appear to be particularly useful in that regard.
-Our goal is to ultimately make our web application freely available on a dedicated server which will receive data and return the results to the user and their physician (securely, over SSL), for the purposes of providing remote diagnostic decision support and tracking of the patient’s condition over time. Towards that end, we are currently in the process of evaluating our approach in larger trials, with data obtained from additional types of subject movements and postures, alternative signal metrics, and comparison of the resulting scores to the patients’ UPDRS ratings. 
-The fact that we are using a JavaScript API to control the smartphone’s hardware (as opposed to its native programming platform) does give us flexibility but deprives us of certain benefits such as adjusting the sampling rate. To circumvent this problem, we are also pursuing an Objective C application which will be used to repeat the same clinical tests for comparison, as well as more sophisticated signal processing methods. 
+\begin{enumerate}
+\item easy to handle, not requiring intricate installation steps or specific resources to run, 
+\item readily available, within reach for most people, requiring zero expenses to purchase,
+\item unobtrusive in its operation, able to be used complementary to current clinical assessment protocol and
+\item accurate, comparable in performance with clinical mainstay.
+\end{enumerate}
+
+The first three points were fulfilled. The web application was extremely easy to operate and none of the participants, control or patients, expressed any concern regarding the wearability of the custom-made glove-case. The duration of the assessment did not cause any discomfort and the fact that this tool could be used with no time or space constraints was appreciated by the physicians to whom it was presented. 
+
+Regarding the final point, the tool's performance, the clinical trial proved that even the simplest processing of the signals collected could reveal usable information. Within \gls{SmartCT1} we could correctly categorize nine of the ten patients, based mainly on the combination of their hands' acceleration and angular position, while assuming the \gls{MDS}-\gls{UPDRS} item 3.15 assessment position. The gyroscope data proved to be particularly useful in that regard, capturing the rotational component of the upper limb tremor profile. 
+
+\gls{PD} induced resting and postural limb tremor occurs at 4-10Hz (see section \ref{subsec:tremor}). That means that according to the Nyquist-Shannon's sampling theorem, a mechanical way of identifying it would have to support a sampling rate of at least double that, i.e., 20Hz. Ideally, the sampling rate of the accelerometer and gyroscope should be well above 20Hz for us to be certain that \gls{PD}-related tremor is sufficiently recorded. However, sampling rate was a read-only property for the interfaces we used and maxed out at 20Hz. The relatively low sampling frequency of the sensors allowed by the JavaScript interfaces combined with the small duration of the sessions, resulted in Mann-Whitney U testing not identifying any differences in the acceleration power calculated for the two populations. Nevertheless, the rotation rate metric, exploiting the gyroscope sensor proved to be enough to identify pathological postures and capture laterality for the \gls{SmartPD1} group in \gls{SmartCT1}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{SmartCT2}
 \label{sec:SmartCT2}
-
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>>
+%--------------------------------------->>>>>>>>>> 
 Although our metrics and results from \gls{SmartCT1} were not to be compared with the clinical examination mainstay, the \gls{UPDRS}, we applied the same instructions regarding body posture as described in items 3.15 - Postural tremor of the hands and 3.17 - Rest tremor amplitude of the \gls{MDS}-\gls{UPDRS} (Goetz et al, 2008). More specifically, in order to assess postural hand tremor we instructed the volunteers to stretch their arms out in front of the body, keeping their palms facing the ground. The wrists were to be held straight and the fingers separated as to not touch each other, in a comfortable manner. This position was to be held for 12 seconds. To assess rest tremor we instructed the volunteers to sit comfortably in a chair, with their arms placed on the arms of the chair, without touching their lap, and their feet loosely placed on the floor. This position was to be held for 12 seconds, as well. Although both positions are kept for 10 seconds in the directive of the \gls{UPDRS}, we opted for two more seconds to allow for errors recorded before and after each session. 
 
 The positions described above were performed while the volunteers were wearing a custom-made glove with an iPhone securely attached on it. Internet access had to be enabled on the phone, and screen orientation had to be ``locked'' to avoid mislabeling the data. We wanted to avoid having to compensate for unintentional movements, not related to the \gls{PD} symptoms, therefore we chose to keep the iPhone securely attached to the volunteers hands via a glove, and not have them hold it in their hand or place it loosely on their limbs. Having the participants hold the device would result in voluntary muscle activation, undermining the definition of postural and rest tremor. There are studies were the patient assumes a position similar to the one described above and in the \gls{MDS}-\gls{UPDRS} item 3.15, but having the patients hold the device in their hands (Kassavetis et al, 2015). This, while efficient in the context of symptoms' quantification, ultimately cannot be comparable to results from a \gls{UPDRS} examination. This was not acceptable in our setting, where validation of our tool would be a desired outcome, requiring correlation analysis with the clinical examination ``golden'' standard, the \gls{UPDRS} at later stages of our research. 
