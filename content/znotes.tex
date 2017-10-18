@@ -21,6 +21,18 @@ The proposed method has been implemented in the form of an app and is available 
 %%%%%%%%%%%%%%%%%%%    END - JBHI Rationale    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+This paper is a continuation of our previous work [3]; its main contribution is a statistical comparison between signal-based methods of quantifying Parkinsonian tremor using a smartphone, and the UPDRS scores assigned by a physician specialist, in order to validate our previous approach. We acquired hand tremor signals from twenty-three patients using an iPhone and computed the correlation (Pearson product-moment) between the metrics under consideration and the patients’ UPDRS scores regarding hand tremor. Our results indicate a strong correlation (r>0.7) with high statistical significance (p<0.01), which suggests that our quantitative methods of measuring Parkinsonian hand tremor [3] show promise as a means of systematically tracking that component of the disease, possibly as part of a clinical exam or in telemedicine applications. 
+
+In the following, we will specify the combination of a patient’s hand (Right of Left upper extremity) during each position as rR, rL, eR, and eL for rest-right, rest-left, extended-right, and extended-left, respectively.
+
+As per the protocol described earlier, the volunteers were asked to maintain certain postures for 30 seconds, during which the application automatically collected the accelerometer and gyroscope data and sent them to our server. We then used the data to extract features which quantify and characterize the subjects’ tremor levels. The signals were sampled at 20Hz, which is sufficient to identify events occurring at 9Hz or less [20], such as PD-induced tremor. 
+Our web application, being written in PHP and JavaScript, is entirely independent of the client's hardware or software platform. It only demands basic prerequisites such as an embedded accelerometer and gyroscope and one of the most popular smartphone operating systems, iOS or Android. 
+
+
+
+
+
+
 
 Find that thing about UPDRS and why it shouldn't correlate well to the handwriting approach. I think it must be in the 1st or 2nd chapter.
 
