@@ -69,7 +69,7 @@ The inclusion criteria for the \gls{SmartH1} group was the absence of any kind o
 
 Although our metrics and results from \gls{SmartCT1} were not to be compared with the clinical examination mainstay, the \gls{UPDRS}, we applied the same instructions regarding body posture as described in item 3.15 - Postural tremor of the hands of the \gls{MDS}-\gls{UPDRS} (Goetz et al, 2008). More specifically, in order to assess postural hand tremor we instructed the volunteers to stretch their arms out in front of the body, keeping their palms facing the ground. The wrists were to be held straight and the fingers separated as to not touch each other, in a comfortable manner. This position was to be held for 12 seconds. Although the position is kept for 10 seconds in the directive of the \gls{UPDRS}, we opted for two more seconds to allow for errors recorded before and after each session. 
 
-The position described above was performed while the volunteers were wearing a custom-made glove with an iPhone securely attached on it. Internet access had to be enabled on the phone, and screen orientation had to be ``locked'' to avoid mislabeling the data. We wanted to avoid having to compensate for unintentional movements, not related to the \gls{PD} symptoms, therefore we chose to keep the iPhone securely attached to the volunteers hands via a glove, and not have them hold it in their hand or place it loosely on their limbs. Having the participants hold the device would result in voluntary muscle activation, undermining the definition of postural tremor. There are studies were the patient assumes a position similar to the one described above and in the \gls{MDS}-\gls{UPDRS} item 3.15, but having the patients hold the device in their hands (Kassavetis et al, 2015). This, while efficient in the context of symptoms' quantification, ultimately cannot be comparable to results from a \gls{UPDRS} examination. This was not acceptable in our setting, where validation of our tool would be a desired outcome, requiring correlation analysis with the clinical examination ``golden'' standard, the \gls{UPDRS} at later stages of our research. 
+The position described above was performed while the volunteers were wearing a custom-made glove with an iPhone securely attached on it. Internet access had to be enabled on the phone, and screen orientation had to be ``locked'' to avoid mislabeling the data. We wanted to avoid having to compensate for unintentional movements, not related to the \gls{PD} symptoms, therefore we chose to keep the iPhone securely attached to the volunteers hands via a glove, and not have them hold it in their hand or place it loosely on their limbs. Having the participants hold the device would result in voluntary muscle activation, undermining the definition of postural tremor. There are studies were the patient assumes a position similar to the one described above and in the \gls{MDS}-\gls{UPDRS} item 3.15, but having the patients hold the device in their hands (Kassavetis et al, 2015). This, while efficient in the context of symptoms' quantification, ultimately cannot be comparable to results from a \gls{UPDRS} examination. This was not acceptable in our setting, where validation of our tool would be a desired outcome, requiring correlation analysis with the clinical examination ``gold standard'', the \gls{UPDRS} at later stages of our research. 
 
 In order to keep the presence of the smartphone as discreet as possible we built an inexpensive apparatus consisting of an elastic glove, a perforated, rigid smartphone shell case and some non-elastic thread. The result was an easy to put on and lightweight glove-case that would keep the phone attached on the patients' dorsal part of the hand, without hindering the position to be assumed, according to the procedure described earlier. Unfortunately the weight of the device at 140 grams was not trivial and could potentially slightly dampen the symptoms, but at least it was the same for all participants across our smartphone-based clinical trials and it was not something we could eradicate. 
 
@@ -437,7 +437,7 @@ A second criterion for comparing the \gls{SmartPD1} and \gls{SmartH1} population
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Discussion}
 \label{subsec:SmartCT1Discussion}
-The purpose of this first study was to collect data by integrating a smartphone, as seamlessly as possible, into the clinical assessment of item 3.15 of the gold standard of clinical evaluation, i.e., \gls{UPDRS}, which is used to assess postural tremor of the hands, and to explore whether these data could have value in quantifying and identifying \gls{PD} related tremor. 
+The purpose of this first study was to collect data by integrating a smartphone, as seamlessly as possible, into the clinical assessment of item 3.15 of the ``gold standard'' of clinical evaluation, i.e., \gls{UPDRS}, which is used to assess postural tremor of the hands, and to explore whether these data could have value in quantifying and identifying \gls{PD} related tremor. 
 
 We explored the use of recently-available smartphone technology for the purpose of diagnosing and quantifying the postural tremor which is one of the cardinal symptoms of parkinsonism. Our method was based on the use of the accelerometer and gyroscope currently embedded in many smartphone models and accessible via web development technologies, i.e., JavaScript. 
 With \gls{SmartCT1} we particularly aimed at exploring the robustness of a tool that would be:
@@ -623,7 +623,7 @@ In each session, patients performed two recordings per hand, and each of the met
 \label{subsec:SmartCT2Analysis}
 \subsubsection{Means Testing}
 \label{subsubsec:SmartCT2MeansTesting}
-Since our goal was to facilitate identification and monitoring of \gls{PD}-induced tremor, it was essential to establish that the metrics calculated from the signals could be relied upon to differentiate the \gls{SmartPD2} and \gls{SmartH2} populations. We used the non-parametric Mann-Whitney U test to explore the statistical significance in the difference of means of the two main populations participating in \gls{SmartCT2}, for all aggregations of the 4 metrics. As shown in table \ref{table}, all between-groups tests found significant differences between the mean scores of the metrics of the \gls{SmartPD2} volunteers compared to the means of the \gls{SmartH2} volunteers. 
+Since our goal was to facilitate identification and monitoring of \gls{PD}-induced tremor, it was essential to establish that the metrics calculated from the signals could be relied upon to differentiate the \gls{SmartPD2} and \gls{SmartH2} populations. We used the non-parametric Mann-Whitney U test to explore the statistical significance in the difference of means of the two main populations participating in \gls{SmartCT2}, for all aggregations of the 4 metrics. As shown in table \ref{table:meansTestingSmartCT2}, all between-groups tests found significant differences between the mean scores of the metrics of the \gls{SmartPD2} volunteers compared to the means of the \gls{SmartH2} volunteers, at 1\% significance level.  
 
 \begin{table}[!hp]
 \centering
@@ -634,37 +634,53 @@ Since our goal was to facilitate identification and monitoring of \gls{PD}-induc
 	\cline{3-4}
 	& & \textit{Decision} & \textit{p} \\
 	\hline \hline
-	\multirow{4}{*}{\textit{restR}}} & $mag_{\alpha}$ & Yes & $0.0018$ \\
+	\multirow{4}{*}{\textit{restR}} 
+	& $mag_{\alpha}$ & Yes & $0.0018$ \\
 	& $mag_{\omega}$ & Yes & $<0.001$ \\
 	& $sd_{\alpha}$ & Yes & $0.0014$ \\
 	& $mAmp_{\omega}$ & Yes & $<0.001$ \\
 	\hline
 	%not true from here down 
-	\multirow{4}{*}{\textit{restR}}} & $mag_{\alpha}$ & Yes & $0.0018$ \\
+	\multirow{4}{*}{\textit{restL}} 
+	& $mag_{\alpha}$ & Yes & $<0.001$ \\
 	& $mag_{\omega}$ & Yes & $<0.001$ \\
-	& $sd_{\alpha}$ & Yes & $0.0014$ \\
+	& $sd_{\alpha}$ & Yes & $<0.001$ \\
 	& $mAmp_{\omega}$ & Yes & $<0.001$ \\
 	\hline
-	\multirow{4}{*}{\textit{restR}}} & $mag_{\alpha}$ & Yes & $0.0018$ \\
+	\multirow{4}{*}{\textit{extR}} 
+	& $mag_{\alpha}$ & Yes & $<0.001$ \\
 	& $mag_{\omega}$ & Yes & $<0.001$ \\
-	& $sd_{\alpha}$ & Yes & $0.0014$ \\
+	& $sd_{\alpha}$ & Yes & $<0.001$ \\
 	& $mAmp_{\omega}$ & Yes & $<0.001$ \\
 	\hline
-	\multirow{4}{*}{\textit{restR}}} & $mag_{\alpha}$ & Yes & $0.0018$ \\
+	\multirow{4}{*}{\textit{extL}} 
+	& $mag_{\alpha}$ & Yes & $<0.001$ \\
 	& $mag_{\omega}$ & Yes & $<0.001$ \\
-	& $sd_{\alpha}$ & Yes & $0.0014$ \\
+	& $sd_{\alpha}$ & Yes & $<0.001$ \\
+	& $mAmp_{\omega}$ & Yes & $<0.001$ \\
+	\hline \hline
+	& $mag_{\alpha}$ & Yes & $<0.001$ \\
+	\textit{Sum of all metrics over} & $mag_{\omega}$ & Yes & $<0.001$ \\
+	\textit{all positions and sides} & $sd_{\alpha}$ & Yes & $<0.001$ \\
 	& $mAmp_{\omega}$ & Yes & $<0.001$ \\
 	\hline
+	& $mag_{\alpha}$ & Yes & $<0.001$ \\
+	\textit{Absolute differences of summed} & $mag_{\omega}$ & Yes & $0.0012$ \\
+	\textit{right hand versus left hand scores} & $mag_{\omega}$ & Yes & $<0.001$ \\
+	& $mAmp_{\omega}$ & Yes & $<0.001$ \\
+
  	& & &\\
-	\multicolumn{4}{c}{\gls{UPDRS} scores evaluated during ON state} 	\\
+	\multicolumn{4}{c}{Means testing was applied to the volunteers' metrics,} 	\\
+	\multicolumn{4}{c}{using the Mann-Whitney U test at the 1\% significance level.} \\
 \end{tabular*}
 \label{table:meansTestingSmartCT2}
 \end{table}
 
+This meant that the two populations could be presumed to have significantly different scores for every one of the signal metrics computed, and these metrics could be the basis for differentiation between \gls{SmartPD2} and \gls{SmartH2} volunteers.
 
+As discussed in section \ref{subsec:laterality}, it is typical for \gls{SmartPD2} patients to manifest the disease's symptoms with laterality, i.e., more severely on one side, right or left. Nevertheless, there was no statistically significant difference in the volunteers' left versus right mean metric scores \textit{within} each population. In \gls{SmartCT2}, 19 of the 23 patients have differences between the sums of the \gls{UPDRS} components concerning right versus left hand tremor, indicating laterality of motor impairment. This laterality however, although clinically observable, did not result in the Mann-Whitney U test yielding significant difference regarding the summed \gls{UPDRS} scores for right versus left hands, sustaining the null hypothesis with p = 0.7327, even for the ``gold standard'' \gls{UPDRS} scores. 
 
-
-
+In order to identify the laterality statistically, for each metric calculated in (\ref{eq: magAlpha2})-(\ref{eq: maxAmpOmega}) we summed the scores of both postures for right and left hand separately and calculated the absolute differences between them. As shown in the last four rows of table \ref{table:meansTestingSmartCT2}, for each metric, the absolute differences between hands for the \gls{SmartPD2} group is statistically different from those of the \gls{SmartH2} group. That means that the magnitude of difference between hands is not the same for \gls{SmartPD2} and \gls{SmartH2}, justifiably attributed to the disease's laterality. 
 
 %%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
 %%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -674,11 +690,55 @@ Since our goal was to facilitate identification and monitoring of \gls{PD}-induc
 %%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
 %%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
 %%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-This suggests that the two populations have statistically different scores under every one of the signal metrics computed, and one may attempt to differentiate H vs PD subjects based on one or more of those metrics.
+\subsubsection{Correlation With UPDRS}
+\label{subsubsec:SmartCT2Correlation}
+To establish the validity of our smartphone-based method of upper limb parkinsonian tremor quantification we ran a Pearson product-moment correlation analysis between the \gls{UPDRS} scores of the \gls{SmartPD2} volunteers and their respective signal metrics. Table \ref{table:CorrelationSmartPD2} contains the results of the correlation analysis for the rest posture scores (protocol of item 3.17 of the \gls{MDS}-\gls{UPDRS}) and the extended posture scores (protocol of item 3.15 of the \gls{MDS}-\gls{UPDRS}) separately.
 
- There was no statistical difference in the subjects’ left vs. right mean scores within each group (see Table IX in Appendix). It is typical for PD patients to manifest the disease’s symptoms with some laterality, i.e., to a greater degree on one side, right or left. That is indeed the case with our PD volunteers because 19 of the 23 have differences between the sums of the UPDRS components concerning right vs left hand tremor indicating laterality of motor impairment. Although clinically observable, the Mann-Whitney test for the summed UPDRS scores for right vs left hands yields no statistical difference, with p=0.7327. In order to identify the laterality statistically, for each metric we summed the scores of both postures for right and left hand separately and calculated the absolute differences between them. As shown in the last four rows of Table III, for each metric, the absolute differences between hands for the PD group is statistically different from those of the H group. That means that the amount of difference between hands is not the same for PD and H, presumably due to the disease’s laterality.
+\begin{table}[h]
+\centering
+\caption{\textsc{Metrics' Correlation With the UPDRS}}
+\begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c c c c c c c c c }
+	
+	& \multicolumn{8}{c}{\textit{UPDRS Correlation Coefficients and p-values}} \\
+	\textit{Metrics from} & \multicolumn{4}{c}{\textit{Rest}} & \multicolumn{4}{c}{\textit{Extended}} \\
+	\cline{2-9}
+	\textit{sensors' signals} & \multicolumn{2}{c}{\textit{Right Hand}} & \multicolumn{2}{c}{\textit{Left Hand}} 
+	& \multicolumn{2}{c}{\textit{Right Hand}} & \multicolumn{2}{c}{\textit{Left Hand}}\\
+	\cline{2-9}
+	& \textit{r}	 & \textit{p} & \textit{r} & \textit{p} & \textit{r} & \textit{p}	 & \textit{r} & \textit{p} \\
+	\hline \hline
+	$mag_{\alpha}$ 	& 0.70 & $<0.001$ & 0.70 & $<0.001$ 	& 0.46 & $0.02$ & 0.40 & $0.057$ \\
+	$mag_{\omega}$ 	& 0.69 & $<0.001$ & 0.79 & $0$ 		& 0.53 & $0.008$ & 0.38 & $0.06$ \\
+	$sd_{\alpha}$ 	& 0.77 & $0$ & 0.87 & $0$ 			& 0.63 & $0.001$ & 0.42 & $0.04$ \\
+	$mAmp_{\omega}$ 	& 0.75 & $0$ & 0.85 & $0$ 			& 0.58 	& $0.003$ & 0.36 & $0.08$ \\
+	
+ 	& & &\\
+	\multicolumn{9}{c}{\gls{UPDRS} Rest Right Hand scores are item's 3.17 \gls{RUE} values, } 	\\
+	\multicolumn{9}{c}{\gls{UPDRS} Rest Left Hand scores are item's 3.17 \gls{LUE} values, } 	\\
+	\multicolumn{9}{c}{\gls{UPDRS} Extended Right Hand scores are item's 3.15 R values, } 	\\
+	\multicolumn{9}{c}{\gls{UPDRS} Extended Left Hand scores are item's 3.15 L values. } 	\\
+\end{tabular*}
+\label{table:CorrelationSmartPD2}
+\end{table}
 
 
+Pearson's correlation coefficient is the covariance of the two variables divided by the product of their standard deviations. The form of the definition involves a ``product moment'', that is, the mean (the first moment about the origin) of the product of the mean-adjusted random variables; hence the modifier product-moment in the name.
+
+\begin{equation} \label{eq:pearson}
+r = \frac{ \sum_{i=1}^{23} (x_{i} - \bar{x})(u_{i} - \bar{u}) } 
+		 { \sqrt{\sum_{i=1}^{23} (x_{i} - \bar{x})^{2}} \sqrt{\sum_{i=1}^{23} (u_{i} - \bar{u})^{2}} }
+\end{equation}
+
+More Specifically, in order to analyze the correlation between the \gls{UPDRS} scores of the patients and each of the metrics detailed above, we computed the Pearson correlation coefficients between the patients' metrics (separately for right versus left hand) and their \gls{UPDRS} scores, for the respective posture and side. We used Pearson product-moment correlation as opposed to concordance correlation coefficients because we were primarily interested in exploring the validity of our smartphone-based method for quantifying hand tremor, and not reproducibility of one same assessment. The coefficients ($r$) and their corresponding p-values are shown in table \ref{table:CorrelationSmartPD2}, with one row devoted to each of the metrics used. We observe that, at a very comfortable confidence level of 1\%, the hypothesis that there is no correlation between the UPDRS scores and the metrics is rejected. The metric showing the highest correlation to the UPDRS scores is $sd_{\alpha}$, where the correlation coefficients are 0.7706 (right hand) and 0.8793 (left hand) with high statistical significance. Given the qualitative/subjective manner in which UPDRS scores are assigned by the physician, a value of r above 0.7 suggests a strong correlation with our metrics, while p-values less than 1\% indicate a strong statistical significance.
+
+Observing the values in Table 1, there is a better correlation between UPDRS scores and all the metrics for the patients' left hand, while all patients were right-handed. One possible interpretation could be that the patients' dominant (right) hand is better at supporting the weight of the device while ``controlling'' tremor than their non-dominant hand. However, this is something that requires further investigation. 
+
+
+
+For the 
+The correlation analysis of the extension posture data yields lower coefficients (r < 0.6) than those of the rest posture, with mostly low confidence (p > 0.01). The results are better for the right hand but generally do not suggest good correlation between the UPDRS scores and the smartphone metrics. 
+
+These findings show a connection between the manifestation of the action hand tremor and the hardware experimental setup. The fact that the resting tremor is identified consistently, whereas in the extended posture the measured tremor correlates weakly with the clinical assessment, is probably related to the effect of the mass of the smartphone on the dynamics of the hand/arm system.
 
 
 
