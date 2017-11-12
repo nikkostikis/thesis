@@ -480,7 +480,7 @@ The second conclusion drove us to our second clinical trial, \gls{SmartCT2}. We 
 
 \begin{itemize}
 \item In phase I (\gls{SmartCT2PI}) we collected signals from patients with parkinsonism manifestations, which we used to run correlation analysis, using their \gls{UPDRS} scores as input. In order for our tool to be validated as a tremor quantification approach it should prove to perform at least as well as the ``gold standard'' of \gls{PD} clinical examination, the \gls{UPDRS}. The new group of patients, \gls{SmartPD2} was recruited to be assessed both using the \gls{UPDRS} and our web-based smartphone tool. A correlation analysis was conducted to reveal whether the two methods produce similar results. \gls{SmartCT2PI} alone was actually a one population validation study. 
-\item In phase II (\gls{SmartCT2PII}) we collected signals from a control group with strict inclusion criteria to pursuit the creation of a classification machine-learning model. The new control group, \gls{SmartH2} was recruited to be used as the alternative class compared to the patients. Both groups' performances calculated with our tool were used to train a supervised machine-learning algorithm to identify the class of new unlabeled signals. 
+\item In phase II (\gls{SmartCT2PII}) we collected signals from a control group with strict inclusion criteria to pursuit the creation of a classification machine learning model. The new control group, \gls{SmartH2} was recruited to be used as the alternative class compared to the patients. Both groups' performances calculated with our tool were used to train a supervised machine learning algorithm to identify the class of new unlabeled signals. 
 \item In phase III - longitudinal (\gls{SmartCT2L}) we conducted a small longitudinal study to further evaluate our tool's performance in identifying changes in a single patient's symptom severity over time. This phase's group, \gls{SmartPD2L} participated in recording sessions during both the ON and OFF state (see section \ref{sec:dyskinesia}), to explore our tool's capacity in identifying same-patient fluctuations in tremor.
 \end{itemize}
 
@@ -919,10 +919,30 @@ The accuracy of the bagged ensemble of decision trees was better than any of the
 	\label{fig:ROCSmartCT2}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Discussion}
+\label{subsec:SmartCT2Discussion}
+The purpose of the second smartphone-based study was specifically to validate and improve the results of \gls{SmartCT1}, by:
+
+\begin{itemize}
+\item extending the protocol to include rest tremor as well as postural tremor. This was accomplished by adding another position to be assumed by the volunteers, in concordance with item 3.17 of the \gls{MDS}-\gls{UPDRS}, which is used to assess hand rest tremor,
+\item recruiting double the number of volunteers,
+\item making the inclusion criteria for the healthy volunteers more strict, ultimately populating an age-matched control group,
+\item performing simultaneous \gls{UPDRS} assessments to later examine the correlation between the two methods,
+\item collecting longer signals using our tool, going from 10 seconds to 30, 
+\item calculating more characteristics from the longer signals,
+\item simulating de novo patients' examination by recording data from two \gls{PD} volunteers prior to their medication intake,
+\item training and testing a machine learning algorithm to explore how our tool would perform when used to classify as healthy or abnormal, new, unlabeled sensor data. 
+\end{itemize}
+
+\noindent
+Our protocol design changes for \gls{SmartCT2} in comparison to \gls{SmartCT1} proved to be correct. The results from the data analysis showed that our smartphone-based method correlated well with the \gls{UPDRS}, identified changes during ON-OFF fluctuations for the same patient, and could be used to discriminate unlabeled data. 
+
+%%%%%%%%%%%%%%%%%%%% END OF SMARTCT2 %%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Conclusion and Research Implications}
-\label{subsubsec:SmartImplications}
+\section{Conclusion and Research Implications}
+\label{sec:SmartImplications}
 
 Recent advances in mobile phone technology have placed an impressive array of sensing and communication equipment at the hands of an ever-growing number of people, to the point that they can be considered ubiquitous. As discussed in chapter \ref{ch:autoQuant}, researchers have already done much work, exploring the potential of these devices in medical applications. One of the areas which can be transformed by the availability of what is essentially a cheap, ubiquitous networked sensor, is that of remote diagnosis and continuous monitoring of movement disorders, such as \gls{PD}, through the accurate, objective quantification of many of their symptoms. 
 
@@ -936,11 +956,3 @@ By further analyzing the data collected from \gls{SmartCT2} we were able to prop
 
 The availability of such a ubiquitous assessment tool of an otherwise subjectively rated symptom, such as hand tremor, primarily assists the physician in planning an effective treatment regimen. However, the ability to easily measure hand tremor daily at home by means of the method proposed and storing the relevant metrics in order to later track and visualize the progression of the disease and the effectiveness of the medication is more than welcome as a benefit for the patient himself. Finally, biobanking large data sets with motor information collected according to a specific protocol is something the scientific community could harvest and conduct valuable research on. Our motion monitoring apparatus, combined with signal processing and machine learning could detect motor abnormalities in a non-invasive manner and assist in the diagnosis and long-term improvement of quality of life for PD patients. 
 
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
