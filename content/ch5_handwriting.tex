@@ -6,16 +6,6 @@
 \fancyhead[EC]{\rightmark}
 \cfoot{\thepage}
 
-
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{General Approach}
@@ -27,30 +17,35 @@ As discussed in section \ref{sec:handwriting}, handwriting-related tasks have be
 \item Dysgraphia, which includes any abnormal behavior in the mechanics of handwriting skills (Letanneux et al, 2014). Researchers believe that all motor impairments of \gls{PD}, such as the \gls{TRAP} complex, reduced visuospatial perception, and motor coordination deficiencies can actually contribute to pathological handwriting kinematics, in combination with and beyond writing size. 
 \end{itemize}
 
+The dysgraphia ``umbrella'' term implies that the same motor impairments responsible for micrographia could manifest and be detectable through much simpler tasks than writing text, like drawing lines and shapes, and even when actual micrographia is not yet detectable. Given the fact that micrographia can already be detected up to four years earlier than \gls{PD} tremor or rigidity becoming observable through the \gls{UPDRS} clinical examination, dysgraphia could be a very promising measure for early detection. 
 
+Of course, due to the simplistic nature of the tasks involved, dysgraphia assessment requires more sophisticated signal processing and feature extraction protocols and algorithms to be applied, in order to unveil and isolate the useful information from the simple drawing movements. Signal analysis must go beyond calculating stroke size and duration to identify discriminating characteristics and reveal early and subtle impairments.
 
-The dysgraphia ``umbrella'' term implies that the same motor impairments may be present and detectable through simple handwriting tasks, even when micrographia is not detectable. 
-
-Dysgraphia assessment would entail various and more sophisticated features being extracted from even simple drawing movements, and signal analysis going beyond stroke size and duration to identify discriminating characteristics and reveal early and subtle impairments.
-
-Our approach was based on the following pillars: 
+Our approach to detect dysgraphia-related impairment was based on the following pillars: 
 
 \begin{enumerate}
-\item We focused on exploring the use of a ubiquitous device, such as a smartphone, with no additional software installed apart from its factory-installed operating system, and without the need to attach external hardware on it. 
-\item We avoided making assumptions about the users, i.e. that they would have e-mail accounts or that they would be proficient enough to install and manage applications and configure complex settings. 
-\item We explored solutions that would not require the presence of an expert to use, but would still produce replicable and accurate symptoms quantification. 
-\item We opted for cloud based approaches that would ensure the persistence of the data and the availability of the results for post-processing and verification. 
+\item We focused on exploring the use of a simple off-the-shelf electronic device, such as a tablet digitizer attached to a consumer grade computer, with no exotic specifications or dedicated hardware required.  
+\item We avoided requiring the users to follow any particular training to use our system. 
+\item We devised a system that would not require the presence of an expert to use, but would still produce replicable and accurate symptoms quantification. 
+\item We opted for a task that could be performed by both hands and would be simple enough to not be affected by the innate dexterity of the dominant hand.
+\item To favor simplicity and ubiquity, we removed the complexity from the signal collection and focused instead on the signal processing protocol.  
 \end{enumerate}
 
 \noindent
-To validate our symptoms quantification approach we conducted two separate clinical trials: 
+To validate our dysgraphia quantification approach we conducted a clinical trial (\gls{PenCT}), which could be used to validate our approach. It consisted of 24 patients with idiopathic \gls{PD}, defined as group \gls{PenPD}, 20 age-matched healthy volunteers, defined as group \gls{PenH}, and 15 younger healthy volunteers, defined as gls{PenYH}.
+The data collected were post-processed using signal processing and statistically analyzed, to calculate quantifying metrics and establish their significance. We also experimented training and testing machine learning algorithms using the data collected, to be able to classify new unlabeled trajectories as drawn by healthy individuals or \gls{PD} patients. 
 
-\begin{enumerate}
-\item The first was a small-scale case control pilot clinical trial (\gls{SmartCT1}), which would serve as proof-of-concept for our approach (Kostikis et al, 2011). It consisted of 10 patients with idiopathic \gls{PD}, defined as group \gls{SmartPD1}, and 10 age-matched healthy volunteers, defined as group \gls{SmartH1}. The data collected were post-processed using signal processing and statistically analyzed, to calculate quantifying metrics and establish their significance. 
-\item The second was a larger case control clinical trial (\gls{SmartCT2}), were 23 patients with idiopathic \gls{PD}, defined as group \gls{SmartPD2}, and 20 age-matched healthy volunteers, defined as group \gls{SmartH2}, were recruited. In a preliminary validation study, we used the data collected from \gls{SmartPD2} to compare the quantification calculated by our tool, to the patients' \gls{UPDRS} scores (Kostikis et al, 2014). Later on, both the \gls{SmartPD2} and \gls{SmartH2} groups' data were processed and used to perform statistical analysis and build machine learning models to establish our tool's potential as a classification platform for \gls{PD} patients (Kostikis et al, 2015). During the second clinical trial we also conducted a small longitudinal trial (\gls{SmartCT2L}) recruiting two idiopathic \gls{PD} patients, defined as \gls{SmartPD2L}. They were inpatients and were screened with our tool twice, once before, and once after medication. 
-\end{enumerate}
+In the following section we will describe the tablet-based clinical trial we conducted, present the data processing pipeline applied and discuss the results obtained, and the implications derived from our tablet-based \gls{PD} symptoms quantification approach. 
 
-In the following section we will describe the smartphone-based clinical trials we conducted, present the data processing pipeline applied in each trial and discuss the results obtained in each case, and the implications derived from our smartphone-based \gls{PD} symptoms quantification approach. 
+
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,7 +58,6 @@ In the following section we will describe the smartphone-based clinical trials w
 
 \subsubsection{Rationale}
 \label{subsubsec:PenCTRationale}
-Two valuable conclusions were drawn from the \gls{SmartCT1} results:
 
 \begin{enumerate}
 \item Our web-based tool could be used as a complement to the current clinical mainstay to evaluate tremor.
@@ -287,12 +281,3 @@ What \gls{SmartCT1} showed was that a smartphone has the potential to be used in
 By further analyzing the data collected from \gls{SmartCT2} we were able to propose a method to quantify \gls{PD} induced hand tremor. We incorporated an ensemble of decision trees as a machine learning model and we were able to positively identify 82\% of our \gls{PD} volunteers and 90\% of the healthy volunteers (Kostikis et al, 2015). Although both our clinical trials were relatively small, they served as proof of concept and offered encouraging results. The statistical analyses we conducted showed that our proposed method could be used both in a clinical setting to facilitate the physician's work by offering an accurate assessment tool, and at home by the patients themselves to self-monitor their progress. 
 
 The availability of such a ubiquitous assessment tool of an otherwise subjectively rated symptom, such as hand tremor, primarily assists the physician in planning an effective treatment regimen. However, the ability to easily measure hand tremor daily at home by means of the method proposed and storing the relevant metrics in order to later track and visualize the progression of the disease and the effectiveness of the medication is more than welcome as a benefit for the patient himself. Finally, biobanking large data sets with motor information collected according to a specific protocol is something the scientific community could harvest and conduct valuable research on. Our motion monitoring apparatus, combined with signal processing and machine learning could detect motor abnormalities in a non-invasive manner and assist in the diagnosis and long-term improvement of quality of life for PD patients. 
-
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
