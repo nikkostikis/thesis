@@ -17,9 +17,10 @@ As discussed in section \ref{sec:handwriting}, handwriting-related tasks have be
 \item Dysgraphia, which includes any abnormal behavior in the mechanics of handwriting skills (Letanneux et al, 2014). Researchers believe that all motor impairments of \gls{PD}, such as the \gls{TRAP} complex, reduced visuospatial perception, and motor coordination deficiencies can actually contribute to pathological handwriting kinematics, in combination with and beyond writing size. 
 \end{itemize}
 
-The dysgraphia ``umbrella'' term implies that the same motor impairments responsible for micrographia could manifest and be detectable through much simpler tasks than writing text, like drawing lines and shapes, and even when actual micrographia is not yet detectable. Given the fact that micrographia can already be detected up to four years earlier than \gls{PD} tremor or rigidity becoming observable through the \gls{UPDRS} clinical examination, dysgraphia could be a very promising measure for early detection. 
+\noindent
+The dysgraphia ``umbrella'' term implies that the same motor impairments responsible for micrographia could manifest and be detectable through much simpler tasks than writing text, like drawing lines and shapes, and even when actual micrographia is not yet detectable. Given the fact that micrographia can already be detected up to four years earlier than the cardinal \gls{PD} symptoms like tremor or rigidity even becoming observable through the \gls{UPDRS} clinical examination, dysgraphia could be a very promising measure for early detection. 
 
-Of course, due to the simplistic nature of the tasks involved, dysgraphia assessment requires more sophisticated signal processing and feature extraction protocols and algorithms to be applied, in order to unveil and isolate the useful information from the simple drawing movements. Signal analysis must go beyond calculating stroke size and duration to identify discriminating characteristics and reveal early and subtle impairments.
+Of course, due to the simplistic nature of the tasks involved, dysgraphia assessment requires more sophisticated signal processing, feature extraction protocols and algorithms to be applied, in order to unveil and isolate the useful information from the simple drawing movements. Signal analysis must go beyond calculating stroke size and duration to identify discriminating characteristics and reveal early and subtle impairments.
 
 Our approach to detect dysgraphia-related impairment was based on the following pillars: 
 
@@ -30,22 +31,15 @@ Our approach to detect dysgraphia-related impairment was based on the following 
 \item We opted for a task that could be performed by both hands and would be simple enough to not be affected by the innate dexterity of the dominant hand.
 \item To favor simplicity and ubiquity, we removed the complexity from the signal collection and focused instead on the signal processing protocol.  
 \end{enumerate}
-
+%I'm particularly proud of that list (!)
 \noindent
-To validate our dysgraphia quantification approach we conducted a clinical trial (\gls{PenCT}), which could be used to validate our approach. It consisted of 24 patients with idiopathic \gls{PD}, defined as group \gls{PenPD}, 20 age-matched healthy volunteers, defined as group \gls{PenH}, and 15 younger healthy volunteers, defined as gls{PenYH}.
-The data collected were post-processed using signal processing and statistically analyzed, to calculate quantifying metrics and establish their significance. We also experimented training and testing machine learning algorithms using the data collected, to be able to classify new unlabeled trajectories as drawn by healthy individuals or \gls{PD} patients. 
+To validate our dysgraphia quantification approach we conducted a clinical trial (\gls{PenCT}). It consisted of 24 patients with idiopathic \gls{PD}, defined as group \gls{PenPD}, 20 age-matched healthy volunteers, defined as group \gls{PenH}, and 15 younger healthy volunteers, defined as gls{PenYH}.
 
-In the following section we will describe the tablet-based clinical trial we conducted, present the data processing pipeline applied and discuss the results obtained, and the implications derived from our tablet-based \gls{PD} symptoms quantification approach. 
+\hlorange{power analysis?}
 
+The data collected were post-processed using signal processing techniques and statistically analyzed, to calculate quantifying metrics and establish their significance. We also experimented training and testing machine learning algorithms using the data collected, to be able to classify new unlabeled trajectories as drawn by healthy individuals or \gls{PD} patients. 
 
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+In the following section we will describe the tablet-based clinical trial we conducted, present the data processing pipeline applied, and discuss the results obtained and the implications derived from our tablet-based \gls{PD} symptoms quantification approach. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,24 +52,40 @@ In the following section we will describe the tablet-based clinical trial we con
 
 \subsubsection{Rationale}
 \label{subsubsec:PenCTRationale}
+In section \ref{sec:handwriting} we reviewed the literature proving that handwriting and drawing tasks can be used to study human upper limb motor behavior and monitor movement disorders' symptoms in quantitative way. 
 
-\begin{enumerate}
-\item Our web-based tool could be used as a complement to the current clinical mainstay to evaluate tremor.
-\item Improvements would have to be made wherever possible to eliminate the shortcomings of the previous protocol and make our solution more robust and valuable as a tremor quantification tool. 
-\end{enumerate}
+Writing is a skill that is developing later in a child's life. It involves a complex feedback system, integrating continuous information from the writing hand, i.e., proprioceptive sensory stimuli from all muscles involved, and sensory information from the fingers and the visual system. Also, writing is a task that implicates the participation of various degrees of cognitive processes. Researchers have tried to isolate the motor aspect of the task and minimize the involvement of any cognitive process that could affect the patient's performance and have used the Archimedes spiral, single letters or simple words, in order to investigate purely motor aspects of handwriting (Saunders-Pullman et al, 2008). In (Popovic et al, 2008) the authors showed that even simpler tasks, namely drawing point-to-point trajectories, contained useful features that helped detect motor blocks in \gls{PD} patients.
 
-The second conclusion drove us to our second clinical trial, \gls{SmartCT2}. We designed \gls{SmartCT2} having validation in mind. In order to validate our tool it would be necessary to compare it to results from \gls{UPDRS} assessments conducted at the same time of the recording sessions. To that end we designed three separate phases within the trial:
+For the \gls{PenCT} study we picked up from (Popovic et al, 2008) designed a protocol that would use tasks stripped of cognitive involvement, as much as possible, easily executable with both hands, and requiring no particularly special equipment or hardware setup. We were interested in keeping the signal collection simple, fast, easy for elderly people, requiring minimum instruction and training, and suffering from low probability of erroneous execution. The layman's task would mean the data processing would have to be sophisticated enough to extract metrics containing significant information, sufficient for classification. 
 
-\begin{itemize}
-\item In phase I (\gls{SmartCT2PI}) we collected signals from patients with parkinsonism manifestations, which we used to run correlation analysis, using their \gls{UPDRS} scores as input. In order for our tool to be validated as a tremor quantification approach it should prove to perform at least as well as the ``gold standard'' of \gls{PD} clinical examination, the \gls{UPDRS}. The new group of patients, \gls{SmartPD2} was recruited to be assessed both using the \gls{UPDRS} and our web-based smartphone tool. A correlation analysis was conducted to reveal whether the two methods produce similar results. \gls{SmartCT2PI} alone was actually a one population validation study. 
-\item In phase II (\gls{SmartCT2PII}) we collected signals from a control group with strict inclusion criteria to pursuit the creation of a classification machine-learning model. The new control group, \gls{SmartH2} was recruited to be used as the alternative class compared to the patients. Both groups' performances calculated with our tool were used to train a supervised machine-learning algorithm to identify the class of new unlabeled signals. 
-\item In phase III - longitudinal (\gls{SmartCT2L}) we conducted a small longitudinal study to further evaluate our tool's performance in identifying changes in a single patient's symptom severity over time. This phase's group, \gls{SmartPD2L} participated in recording sessions during both the ON and OFF state (see section \ref{sec:dyskinesia}), to explore our tool's capacity in identifying same-patient fluctuations in tremor.
-\end{itemize}
+We explored the use of a simple line-drawing task. Line-drawing would be simpler than, for example, writing or drawing spirals, would last only a few seconds, would involve fewer muscular systems, no cognitive effort, and low coordination control effort. We hypothesized it would be unaffected by the dexterity of the volunteers' dominant hand, making it easy to perform using either upper limb, which cannot happen in the case of writing letters or words. 
+
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+More specifically, we investigate the kinematics of hand motion during line drawing task, measuring hand movement at a timescale where there is no conscious control of the motion, so that what we detect is the balance of the tone of agonist versus antagonist muscular systems. This balance is altered in Parkinson's disease and in other pathological conditions. Unlike other studies on the subject, we aimed to make the task as simple as possible for the participants, and thus had them draw simple horizontal lines, hypothesizing that any imbalance in agonist-antagonist coordination should be present even in simple drawings. Our results validate that hypothesis, as we shall see. Furthermore, with lines, participants can draw starting from either side of the writing surface, extending or flexing their arms, allowing us to check the performance of two different groups of muscular systems.
+Our hypothesis was that due to impaired coordination in patients with movement disorders, certain features, such as the velocity variability of the pen's tip (to be made precise shortly) or the ``excursions'' from the horizontal, should be more pronounced compared to healthy subjects. Towards that end, our approach involves recording the position of the pen on the tablet and computing a vector of metrics, namely the Normalized Velocity Variability (NVV), the velocity's Standard Deviation (SDV) and Mean (MV), and the signal Entropy (ETP), to characterize the pen's trace spatiotemporally. Using data acquired from healthy and PD individuals, we test the hypothesis that these metrics are statistically different between the two groups. Our hypothesis is based on research proving that velocity- and acceleration-based metrics of voluntary movements can separate pathological from healthy subjects. This includes [11] where PD patients showed a reduced ability to modulate acceleration, leading to smaller than required movements and micrographia, and [20] which showed that that dopamine depletion in PD leads to smaller than normal pallidothalamic gating signals, which in turn affect the ability to control variable movement speed. The variability in handwriting velocity in patients with PD was also noted in [21] where the patients showed multiple peaks in their velocity signal whereas the controls showed just one peak. In [22], the velocity and acceleration profiles of PD patients were different in relation to healthy subjects while writing circles. In a different experimental design investigating the effect of the dopamine on handwriting movements [23], researchers found lower values for maximum and minimum velocity in ascending and descending strokes in PD patients than in healthy subjects. They also found that patients had significantly more inversions of velocity and acceleration than healthy people. There was also a difference between patients on medication and off medication, where the number of inversions in velocity and acceleration was statistically significant. 
+
+
+We chose to conduct a control study and not a one-population validation study because there was complete lack of literature evidence that this method of collecting inertial signals would work, or even be robust enough for us to gather usable data, and detection of a motor anomaly should be the first step before attempting to evaluate its severity. Our primary goal was to establish whether our tool could identify tremor. In a follow-up clinical trial we would assess its accuracy in quantifying the symptom (see section \ref{sec:SmartCT2}). 
+
+%%%%%%------------> include this!!!!!!!!
+%%%%%%------------> include this!!!!!!!!
+%%%%%%------------> include this!!!!!!!!
+Therefore, the expected outcome of \gls{SmartCT1} was to collect data using a novel tool on a small target population (\gls{SmartPD1}), examine the signals, calculate basic metrics and explore the statistical significance of the metrics when compared to a size-matched control population (\gls{SmartH1}). Most importantly, we wanted to gain significant insight concerning the optimization of the protocol of our next scheduled larger clinical trial (\gls{SmartCT2}).
+
 
 \subsubsection{Volunteers}
 \label{subsubsec:PenCTVolunteers}
-To conduct \gls{SmartCT2PI} we recruited 23 \gls{PD} patients, \gls{SmartPD2}, from the outpatient clinic of the 1st Department of Neurology of AHEPA University General Hospital, located in the territory of the Aristotle University of Thessaloniki. All subjects agreed to participate in this research after a detailed explanation of its aims and of the testing procedure. All \gls{SmartPD2} volunteers were right-handed, under L-DOPA treatment and suffering from \gls{PD} for more than two years.
-For the \gls{SmartCT2L} phase we recruited two \gls{PD} patients, \gls{SmartPD2L} who were hospitalized overnight in the AHEPA University General Hospital, so that they could be recorded in the morning before they received their medication, aiming to capture their OFF state. Table \ref{table:demoSmartPD2} summarizes information on the patients participating in \gls{SmartCT2}. 
+Fifty-nine subjects in total participated in this study. All were right-handed, and had normal or corrected-to-normal vision. Their right-handedness was established based on what hand they used to write and eat with, as well as an evaluation of the muscular force of their two hands. The subjects agreed to participate in this study after a detailed explanation of its purposes and procedures. They were divided in three groups based on their health status and age (Table I). 
+Group H included 20 healthy persons aged 56-89. All subjects had a detailed neurological examination in order to screen for any movement disorders that would exclude them from the study. None had a first-degree relative with PD or some kind of tremor. Also, none had hypertension or diabetes. Most of the healthy subjects came from retirement facilities.
+Group PD had 24 subjects aged 58-80, all under medication. They were recruited from the Parkinson's disease outpatient clinic of the 1st Neurology Department of the Aristotle University of Thessaloniki, Greece. All had been under periodic evaluation and levodopa and/or dopamine agonist treatment for more than a year. Undeniably, patients who are on medication improve on some of their clinical signs and symptoms. Nevertheless, even when a patient is on medication, most PD signs and symptoms never disappear. The symptoms that are mostly alleviated are bradykinesia and rigidity, whereas tremor in most cases is ``drug-resistant'' [24]. Because PD subjects participating in this study were all tested in an outpatient setting, they were kept on medication for ethical and safety reasons (i.e., drug deprivation could lead to injuries). Additionally, most of our patients were not newly-diagnosed (their Hoehn and Yahr rating was above 1) and despite treatment their signs and symptoms were present. Their information is provided in Table II. We introduced a third group of 15 young healthy volunteers (YH) with a mean age 36.40 years. They were included in this study to establish a ``baseline'' for the various metrics, and their scores were compared to those of older healthy volunteers (group H) to test for possible age effects.
 
 \begin{table}[!hp]
 \centering
@@ -140,6 +150,20 @@ The volunteers' ages for all the groups were mean-tested with the non-parametric
 \end{tabular*}
 %\label{table:demoSmartCT2}
 \end{table}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\\
+
+
 
 \subsubsection{Procedure and Hardware}
 \label{subsubsec:PenCTProcHardware} 
