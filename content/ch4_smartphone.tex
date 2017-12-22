@@ -586,7 +586,8 @@ As explained earlier, each session consisted of 8 recordings. The volunteers all
 	\label{fig:accelFFTPD2_3}
 \end{figure}
 
-To characterize the singals we calculated squared magnitudes combining each sample's axis acceleration (\ref{eq: magSampleAlpha}) and rotation rate (\ref{eq: magSampleOmega}) and summed over all $N$ (600) samples for each signal to calculate $mag_{\alpha}$ (\ref{eq: magAlpha2}) and $mag_{\omega}$ (\ref{eq: magOmega2}).
+\noindent
+To characterize the signals we calculated squared magnitudes combining each sample's axis acceleration (\ref{eq: magSampleAlpha}) and rotation rate (\ref{eq: magSampleOmega}) and summed over all $N$ (600) samples for each signal to calculate $mag_{\alpha}$ (\ref{eq: magAlpha2}) and $mag_{\omega}$ (\ref{eq: magOmega2}).
 
 %Equations
 
@@ -609,7 +610,7 @@ mAmp_{\omega} = \sum_{\kappa \in \{x,y,z\}} \max_{4 \leq \xi \leq 7} \hat{\omega
 \noindent
 The $sd_{\alpha}$ is the sum of absolute differences in the acceleration vector, summed over each of the three axes, $x$, $y$, and $z$ (\ref{eq: sdAlpha}). To compute the $mAmp_{\omega}$ metric (\ref{eq: maxAmpOmega}) we initially obtained the magnitude of the Fourier transform of each of the three axial components of the rotation vector $\omega(i)$, defined as $\hat{\omega}_{\kappa}(\xi)$, with $\kappa \in \{x,y,z\}$. We then determined each component’s maximum in the $4 \leq \xi \leq 7$Hz range (that range being consistent with the frequency of the majority of Parkinsonian tremor) and summed the three maxima. 
 
-In each session, patients performed two recordings per hand, and each of the metrics (\ref{eq: magAlpha2})-(\ref{eq: maxAmpOmega}) was averaged over both trials, giving us an average score for each patient's right hand and another average for their left hand. We kept left and right hand averages distinct, as opposed to averaging all scores for both hands, because \gls{UPDRS} scores are similarly categorized on a left hand and right hand basis. For the following paragraphs we hereby define 4 different aggregation profiles for each of the features calculated from (\ref{eq: magAlpha2})-(\ref{eq: maxAmpOmega}):
+In each session, patients performed two recordings per hand, and each of the metrics (\ref{eq: magAlpha2})-(\ref{eq: maxAmpOmega}) was averaged over both trials, giving us an average score for each patient's right hand and another average for their left hand. We kept left and right hand averages distinct, as opposed to averaging all scores for both hands, because \gls{UPDRS} scores are similarly categorized on a left hand and right hand basis. For the following paragraphs we hereby define four different aggregation profiles for each of the features calculated from (\ref{eq: magAlpha2})-(\ref{eq: maxAmpOmega}):
 
 \begin{itemize}
 \item restR for rest posture, corresponding to the \gls{MDS}-\gls{UPDRS} item 3.17 right upper extremity (\gls{RUE}) value,
@@ -717,6 +718,7 @@ Table \ref{table:CorrelationSmartPD2} contains the results of the correlation an
 \label{table:CorrelationSmartPD2}
 \end{table}
 
+\noindent
 In order to analyze the correlation between the \gls{UPDRS} scores of the patients and each of the signal metrics, we computed the Pearson correlation coefficients between the patients' metrics (separately for right versus left hand) and their \gls{UPDRS} scores, for the respective posture and side. We used Pearson product-moment correlation as opposed to concordance correlation coefficients because we were primarily interested in establishing the validity of our smartphone-based method for quantifying hand tremor, by exploring the relationship between the metrics and the scores, and not reproducibility of one same assessment. The coefficients ($r$) and their corresponding p-values are shown in table \ref{table:CorrelationSmartPD2}, with one row devoted to each of the metrics used. We observe that, at a very comfortable confidence level of 1\%, the hypothesis that there is no correlation between the UPDRS scores and the metrics is rejected. The metric showing the highest correlation to the UPDRS scores is rest $sd_{\alpha}$, where the correlation coefficients are 0.77 (right hand) and 0.88 (left hand) with high statistical significance. Given the qualitative and subjective manner in which \gls{UPDRS} scores are assigned by the physicians, a coefficient above 0.7 suggests a strong correlation with our metrics, while p-values less than 1\% indicate a strong statistical significance.
 
 The values in table \ref{table:CorrelationSmartPD2} show that, regarding the rest posture, there was higher correlation between \gls{UPDRS} scores and all the metrics for the patients' left hand, while all patients were right-handed. Regarding the extended posture, there was higher correlation for the patients' right hand, which was the dominant for all of them. This observation could be attributed to chance, however, it could also be related to how the dominant hand could better support the weight of the device while ``controlling'' tremor in their dominant hand while in the rest posture, and how this could not be the case in the more challenging extended posture. Of course to sustain such a claim, further investigation should take place. 
@@ -776,9 +778,8 @@ During \gls{SmartCT2L}, 2 patients, defined as group \gls{SmartPD2L} stayed in t
 \label{table:offSmartCT2}
 \end{table}
 
-From the \gls{UPDRS} scores of the two volunteers it is clear that these two patients did not suffer from severe hand tremor. 
-
-Their physician observed that the medication improved mostly the their rigidity, which was not quantified by our tool, and less so their tremor. However, it is encouraging to note that the readings of the smartphone's sensors respond well and follow the expected negative trend of the changes in the \gls{UPDRS} scores during the ON state. The only discrepancy was observed in the extR profile of volunteer \gls{SmartPD2L}$_{2}$ for all metrics, where the $\% \Delta$ was actually positive, however this could be considered circumstantial because for there were no clinical changes in the respective \gls{UPDRS} scores from OFF to ON observed as well. 
+\noindent
+From the \gls{UPDRS} scores of the two volunteers it is clear that these two patients did not suffer from severe hand tremor. Their physician observed that the medication improved mostly the their rigidity, which was not quantified by our tool, and less so their tremor. However, it is encouraging to note that the readings of the smartphone's sensors respond well and follow the expected negative trend of the changes in the \gls{UPDRS} scores during the ON state. The only discrepancy was observed in the extR profile of volunteer \gls{SmartPD2L}$_{2}$ for all metrics, where the $\% \Delta$ was actually positive, however this could be considered circumstantial because for there were no clinical changes in the respective \gls{UPDRS} scores from OFF to ON observed as well. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Supervised Machine Learning To Establish Discriminating Criteria}

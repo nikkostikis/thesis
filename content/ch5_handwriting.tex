@@ -33,9 +33,7 @@ Our approach to detect dysgraphia-related impairment was based on the following 
 \end{enumerate}
 %I'm particularly proud of that list (!)
 \noindent
-To validate our dysgraphia quantification approach we conducted a clinical trial (\gls{PenCT}). It consisted of 24 patients with idiopathic \gls{PD}, defined as group \gls{PenPD}, 20 age-matched healthy volunteers, defined as group \gls{PenH}, and 15 younger healthy volunteers, defined as gls{PenYH}.
-
-\hlorange{power analysis?}
+To validate our dysgraphia quantification approach we conducted a clinical trial (\gls{PenCT}). It consisted of 24 patients with idiopathic \gls{PD}, defined as group \gls{PenPD}, 20 age-matched healthy volunteers, defined as group \gls{PenH}, and 15 younger healthy volunteers, defined as \gls{PenYH}.
 
 The data collected were post-processed using signal processing techniques and statistically analyzed, to calculate quantifying metrics and establish their significance. We also experimented training and testing machine learning algorithms using the data collected, to be able to classify new unlabeled trajectories as drawn by healthy individuals or \gls{PD} patients. 
 
@@ -56,160 +54,190 @@ In section \ref{sec:handwriting} we reviewed the literature proving that handwri
 
 Writing is a skill that is developing later in a child's life. It involves a complex feedback system, integrating continuous information from the writing hand, i.e., proprioceptive sensory stimuli from all muscles involved, and sensory information from the fingers and the visual system. Also, writing is a task that implicates the participation of various degrees of cognitive processes. Researchers have tried to isolate the motor aspect of the task and minimize the involvement of any cognitive process that could affect the patient's performance and have used the Archimedes spiral, single letters or simple words, in order to investigate purely motor aspects of handwriting (Saunders-Pullman et al, 2008). In (Popovic et al, 2008) the authors showed that even simpler tasks, namely drawing point-to-point trajectories, contained useful features that helped detect motor blocks in \gls{PD} patients.
 
-For the \gls{PenCT} study we picked up from (Popovic et al, 2008) designed a protocol that would use tasks stripped of cognitive involvement, as much as possible, easily executable with both hands, and requiring no particularly special equipment or hardware setup. We were interested in keeping the signal collection simple, fast, easy for elderly people, requiring minimum instruction and training, and suffering from low probability of erroneous execution. The layman's task would mean the data processing would have to be sophisticated enough to extract metrics containing significant information, sufficient for classification. 
+For the \gls{PenCT} study we designed a protocol that would use tasks stripped of cognitive involvement, as much as possible, easily executable with both hands, and requiring no particularly special equipment or hardware setup. We were interested in keeping the signal collection simple, fast, easy for elderly people, requiring minimum instruction and training, and suffering from low probability of erroneous execution. The layman's task would mean the data processing would have to be sophisticated enough to extract metrics containing significant information, sufficient for classification. 
 
 We explored the use of a simple line-drawing task. Line-drawing would be simpler than, for example, writing or drawing spirals, would last only a few seconds, would involve fewer muscular systems, no cognitive effort, and low coordination control effort. We hypothesized it would be unaffected by the dexterity of the volunteers' dominant hand, making it easy to perform using either upper limb, which cannot happen in the case of writing letters or words. 
 
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+In \gls{PenCT} we aimed to investigate the kinematics of hand motion, measuring hand movement at a timescale where the volunteers would have little conscious control of the motion. That way, what we expected to detect was the balance of the tone of agonist versus antagonist muscular systems, which is altered in patients with \gls{PD}. We instructed our volunteers to draw simple horizontal lines, hypothesizing that any imbalance in agonist-antagonist coordination should be present even in simple drawings.
 
-More specifically, we investigate the kinematics of hand motion during line drawing task, measuring hand movement at a timescale where there is no conscious control of the motion, so that what we detect is the balance of the tone of agonist versus antagonist muscular systems. This balance is altered in Parkinson's disease and in other pathological conditions. Unlike other studies on the subject, we aimed to make the task as simple as possible for the participants, and thus had them draw simple horizontal lines, hypothesizing that any imbalance in agonist-antagonist coordination should be present even in simple drawings. Our results validate that hypothesis, as we shall see. Furthermore, with lines, participants can draw starting from either side of the writing surface, extending or flexing their arms, allowing us to check the performance of two different groups of muscular systems.
-Our hypothesis was that due to impaired coordination in patients with movement disorders, certain features, such as the velocity variability of the pen's tip (to be made precise shortly) or the ``excursions'' from the horizontal, should be more pronounced compared to healthy subjects. Towards that end, our approach involves recording the position of the pen on the tablet and computing a vector of metrics, namely the Normalized Velocity Variability (NVV), the velocity's Standard Deviation (SDV) and Mean (MV), and the signal Entropy (ETP), to characterize the pen's trace spatiotemporally. Using data acquired from healthy and PD individuals, we test the hypothesis that these metrics are statistically different between the two groups. Our hypothesis is based on research proving that velocity- and acceleration-based metrics of voluntary movements can separate pathological from healthy subjects. This includes [11] where PD patients showed a reduced ability to modulate acceleration, leading to smaller than required movements and micrographia, and [20] which showed that that dopamine depletion in PD leads to smaller than normal pallidothalamic gating signals, which in turn affect the ability to control variable movement speed. The variability in handwriting velocity in patients with PD was also noted in [21] where the patients showed multiple peaks in their velocity signal whereas the controls showed just one peak. In [22], the velocity and acceleration profiles of PD patients were different in relation to healthy subjects while writing circles. In a different experimental design investigating the effect of the dopamine on handwriting movements [23], researchers found lower values for maximum and minimum velocity in ascending and descending strokes in PD patients than in healthy subjects. They also found that patients had significantly more inversions of velocity and acceleration than healthy people. There was also a difference between patients on medication and off medication, where the number of inversions in velocity and acceleration was statistically significant. 
+Another benefit of the selected task would be the bi-lateral, bi-directional execution capability, meaning the volunteers would be able to execute the task with both hands (i.e. bi-lateral), as already mentioned, and activating different muscular systems by performing both extension and flexion motion patterns (i.e. bi-directional). 
 
+We chose to conduct a control study and not a one-population validation study because there was lack of literature evidence that this simple drawing collection task would perform adequately, or even be robust enough for us to gather usable data. Our primary goal was to establish whether our tool could identify motor impairments. 
 
-We chose to conduct a control study and not a one-population validation study because there was complete lack of literature evidence that this method of collecting inertial signals would work, or even be robust enough for us to gather usable data, and detection of a motor anomaly should be the first step before attempting to evaluate its severity. Our primary goal was to establish whether our tool could identify tremor. In a follow-up clinical trial we would assess its accuracy in quantifying the symptom (see section \ref{sec:SmartCT2}). 
-
-%%%%%%------------> include this!!!!!!!!
-%%%%%%------------> include this!!!!!!!!
-%%%%%%------------> include this!!!!!!!!
-Therefore, the expected outcome of \gls{SmartCT1} was to collect data using a novel tool on a small target population (\gls{SmartPD1}), examine the signals, calculate basic metrics and explore the statistical significance of the metrics when compared to a size-matched control population (\gls{SmartH1}). Most importantly, we wanted to gain significant insight concerning the optimization of the protocol of our next scheduled larger clinical trial (\gls{SmartCT2}).
+The expected outcome of \gls{PenCT} was to evaluate the performance of a ubiquitous data collection tool with an unusually simple task on a small target population (\gls{PenPD}), examine the signals, calculate basic metrics and explore the statistical significance of the metrics when compared to a size-matched control population (\gls{PenH}). 
 
 
 \subsubsection{Volunteers}
 \label{subsubsec:PenCTVolunteers}
-Fifty-nine subjects in total participated in this study. All were right-handed, and had normal or corrected-to-normal vision. Their right-handedness was established based on what hand they used to write and eat with, as well as an evaluation of the muscular force of their two hands. The subjects agreed to participate in this study after a detailed explanation of its purposes and procedures. They were divided in three groups based on their health status and age (Table I). 
-Group H included 20 healthy persons aged 56-89. All subjects had a detailed neurological examination in order to screen for any movement disorders that would exclude them from the study. None had a first-degree relative with PD or some kind of tremor. Also, none had hypertension or diabetes. Most of the healthy subjects came from retirement facilities.
-Group PD had 24 subjects aged 58-80, all under medication. They were recruited from the Parkinson's disease outpatient clinic of the 1st Neurology Department of the Aristotle University of Thessaloniki, Greece. All had been under periodic evaluation and levodopa and/or dopamine agonist treatment for more than a year. Undeniably, patients who are on medication improve on some of their clinical signs and symptoms. Nevertheless, even when a patient is on medication, most PD signs and symptoms never disappear. The symptoms that are mostly alleviated are bradykinesia and rigidity, whereas tremor in most cases is ``drug-resistant'' [24]. Because PD subjects participating in this study were all tested in an outpatient setting, they were kept on medication for ethical and safety reasons (i.e., drug deprivation could lead to injuries). Additionally, most of our patients were not newly-diagnosed (their Hoehn and Yahr rating was above 1) and despite treatment their signs and symptoms were present. Their information is provided in Table II. We introduced a third group of 15 young healthy volunteers (YH) with a mean age 36.40 years. They were included in this study to establish a ``baseline'' for the various metrics, and their scores were compared to those of older healthy volunteers (group H) to test for possible age effects.
+
+\hlorange{power analysis?}
+
+Fifty-nine subjects in total participated in this study. All were right-handed, and had normal or corrected-to-normal vision. Their right-handedness was established based on what hand they used to write and eat with. The subjects agreed to participate in this study after a detailed explanation of its purposes and procedures. They were divided in three groups based on their health status and age (\ref{table:demoPenCT1}). 
+
+Group \gls{PenH} included 20 healthy persons aged 56-89. All subjects had a detailed neurological examination in order to screen for any movement disorders that would exclude them from the study. None had a first-degree relative with \gls{PD} or some kind of tremor. Also, none had hypertension or diabetes. Most of the healthy subjects came from retirement facilities.
+
+Group \gls{PenPD} had 24 subjects aged 58-80, all under medication. They were recruited from the Parkinson's disease outpatient clinic of the 1st Neurology Department of the Aristotle University of Thessaloniki, Greece. All had been under periodic evaluation and levodopa and/or dopamine agonist treatment for more than a year. Undeniably, patients who are on medication improve on some of their clinical signs and symptoms. Nevertheless, even when a patient is on medication, most \gls{PD} signs and symptoms never disappear. The symptoms that are mostly alleviated are bradykinesia and rigidity, whereas tremor in most cases is ``drug-resistant''. Because \gls{PD} subjects participating in this study were all tested in an outpatient setting, they were kept on medication for ethical and safety reasons (i.e., drug deprivation could lead to injuries). Additionally, most of our patients were not newly-diagnosed (their Hoehn and Yahr rating was above 1) and despite treatment their signs and symptoms were present. Their information is provided in \ref{table:demoPenCT2}. 
+
+We introduced a third group of 15 young healthy volunteers (\gls{PenYH}) with a mean age 36.40 years. They were included in this study to establish a ``baseline'' for the various metrics, and their scores were compared to those of older healthy volunteers (\gls{PenH}) to test for possible age effects.
 
 \begin{table}[!hp]
 \centering
-\caption{\textsc{Information on SmartPD2 and SmartPD2L groups}}
-\begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c c c c c c c}
-	\multirow{2}{*}{\textit{Volunteers}} & \multirow{2}{*}{Age} & \multirow{2}{*}{Sex} 
-	& \multicolumn{4}{c}{\textit{UPDRS Upper Limb Tremor Items}} \\
-	\cline{4-7}
-	& & & \textit{Rest Right} & \textit{Rest Left} & \textit{Extended Right} & \textit{Extended Left} \\
+\caption{\textsc{Information on PenPD group}}
+\begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c c c c c c }
+	\textit{Volunteers} & \textit{Age} & \textit{Sex} & \textit{UPDRS} & \textit{H\&Y} & \textit{Years from onset} \\
 	\hline 	\hline 
- 	\gls{SmartPD2}$_{1}$ & 76 & F & 0 & 1 & 0 & 1 \\
- 	\gls{SmartPD2}$_{2}$ & 77 & M & 0 & 0 & 0 & 1 \\
- 	\gls{SmartPD2}$_{3}$ & 80 & F & 2 & 0 & 0 & 0 \\
- 	\gls{SmartPD2}$_{4}$ & 76 & M & 1 & 0 & 1 & 0 \\
- 	\gls{SmartPD2}$_{5}$ & 74 & M & 0 & 0 & 0 & 1 \\
- 	\gls{SmartPD2}$_{6}$ & 76 & M & 0 & 2 & 0 & 0 \\
- 	\gls{SmartPD2}$_{7}$ & 62 & F & 0 & 1 & 1 & 1 \\
- 	\gls{SmartPD2}$_{8}$ & 82 & M & 0 & 0 & 1 & 1 \\
- 	\gls{SmartPD2}$_{9}$ & 69 & F & 0 & 0 & 0 & 1 \\
- 	\gls{SmartPD2}$_{10}$ & 76 & F & 1 & 2 & 1 & 2 \\
- 	\gls{SmartPD2}$_{11}$ & 81 & M & 1 & 0 & 2 & 1 \\
- 	\gls{SmartPD2}$_{12}$ & 39 & M & 2 & 1 & 2 & 2 \\
- 	\gls{SmartPD2}$_{13}$ & 65 & F & 0 & 2 & 0 & 1 \\
- 	\gls{SmartPD2}$_{14}$ & 78 & M & 2 & 0 & 1 & 1\\
- 	\gls{SmartPD2}$_{15}$ & 50 & M & 1 & 0 & 0 & 0\\
- 	\gls{SmartPD2}$_{16}$ & 75 & F & 0 & 0 & 0 & 1\\
- 	\gls{SmartPD2}$_{17}$ & 70 & M & 0 & 0 & 1 & 2 \\
- 	\gls{SmartPD2}$_{18}$ & 80 & F & 4 & 4 & 2 & 1 \\
- 	\gls{SmartPD2}$_{19}$ & 76 & M & 0 & 0 & 0 & 0 \\
- 	\gls{SmartPD2}$_{20}$ & 75 & F & 2 & 0 & 2 & 1 \\
- 	\gls{SmartPD2}$_{21}$ & 43 & F & 0 & 0 & 0 & 0 \\
- 	\gls{SmartPD2}$_{22}$ & 78 & F & 1 & 0 & 2 & 1 \\
- 	\gls{SmartPD2}$_{23}$ & 73 & F & 0 & 0 & 0 & 0 \\
- 	% & & & & & & \\
- 	\hline
- 	\gls{SmartPD2L}$_{1}$ & 83 & M & 1 & 0 & 0 & 0 \\
- 	\gls{SmartPD2L}$_{2}$ & 77 & F & 0 & 1 & 2 & 1 \\
- 	& & & & & & \\
-	\multicolumn{7}{c}{\gls{UPDRS} scores evaluated during ON state} 	\\
+ 	\gls{PenPD}$_{1}$ & 70 & F & 9 & 2 & 2 \\
+ 	\gls{PenPD}$_{2}$ & 61 & M & 15 & 3 & 2 \\
+ 	\gls{PenPD}$_{3}$ & 63 & F & 13 & 2 & 2 \\
+ 	\gls{PenPD}$_{4}$ & 66 & F & 29 & 2.5 & 2 \\
+ 	\gls{PenPD}$_{5}$ & 75 & F & 8 & 2 & 2.5 \\
+ 	\gls{PenPD}$_{6}$ & 65 & F & 9 & 2 & 1.5 \\
+ 	\gls{PenPD}$_{7}$ & 78 & M & 23 & 3 & 3 \\
+ 	\gls{PenPD}$_{8}$ & 72 & M & 28 & 3 & 3 \\
+ 	\gls{PenPD}$_{9}$ & 69 & M & 15 & 2 & 3 \\
+ 	\gls{PenPD}$_{10}$ & 72 & M & 29 & 2 & 3 \\
+ 	\gls{PenPD}$_{11}$ & 72 & M & 19 & 2 & 2.5 \\
+ 	\gls{PenPD}$_{12}$ & 70 & M & 1 & 2 & 2 \\
+ 	\gls{PenPD}$_{13}$ & 75 & M & 11 & 2.5 & 2 \\
+ 	\gls{PenPD}$_{14}$ & 67 & M & 20 & 2 & 2 \\
+ 	\gls{PenPD}$_{15}$ & 72 & M & 25 & 3 & 4 \\
+ 	\gls{PenPD}$_{16}$ & 80 & M & 10 & 3 & 5 \\
+ 	\gls{PenPD}$_{17}$ & 66 & M & 7 & 3 & 2 \\
+ 	\gls{PenPD}$_{18}$ & 73 & M & 16 & 4 & 15 \\
+ 	\gls{PenPD}$_{19}$ & 74 & M & 23 & 4 & 14 \\
+ 	\gls{PenPD}$_{20}$ & 78 & M & 10 & 2 & 2.5 \\
+ 	\gls{PenPD}$_{21}$ & 79 & F & 14 & 2.5 & 3 \\
+ 	\gls{PenPD}$_{22}$ & 76 & F & 8 & 2.5 & 2 \\
+ 	\gls{PenPD}$_{23}$ & 71 & F & 4 & 2 & 2 \\
+ 	\gls{PenPD}$_{23}$ & 58 & M & 4 & 2 & 2 \\
+ 	& & & & & \\
+	\multicolumn{6}{c}{The \gls{UPDRS} column contains a part III total score,} \\
+	\multicolumn{6}{c}{where only upper limb components have been included} \\
 \end{tabular*}
-%\label{table:demoSmartPD2}
+\label{table:demoPenCT2}
 \end{table}
 
-To complete \gls{SmartCT2PI} we recruited 20 healthy volunteers, \gls{SmartH2}. They were screened for several health conditions which could exclude them from the study, such as hypertension or any movement disorder. They were also notified of the procedure and the purpose of the study before agreeing to participate. Grouping information on all participants of the study is provided in table \ref{table:demoSmartCT2}. 
+The volunteers' ages for the groups \gls{PenH} and \gls{PenPD} were mean-tested with the non-parametric Mann-Whitney U test and were found not to be statistically different at the 1\% significance level, therefore the groups could be considered age-matched.
 
-The volunteers' ages for all the groups were mean-tested with the non-parametric Mann-Whitney U test and were found not to be statistically different at the 1\% significance level, therefore the groups could be considered age-matched.
-
-\begin{table}[!hp]
+\begin{table}[h]
 \centering
 \caption{\textsc{Information on Volunteers' Grouping}}
-\begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c c c c c c }
+\begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c c c c }
 	\multirow{2}{*}{\textit{Group}} & \multirow{2}{*}{Size}
-	& \multicolumn{2}{c}{\textit{Sex Statistics}} & \multicolumn{2}{c}{\textit{Age Statistics}} \\
-	\cline{3-6}
-	& & \textit{Females} & \textit{Males} & \textit{Mean$\pm$StD} & \textit{SE} \\
+	& \multicolumn{2}{c}{\textit{Age Statistics}} \\
+	\cline{3-4}
+	& & \textit{Mean$\pm$StD} & \textit{SE} \\
 	\hline 	\hline 
-	\textit{SmartH2} & 20 & 10 & 10 & 67.20$\pm$6.25 & 1.39 \\
-	\textit{SmartPD2} & 23 & 12 & 11 & 70.91$\pm$11.78 & 2.45 \\
-	\textit{SmartPD2L} & 20 & 10 & 10 & 80.00$\pm$4.24 & 3.00 \\
+	\textit{PenYH} & 15 & 36.4$\pm$5.94 & 1.53 \\
+	\textit{PenH} & 20 & 66.35$\pm$7.91 & 1.61 \\
+	\textit{PenPD} & 24 & 70.91$\pm$5.74 & 1.17 \\
  	\hline
- 	\textit{Total} & 45 & 23 & 22 & & \\
+ 	\textit{Total} & 59 & & \\
 \end{tabular*}
-%\label{table:demoSmartCT2}
+\label{table:demoPenCT1}
 \end{table}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\\
-
-
 
 \subsubsection{Procedure and Hardware}
 \label{subsubsec:PenCTProcHardware} 
-The regimen that had to be followed during all phases of both smartphone-based clinical trials was similar, albeit a few minor modifications after the first trial. As already discussed, the first thing we changed was the size of the groups and distinguishing different phases for each desired output. The hardware used was exactly the same as the one used in \gls{SmartCT1} (see section \ref{subsubsec:smartCT1ProcHardware}). All volunteers had to wear the custom-made glove-case with an iPhone mounted securely on the dorsal part of their hand. However, for all phases of \gls{SmartCT2} we made the following two very important changes:
+Our hardware setup was based on a commercially available Wacom pen-tablet device, model Bamboo CTE-450, although any digital tablet would be suitable as well. Ours had an active surface of 147.6 x 92.3mm and a resolution of 100 dots per mm. The tablet would need to connect to a personal computer through a USB port (figure \ref{fig:penCTHW}). We developed custom software tools for data collection. The raw data consisted of the coordinates of the pen's tip (measured in pixels), recorded at a rate of 60Hz. Given the time scale involved in the movement of the upper limbs (including the hand/wrist) and the manifestations of \gls{PD} which are in the under-10Hz range, anything above a 20Hz sampling rate seems to be sufficient to capture \gls{PD} impaired motion.
+\hlorange{collection for PenPD done pre-2011?} 
 
-\begin{enumerate}
-\item We added a new posture to assess resting tremor as well as action postural tremor. Since we wanted our metrics and results from \gls{SmartCT2} to be compared with the clinical examination mainstay, the \gls{UPDRS}, we applied the same instructions regarding body posture as described in item 3.15 - Postural tremor of the hands, like we did for \gls{SmartCT1}, and  3.17 - Rest tremor amplitude of the \gls{MDS}-\gls{UPDRS} (Goetz et al, 2008). More specifically, in order to assess postural hand tremor we instructed the volunteers to stretch their arms out in front of the body, keeping their palms facing the ground. The wrists were to be held straight and the fingers separated as to not touch each other, in a comfortable manner. To assess rest tremor we instructed the volunteers to sit comfortably in a chair, with their arms placed on the arms of the chair, without touching their lap, and their feet loosely placed on the floor.
-\item We increased the duration of the two postures used to 30 seconds. Unfortunately there was no way to increase the sampling rate of the smartphone's sensors using the DeviceMotion and DeviceOrientation JavaScript interfaces (see section \ref{subsubsec:smartCT1Software}, which was still limited at the marginally acceptable 20Hz threshold. To increase our potential of retrieving valuable information in the collected signals we decided to increase their duration. Increasing the duration of each individual recording, would still keep the total session duration at 240 seconds, i.e., 4 minutes, given that for both postures the device was mounted on both the volunteers' hands alternately, and each recording was repeated twice, resulting in 8 recordings of 30 seconds each.
-\end{enumerate}
+\begin{figure}[h]
+\centering
+  \includegraphics[width=0.9\linewidth]{content/images/pad/pad3}
+\caption{The hardware setup of the \gls{PenCT}}
+\label{fig:penCTHW}
+\end{figure}
 
+During each drawing session, the volunteer would sit at a desk, assuming a comfortable position to perform a normal writing task. The desk would be at approximately 70-80cm from the ground, with its surface extending just below the volunteer's celiac plexus. Whenever possible and necessary the height of the chair would be adjusted according to the following protocol:
+\begin{itemize}
+\item the volunteer would sit in front of the desk,
+\item the volunteer would bend his elbows at 90 degrees, keeping his hands' palms facing up,
+\item the height of the chair would be adjusted so that the dorsal part of the hands would sit comfortably on the surface of the desk, keeping the elbows bent at 90 degrees. 
+\end{itemize}
 \noindent
-The 23 volunteers of the \gls{SmartPD2} group who underwent the smartphone-based tremor measuring procedure were under medication, but the timespan from their last dose of L-DOPA was anywhere from 1 to 4 hours when they were tested. That means that some of them were at the peak of the drug’s effect while for others this was not the case. For the third phase of the study, \gls{SmartCT2L}, we wanted to see how our tool would perform against an alteration in a patient's condition, such as that brought on by medication intake. The two \gls{SmartPD2L} volunteers stayed in the clinic overnight and followed our experimental protocol both OFF and ON medication, i.e., right before taking their medication in the morning and one hour after that. 
+The Wacom tablet was be connected to a laptop and placed in front of the volunteer. All participants were instructed to draw a horizontal line on the tablet's surface at a comfortable speed, keeping the pen's velocity as constant as possible throughout the task. While drawing, the PC's screen would show the digital trace of the line drawn to provide visual feedback. 
 
-Throughout \gls{SmartCT2}, every time a patient participated in a session, an experienced neurologist would perform a full \gls{UPDRS} examination before the recording. The neurologist was the same for every patient to avoid inter-rater variability. 
+\hlorange{All sessions were recorded with visual feedback on the laptop's screen.}
 
-As per the \gls{SmartCT1} protocol described earlier, all volunteers were asked to maintain the postures for the defined duration, in the case of \gls{SmartCT2}, 30 seconds, during which the web application running on the glove-case-mounted iPhone automatically collected the accelerometer and gyroscope data and sent them to our server.
+We instructed our volunteers to maintain a constant drawing speed profile, aiming to complete the drawing task at approximately 2 seconds, because the effects of \gls{PD} are dominant particularly at rest and during steady movements. All participants went through a practice phase where they drew a few lines and familiarized themselves with the procedure. The movement was such that the hand was away from the body, and the forearm was not supported by the table or the tablet; the only contact with the tablet's surface was through the pen, and subjects were instructed to draw with their wrist fixed in relation to the forearm. As already mentioned, the trace of each line was shown on the PC's screen. All volunteers were asked to draw the horizontal lines at least 10 times for each hand, left and right, and each direction, left-to-right and right-to-left, flexing or extending the elbow, resulting in a set of 40 recordings per session. The lines drawn were approximately 145mm long, which was determined by the working area of the tablet. We opted to discard the initial and final data, i.e., 150 pixels at the start and the end of the line drawn), taking into consideration only the middle 125mm of the line, because we wanted to focus on the intentionally steady portion of the movement without the initial and final acceleration and deceleration effects. 
+
+Throughout \gls{PenCT}, every time a patient participated in a session, an experienced neurologist would perform a full \gls{UPDRS} examination before the recording. The neurologist was the same for every patient to avoid inter-rater variability. 
  
 \subsubsection{Software}
 \label{subsubsec:PenCTSoftware}
-The software modules used in all phases of \gls{SmartCT2} were to a great extent the same as those used in \gls{SmartCT1}. Apart from collecting signals for a longer period of time, the web application was the same, the Apache server was identical, as was the pipeline executed up to the post processing of the signals. The difference was in the data processing, once the signals were collected, as will be discussed in the following section. When our second trial took place (late 2013 to mid 2014) we actually tested our web application on two Android devices\footnote{A Samsung Galaxy S4 and a Google Nexus 5, both running Android 4.4.2} and it would run successfully. 
+Custom software was developed to collect the digital trajectories of the drawing tasks completed by the volunteers in \gls{PenCT}. The \gls{PenPD} and \gls{PenYH} volunteers' signals were collected through a Windows desktop application developed in \hlorange{Delphi}. The signal sampling rate was 60Hz, i.e., the application recorded the position of the pen on the tablet once every 16.6ms. A Windows laptop was used to connect the Wacom tablet. The \gls{PenH} volunteers' signals were collected through a Matlab application running on a MacBook Pro laptop. To acquire similar raw signals we used the same sampling rate, 60Hz. Both applications used the official driver of the Wacom tablet installed and had the pen configured to function like a mouse. \hlorange{Both applications used showed the line drawn on the laptop's screen.} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Data Collected}
 \label{subsec:PenCTData}
+The signals were collected at 60Hz, resulting in a $(x,y)$ pixel coordinates tuple per 16ms, for the total duration of the line-drawing task. As discussed in paragraph \ref{subsubsec:PenCTProcHardware}, volunteers were instructed to draw at least 40 lines maintaining steady speed, in about 2 seconds. In reality, their drawing times fell between 1.5 and 3.5 seconds. Having cut the initial (acceleration) and final (deceleration) portions of the line (150 pixels at the start and end) resulted in 1.47 seconds average time for the \gls{PenH} group and 3 seconds for the \gls{PenPD} group. That means the signals of the \gls{PenH} group had an average cardinality $N=88$, whereas the \gls{PenPD} group had an average cardinality $N=180$. 
 
-As explained earlier, each session consisted of 8 recordings. The volunteers all wore the glove-case on both hands alternately for both postures, measuring rest and postural tremor, repeating twice. The signals were sent directly after each recording to our server where we gathered them and formed each volunteer's acceleration vector, $\alpha(i) = [\alpha_{x}(i),\alpha_{y}(i),\alpha_{z}(i)]^{T}$ (in $m/s^{2}$) and angular velocity, also called rotation rate, vector $\omega(i) = [\omega_{x}(i),\omega_{y}(i),\omega_{z}(i)]^{T}$ (in $rad/s$), with $i$ denoting discrete sample and axes $x$, $y$ and $z$ defined as in figures \ref{fig:iphoneAxes} and \ref{fig:iphoneAxesGyro}. For 30 seconds signals, at 20Hz sampling rate, each session would yield 8 vectors of 600 elements for each axis. For this clinical trial we would also explore the frequency domain of the signals, applying more detailed processing. We applied a band-pass filter with cutoff frequencies of 1.5Hz and 9.5Hz, in order to exclude noise due to breathing, pulse, or any high-frequency sudden movements during the recordings. In figure \ref{fig:accelFFTPD2_3} the spectral analysis through Fast Fourier Transform shows a clear peak in the 4-5Hz range, which is typical frequency for the resting tremor of a \gls{PD} patient (see section \ref{subsec:tremor}). 
+To quantify each volunteer's performance we first collected their coordinates tuples along with a timestamp per sample. The sequence of samples in each volunteer's digitized path on the tablet along the horizontal and vertical direction is defined as $s(i) = (t(i),x(i),y(i))$, where $i = 1...N$. The temporal interval in milliseconds is defined as $\Delta t = t(i)-t(i-1)$ and the total duration $T = t(N)-t(1)$. We computed the pen's horizontal velocity along the path by taking first differences $v(i)=(x(i)-x(i-1))/\Delta t$, and calculated each volunteer's path score vector, consisting of the following metrics:
 
-To characterize the singals we calculated squared magnitudes combining each sample's axis acceleration (\ref{eq: magSampleAlpha}) and rotation rate (\ref{eq: magSampleOmega}) and summed over all $N$ (600) samples for each signal to calculate $mag_{\alpha}$ (\ref{eq: magAlpha2}) and $mag_{\omega}$ (\ref{eq: magOmega2}).
+%Equations
+
+\begin{equation} \label{eq: MV}
+MV = \frac{1}{N}\sum_{i=1}^{N}v(i)
+\end{equation}
+
+\begin{equation} \label{eq: NVV}
+NVV = \frac{1}{T|MV|}\sum_{i=1}^{N-1}|v(i+1) - v(i)|
+\end{equation}
+
+\begin{equation} \label{eq: SDV}
+SDV = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}|v(i)-MV|^{2}}
+\end{equation}
+
+\begin{equation} \label{eq: ETPx}
+ETPx = -\sum_{i=1}^{N}P(x(i))\log(P(x(i)))
+\end{equation}
+
+\begin{equation} \label{eq: ETPy}
+ETPy = -\sum_{i=1}^{N}P(y(i))\log(P(y(i)))
+\end{equation}
 
 \noindent
-The $sd_{\alpha}$ is the sum of absolute differences in the acceleration vector, summed over each of the three axes, $x$, $y$, and $z$ (\ref{eq: sdAlpha}). To compute the $mAmp_{\omega}$ metric (\ref{eq: maxAmpOmega}) we initially obtained the magnitude of the Fourier transform of each of the three axial components of the rotation vector $\omega(i)$, defined as $\hat{\omega}_{\kappa}(\xi)$, with $\kappa \in \{x,y,z\}$. We then determined each component’s maximum in the $4 \leq \xi \leq 7$Hz range (that range being consistent with the frequency of the majority of Parkinsonian tremor) and summed the three maxima. 
+The $MV$ represents the mean velocity of each path's, whereas the $SDV$ is the standard deviation of velocity. The $NVV$ quantifies the velocity variability of each path drawn and the $ETP$ metrics quantify the path's signal entropy for the horizontal and vertical component. More specifically, to calculate the entropy, we used the histograms of the $x$-component, $P(x(i))$, and $y$-component, $P(y(i)$ respectively, as the estimators of the signal's probability density function. To calculate the histograms we used Matlab's \codeword{histogram} function\footnote{Histogram plot - MATLAB, accessed 17/12/2017 at: \url{https://www.mathworks.com/help/matlab/ref/histogram.html}}, which automatically creates bins of uniform width, depending on the signal's element range and distribution shape. 
 
-In each session, patients performed two recordings per hand, and each of the metrics (\ref{eq: magAlpha2})-(\ref{eq: maxAmpOmega}) was averaged over both trials, giving us an average score for each patient's right hand and another average for their left hand. We kept left and right hand averages distinct, as opposed to averaging all scores for both hands, because \gls{UPDRS} scores are similarly categorized on a left hand and right hand basis. For the following paragraphs we hereby define 4 different aggregation profiles for each of the features calculated from (\ref{eq: magAlpha2})-(\ref{eq: maxAmpOmega}):
+Choosing to calculate the metrics (\ref{eq: MV})-(\ref{eq: ETPy}) to characterize the pen's trace in a spatiotemporal manner was based on the hypothesis that due to impaired coordination in patients with movement disorders, certain features, such as the velocity variability of the pen's tip or the ``excursions'' from the horizontal, should be more pronounced compared to healthy subjects. According to our hypothesis these metrics would be statistically different between the two groups. Previous research had proven that velocity- and acceleration-based metrics of voluntary movements could separate pathological from healthy subjects. In (Broderick et al, 2009) \gls{PD} patients showed a reduced ability to modulate acceleration, leading to smaller than required movements and micrographia, and (Contreras-Vidal and Stelmach, 1995) showed  that dopamine depletion in \gls{PD} leads to smaller than normal pallidothalamic gating signals, which in turn would affect the ability to control variable movement speed. The variability in handwriting velocity in patients with \gls{PD} was also noted in (Van Gemmert et al, 2003) where the patients showed multiple peaks in their velocity signal whereas the controls showed just one peak. Further backing our hypothesis, in (Eichhorn et al, 1996), the velocity and acceleration profiles of \gls{PD} patients were different in relation to healthy subjects while writing circles. Finally, in a different experimental design investigating the effect of dopamine on handwriting movements, the authors of (Tucha et al, 2005) found lower values for maximum and minimum velocity in ascending and descending strokes in \gls{PD} patients than in healthy subjects. They also found that patients had significantly more inversions of velocity and acceleration than healthy people. There was also a difference between patients ON medication and OFF medication, where the number of inversions in velocity and acceleration was statistically significant. 
+
+In \gls{PenCT}, we expected to observe smoother movements incur a lower $NVV$ and $SDV$ compared to more irregular movements. For example, a trajectory with constant speed in the $x$-direction would have $NVV$ and $SDV$ equal to zero.
+
+For each line drawn we calculated the score vector ((\ref{eq: MV})-(\ref{eq: ETPy})). Then, for each volunteer we averaged each metric of the score vector in different subsets, selecting specific recordings of the total 40 performed in each session. 
+For the following paragraphs we hereby define six different aggregation and averaging profiles for each of the metrics in the score vector: 
 
 \begin{itemize}
-\item restR for rest posture, corresponding to the \gls{MDS}-\gls{UPDRS} item 3.17 right upper extremity (\gls{RUE}) value,
-\item restL for rest posture, corresponding to the \gls{MDS}-\gls{UPDRS} item 3.17 left upper extremity (\gls{LUE}) values,
-\item extR for extended hands posture, corresponding to the \gls{MDS}-\gls{UPDRS} item 3.15 R values, and
-\item extL for extended hands posture, corresponding to the \gls{MDS}-\gls{UPDRS} item 3.15 L values. 
+\item ALL, where the value is a mean over all of a volunteer's recordings,
+\item LH, where the value is a mean over the volunteer's lowest-scoring hand,
+\item HH, where the value is a mean over the volunteer's highest-scoring hand,
+\item HLH, where the value is a mean over the difference between highest- and lowest-scoring hand, i.e. HH-LH,
+\item LD, where the value is a mean over the volunteer's lowest-scoring direction, i.e. flexion or extension, and
+\item HD, where the value is a mean over the volunteer's highest-scoring direction, i.e. flexion or extension.
 \end{itemize}
+
+These aggregation profiles will be used as subscripts on the metrics of the score vector, e.g. , to denote the recordings included to calculate the value, for example $NVV_{HH}$ corresponds to applying the calculation of (\ref{eq: NVV}) to all recordings of a volunteer, averaging over each hand separately and keeping the highest value. When no profile is subscribed, ALL is implied. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Data Analysis}
 \label{subsec:PenCTAnalysis}
 \subsubsection{Means Testing}
 \label{subsubsec:PenCTMeansTesting}
+
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 Since our goal was to facilitate identification and monitoring of \gls{PD}-induced tremor, it was essential to establish that the metrics calculated from the signals could be relied upon to differentiate the \gls{SmartPD2} and \gls{SmartH2} populations. We used the non-parametric Mann-Whitney U test to explore the statistical significance in the difference of means of the two main populations participating in \gls{SmartCT2}, for all aggregations of the 4 metrics. As shown in table \ref{table:meansTestingSmartCT2}, all between-groups tests found significant differences between the mean scores of the metrics of the \gls{SmartPD2} volunteers compared to the means of the \gls{SmartH2} volunteers, at 1\% significance level.  
 
 
@@ -235,14 +263,6 @@ The values in table \ref{table:CorrelationSmartPD2} show that, regarding the res
 Another thing made obvious by the correlation analysis is the lower correlation shown between the metrics and the scores for the extended posture. Resting tremor seems to be identified and quantified much more consistently than postural tremor with the device mounted on the patients' hand. This could be attributed to the mass and weight of the device, and its effect on the dynamics of the hand and arm system, altering the way postural action tremor manifests. 
 
 Finally, an important fact to take under consideration when analysing the linear correlation between \gls{UPDRS} scores and any automated, sensor-based, amplitude quantification means is that many theories and studies suggest that a 5-point tremor rating scale such as the \gls{UPDRS}, despite its clear instructions of use and precise translation of amplitude cm to points, is ultimately logarithmically related to tremor amplitude. Phychophysics define the relationships between physical stimuli and the perceptions evoked by these stimuli (Gescheider, 1997). In tremor assessment through a \gls{UPDRS} face-to-face examination, the tremor amplitude is the stimuli and the score assigned by the physician is his evoked perception's expression. In (Elble et al, 2006) it is shown that the physician's expression is logarithmically related to the actual stimuli. However, the automated, sensor-based metric is a linear expression of the tremor amplitude. Even for an experienced physician, eager to follow \gls{MDS}' guidelines on using the \gls{UPDRS} scoring, this could largely justify lower than expected linear correlation coefficients between the scores and the automated metrics. 
-
-\subsubsection{Recordings During OFF State}
-\label{subsubsec:PenCTOFF}
-During \gls{SmartCT2L}, 2 patients, defined as group \gls{SmartPD2L} stayed in the clinic overnight and followed our experimental protocol both during ON and OFF states. In table \ref{table:offSmartCT2} we present the percent differences ON-OFF in the four metrics, along with the \gls{UPDRS} scores for both volunteers. We would expect those differences to be negative because we expect higher metric scores (more pronounced tremor) during the OFF state simulating a de novo state, and lower after the drug ingestion (ON state). 
-
-From the \gls{UPDRS} scores of the two volunteers it is clear that these two patients did not suffer from severe hand tremor. 
-
-Their physician observed that the medication improved mostly the their rigidity, which was not quantified by our tool, and less so their tremor. However, it is encouraging to note that the readings of the smartphone's sensors respond well and follow the expected negative trend of the changes in the \gls{UPDRS} scores during the ON state. The only discrepancy was observed in the extR profile of volunteer \gls{SmartPD2L}$_{2}$ for all metrics, where the $\% \Delta$ was actually positive, however this could be considered circumstantial because for there were no clinical changes in the respective \gls{UPDRS} scores from OFF to ON observed as well. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Supervised Machine Learning To Establish Discriminating Criteria}
