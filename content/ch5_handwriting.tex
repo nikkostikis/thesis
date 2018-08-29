@@ -161,7 +161,7 @@ Throughout \gls{PenCT}, every time a patient participated in a session, an exper
   
 \subsubsection{Software}
 \label{subsubsec:PenCTSoftware}
-Custom software was developed to collect the digital trajectories of the drawing tasks completed by the volunteers in \gls{PenCT}. The \gls{PenPD} and \gls{PenYH} volunteers' signals were collected using a Windows desktop application developed in Delphi. The signal sampling rate was the tablet's nominal 133Hz, i.e., the application recorded the position of the pen on the tablet once every 7.5ms. A Windows laptop was used to connect the Wacom tablet. The \gls{PenH} volunteers' signals were collected using a Matlab application running on a MacBook Pro laptop. The signal collection was limited by the screen's refresh rate which was 60Hz, recording the position of the pen on the screen and tablet once every 16.6ms. To keep the signals comparable we downsampled the signals collected at a higher rate down to 60Hz. Both applications used the same Wacom tablet installed with the official driver released by Wacom, and had the pen configured to function like a mouse. Also, both laptops had the same screen resolution, 1280x800 pixels. During the signal collection, the Windows application's screen would turn black, providing no visual feedback of the task. The Matlab application showed the line drawn on the screen but during the sessions only the clinical trial associate conductor was facing the laptop's screen, which was out of the sight of the volunteers. Therefore we assume no visual feedback was offered to the subjects by both signal collection setups. Both applications recorded timestamps along with the $x$-axis and $y$-axis pixel coordinates corresponding to the trace of the lines drawn during the sessions. 
+Custom software was developed to collect the digital trajectories of the drawing tasks completed by the volunteers in \gls{PenCT}. The \gls{PenPD} and \gls{PenYH} volunteers' signals were collected using a Windows desktop application developed in Delphi. The signal sampling rate was the tablet's nominal 133Hz, i.e., the application recorded the position of the pen on the tablet once every 7.5ms. A Windows laptop was used to connect the Wacom tablet. The \gls{PenH} volunteers' signals were collected using a MATLAB application running on a MacBook Pro laptop. The signal collection was limited by the screen's refresh rate which was 60Hz, recording the position of the pen on the screen and tablet once every 16.6ms. To keep the signals comparable we downsampled the signals collected at a higher rate down to 60Hz. Both applications used the same Wacom tablet installed with the official driver released by Wacom, and had the pen configured to function like a mouse. Also, both laptops had the same screen resolution, 1280x800 pixels. During the signal collection, the Windows application's screen would turn black, providing no visual feedback of the task. The MATLAB application showed the line drawn on the screen but during the sessions only the clinical trial associate conductor was facing the laptop's screen, which was out of the sight of the volunteers. Therefore we assume no visual feedback was offered to the subjects by both signal collection setups. Both applications recorded timestamps along with the $x$-axis and $y$-axis pixel coordinates corresponding to the trace of the lines drawn during the sessions. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Data Collected}
@@ -197,7 +197,7 @@ ETPy = -\sum_{i=1}^{N}P(y(i))\log_{2}(P(y(i)))
 \noindent
 The $MV$ (\ref{eq: MV}) represents the mean horizontal ($x$-axis) velocity of each drawn trace, expressed in $cm/s$. The cardinality of the $v(i)$ vector is $N-1$. The $SDV$ (\ref{eq: SDV}) is the standard deviation of the horizontal ($x$-axis) velocity, also expressed in $cm/s$. The $NVV$ (\ref{eq: NVV}) quantifies the horizontal ($x$-axis) velocity variability of each trace, expressed in $1000/s$. The summation cardinality in (\ref{eq: NVV}) is $N-2$ because it sums over differences in between the elements of $v(i)$. Finally, the $ETP$ metrics quantify each trace's horizontal velocity entropy (\ref{eq: ETPv}) and vertical ($y$-axis) displacement entropy (\ref{eq: ETPy}) respectively. 
 
-Signal entropy is a measure of disorder or uncertainty. We used the entropy of the horizontal velocity and the vertical displacement because these quantities would have minimal variability and deterministic nature in a uniform horizontal line drawing motion. To perform the calculation of the entropy a probability density function was required. The histogram of the values of the signal was used as an estimator for the probability density. Instead of choosing a number of bins for the histogram based on the length of the signal (i.e., square root rule or Sturges formula) or an arbitrary bin width, for each signal we created an alphabet, consisting of all the unique values in it. To avoid unnecessarily many values that would essentially be indistinguishable, but calculate misleadingly high entropies, we rounded the signals at 4 decimal digits. One of the reasons we did not use the entropy of the $x$-axis displacement was that we would end up with a dictionary containing all of the samples, whereas the velocity and the vertical displacement would most likely revolve around a small number of values per line drawn. Ultimately, the probability of each unique value would simply be the number of occurrences divided by the number of the signal samples. Both entropy based metrics are expressed in bits, with a higher number denoting a more information-rich signal, hence, a higher variability in horizontal velocity or $y$-axis points visited line-drawing motion. 
+Signal entropy is a measure of disorder or uncertainty. We used the entropy of the horizontal velocity and the vertical displacement because these quantities would have low entropy due to minimal variability and deterministic nature if the line drawing motion was uniform, and higher entropy otherwise. To perform the calculation of the entropy a probability density function was required. The histogram of the values of the signal was used as an estimator for the probability density. Instead of choosing a number of bins for the histogram based on the length of the signal (i.e., square root rule or Sturges formula) or an arbitrary bin width, for each signal we created an alphabet, consisting of all the unique values in it. To avoid unnecessarily many values that would essentially be indistinguishable, but calculate misleadingly high entropies, we rounded the signals at 4 decimal digits. One of the reasons we did not use the entropy of the $x$-axis displacement was that we would end up with a dictionary containing all of the samples, whereas the velocity and the vertical displacement would most likely revolve around a small number of values per line drawn. Ultimately, the probability of each unique value would simply be the number of occurrences divided by the number of the signal samples. Both \ref{eq: ETPv} and \ref{eq: ETPy} use the binary logarithm and therefore are expressed in bits, with a higher number denoting a more information-rich signal, and hence, a higher variability in horizontal velocity or $y$-axis points visited line-drawing motion, respectively. 
 
 \begin{figure}[h]
 \centering
@@ -206,7 +206,7 @@ Signal entropy is a measure of disorder or uncertainty. We used the entropy of t
 \label{fig:yCorrection}
 \end{figure}
 
-To compensate for variability in the $y$-axis due to positioning of the tablet during the recorded session, a linear transformation was performed before calculating metric \ref{eq: ETPy} (figure \ref{fig:yCorrection}), resulting in the corrected $\bar{y}(i)$ vector. The metric calculated from the transformed trace was considered a new variant of the $ETPy$ metric defined in \ref{eq: ETPyRot} not a replacement because we could not be sure that the variability in the $y$-axis should be attributed to the skewed physical placement of the tablet during recording or to the actual movement of the participant. 
+To compensate for variability in the $y$-axis due to the positioning of the tablet during a session, a linear transformation was performed on the $y$-axis slightly rotating the trace (figure \ref{fig:yCorrection}), resulting in the corrected $\bar{y}(i)$ vector. The metric calculated from the transformed trace was considered a new variant of the $ETPy$ metric defined in \ref{eq: ETPyRot} not a replacement for \ref{eq: ETPy} because we could not be sure that the variability in the $y$-axis should be attributed to the skewed physical placement of the tablet during recording or to the actual movement of the participant. 
 
 \begin{equation} \label{eq: ETPyRot}
 ETP\bar{y} = -\sum_{i=1}^{N}P(\bar{y}(i))\log_{2}(P(\bar{y}(i)))
@@ -215,7 +215,7 @@ ETP\bar{y} = -\sum_{i=1}^{N}P(\bar{y}(i))\log_{2}(P(\bar{y}(i)))
 To perform the rotation for each signal:
 \begin{enumerate}
 \item the starting and ending point was identified,
-\item the linear relationship between the two points in the form of a linear equation f the form $y = {\alpha}x+{\beta}$ was calculated,
+\item the linear relationship between the two points in the form of a linear equation of the form $y = {\alpha}x+{\beta}$ was calculated,
 \item the angle between the $x$-axis and the linear equation was calculated as the negative (i.e., counter clock-wise rotation) inverse tangent of the slope ${\alpha}$, ${\theta}=-\arctan{\alpha}$,
 \item the starting point was translated to $(0,0)$,
 \item the transformation matrix was calculated
@@ -227,53 +227,165 @@ To perform the rotation for each signal:
 \end{equation}
 \item the rotation was performed and the starting point was translated back to its original coordinates. 
 \end{enumerate}
-The rotation performed for the signals collected from the \gls{PenPD} population had an average $0.44^{\circ}$, whereas the corresponding mean for the \gls{PenH} population was $0.25^{\circ}$, so the actual rotation per trace was small, but we thought it was worth investigating this as a new base for entropy calculation. 
+The rotation performed for the signals collected from the \gls{PenPD} population had an average $1.58^{\circ}$, whereas the corresponding mean for the \gls{PenH} population was $1.12^{\circ}$, so the actual rotation per trace was small, but we thought it was worth investigating this as a new base for entropy calculation. 
 
-Choosing to calculate the metrics (\ref{eq: MV})-(\ref{eq: ETPyRot}) to characterize the pen's trace in a spatiotemporal manner was based on the hypothesis that due to impaired coordination in patients with movement disorders, certain features, such as the velocity profile of the pen's tip or the ``excursions'' from the vertical, should be more pronounced compared to healthy subjects. According to our hypothesis these metrics would be statistically different between the two groups. Previous research had proven that velocity- and acceleration-based metrics of voluntary movements could separate pathological from healthy subjects. In (Broderick et al, 2009) \gls{PD} patients showed a reduced ability to modulate acceleration, leading to smaller than required movements and micrographia, and (Contreras-Vidal and Stelmach, 1995) showed  that dopamine depletion in \gls{PD} leads to smaller than normal pallidothalamic gating signals, which in turn would affect the ability to control movement speed. The variability in handwriting velocity in patients with \gls{PD} was also noted in (Van Gemmert et al, 2003), where the patients showed multiple peaks in their velocity signal whereas the controls showed just one peak. Further backing our hypothesis, in (Eichhorn et al, 1996), the velocity and acceleration profiles of \gls{PD} patients were different in relation to healthy subjects while writing circles. Finally, in a different experimental design investigating the effect of dopamine on handwriting movements, the authors of (Tucha et al, 2005) found lower values for maximum and minimum velocity in ascending and descending strokes in \gls{PD} patients than in healthy subjects. They also found that patients had significantly more inversions of velocity and acceleration than healthy people. There was also a difference between patients ON medication and OFF medication, where the number of inversions in velocity and acceleration was statistically significant. 
+Choosing to calculate the metrics (\ref{eq: MV})-(\ref{eq: ETPyRot}) to characterize the pen's trace in a spatiotemporal manner was based on the hypothesis that due to impaired coordination in patients with movement disorders, certain features, such as the velocity profile of the pen's tip or the ``excursions'' from the vertical, should be more pronounced compared to healthy subjects. Ideally, according to our hypothesis metrics based on variability should be statistically different between the two groups. Previous research had proven that velocity- and acceleration-based metrics of voluntary movements could separate pathological from healthy subjects. In (Broderick et al, 2009) \gls{PD} patients showed a reduced ability to modulate acceleration, leading to smaller than required movements and micrographia, and (Contreras-Vidal and Stelmach, 1995) showed  that dopamine depletion in \gls{PD} leads to smaller than normal pallidothalamic gating signals, which in turn would affect the ability to control movement speed. The variability in handwriting velocity in patients with \gls{PD} was also noted in (Van Gemmert et al, 2003), where the patients showed multiple peaks in their velocity signal whereas the controls showed just one peak. Further backing our hypothesis, in (Eichhorn et al, 1996), the velocity and acceleration profiles of \gls{PD} patients were different in relation to healthy subjects while writing circles. Finally, in a different experimental design investigating the effect of dopamine on handwriting movements, the authors of (Tucha et al, 2005) found lower values for maximum and minimum velocity in ascending and descending strokes in \gls{PD} patients than in healthy subjects. They also found that patients had significantly more inversions of velocity and acceleration than healthy people. There was also a difference between patients ON medication and OFF medication, where the number of inversions in velocity and acceleration was statistically significant. 
 
-In \gls{PenCT}, we expected to observe smoother movements incur a lower $NVV$ and $SDV$ compared to more irregular movements. For example, a trajectory with constant horizontal velocity the would have $NVV$ and $SDV$ equal to zero.
+In \gls{PenCT}, we expected to observe smoother movements incur a lower $NVV$, $SDV$ and $ETP$-based metrics, compared to more irregular movements. For example, a trajectory with constant horizontal velocity the would have $NVV$ and $SDV$ equal to zero.
 
-For each line drawn we calculated the score vector ((\ref{eq: MV})-(\ref{eq: ETPyRot})). Then, for each volunteer we averaged each metric of the score vector in different subsets, selecting specific recordings of the total 40 performed in each session. 
+For each line drawn we calculated the score vector ((\ref{eq: MV})-(\ref{eq: ETPyRot})). Then, for each volunteer we averaged each metric of the score vector in different subsets, selecting specific recordings of the total (about 40) performed in each session. 
 For the following paragraphs we hereby define six different aggregation and averaging profiles for each of the metrics in the score vector: 
 
 \begin{itemize}
 \item ALL, where the value is a mean over all of a volunteer's recordings,
-\item LH, where the value is a mean over the volunteer's lowest-scoring hand,
-\item HH, where the value is a mean over the volunteer's highest-scoring hand,
-\item HLH, where the value is a mean over the difference between highest- and lowest-scoring hand, i.e. HH-LH,
-\item LD, where the value is a mean over the volunteer's lowest-scoring direction, i.e. flexion or extension, and
-\item HD, where the value is a mean over the volunteer's highest-scoring direction, i.e. flexion or extension.
+\item LH, where the value is a mean over the volunteer's lowest-scoring hand for the specific metric,
+\item HH, where the value is a mean over the volunteer's highest-scoring hand for the specific metric,
+\item HLH, where the value is a mean over the difference between highest- and lowest-scoring hand for the specific metric, i.e. HH-LH,
+\item LD, where the value is a mean over the volunteer's lowest-scoring direction for the specific metric, i.e. flexion or extension, and
+\item HD, where the value is a mean over the volunteer's highest-scoring direction for the specific metric, i.e. flexion or extension.
 \end{itemize}
 
-These aggregation profiles are used as subscripts on the metrics of the score vector, to denote the recordings included to calculate the value, e.g., $NVV_{HH}$ corresponds to applying the calculation of (\ref{eq: NVV}) to all recordings of a volunteer, averaging over each hand separately and keeping only the values of the highest scoring hand. When no profile is subscribed, ALL is implied. To denote axis and aggregation profile a notation like $ETPy_{LD}$ is used. 
+These averaging profiles are used as subscripts on the metrics of the score vector, to denote the recordings included to calculate the value, e.g., $NVV_{HH}$ corresponds to applying the calculation of (\ref{eq: NVV}) to all recordings of a volunteer, averaging over each hand separately and keeping only the values of the highest scoring hand. Lack of profile subscript implies averaging over ALL recordings. To denote axis and aggregation profile a notation like $ETPy_{LD}$ is used. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Data Analysis}
 \label{subsec:PenCTAnalysis}
 The $NVV$ metric defined in \ref{eq: NVV} is novel and less explored in the context of movement disorders compared to the other metrics and handwriting markers calculated, i.e., $MV$ (\ref{eq: MV}) and $ETP$ (\ref{eq: ETPv})-(\ref{eq: ETPyRot}), which have been used with success in (Eichhorn et al, 1996), (Tucha et al, 2005), (Liu et al, 2005), and (Drotar et al, 2014). At a neurological functional level, we expected differences in $NVV$ scores between the \gls{PenPD} and \gls{PenH} groups, based on the fact that the substantia nigra is a key structure participating in the regulation of the muscular tone (Korchounov et al, 2010). The $NVV$ attempts to capture some expression of the balance, or lack thereof, of the muscular tone between opposing muscular systems, given the fact that low-level control of those systems occurs on a time scale which is on the order of milliseconds, while conscious control of movement cannot be done at such high a frequency. 
 
-Ultimately, the classification analysis (later in this chapter) should confirm these expectations. Before using the $NVV$ as a potential classification feature, we conducted a preliminary normality and statistical significance analysis of the $NVV$ scores between the \gls{PenPD} and \gls{PenH} groups. 
+Later in this chapter, we perform a classification analysis to validate our assumptions. Before using the $NVV$ as a potential classification feature, we conducted a preliminary normality and statistical significance analysis regarding the $NVV$ and all other scores between the \gls{PenPD} and \gls{PenH} groups. 
 
+In the following paragraphs, a series of statistical tests on the data collected is described. In the tables, unless stated otherwise using a profile subscript (see paragraph \ref{subsec:PenCTData}), the calculations of metrics were based on average values over all sessions of each volunteer. The confidence level ($p$-value threshold) for all tests, unless stated otherwise, was set to $1\%$.
 
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\subsubsection{Normality Testing}
+\label{subsubsec:PenCTNormalityTesting}
+We tested our data for normality with the Jarque-Berra and Liliefors tests, using all metrics and aggregation profiles (see \ref{subsec:PenCTData}). The MATLAB implementations \codeword{jbtest}\footnote{Jarque-Bera test - MATLAB jbtest, accessed Jul 23, 2018 at: https://www.mathworks.com/help/stats/jbtest.html.} and \codeword{lillietest}\footnote{Lilliefors test - MATLAB lillietest, accessed Jul 23, 2018, at: https://www.mathworks.com/help/stats/lillietest.html.} were used respectively, with $99\%$ confidence level. These tests were used to establish whether data could be assumed to fit the normal distribution with $99\%$ confidence. When results were contradictory, the distribution was considered as not normal. 
+
+In the following tables (\ref{table:PenCTNormalityVelocity}-\ref{table:PenCTNormalityEntropy}) normality for each metric ((\ref{eq: MV})-(\ref{eq: ETPyRot})) for \gls{PenPD} and \gls{PenH} along with mean values and standard deviations is presented.
+
+%%%%%% Normality, Mean and StD
+\begin{table}[h]
+\centering
+\caption{\textsc{Normality of Data for Velocity-based Metrics}}
+\begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c | c  c  c  c  c  c  c  c}
+	& {\textit{ALL}} & {\textit{LH}} & {\textit{HH}} & {\textit{HLH}} & {\textit{LD}} & {\textit{HD}} & {\textit{L}} & {\textit{R}} \\
+	\cline{2-9} 
+	\cline{2-9} 
+	& {\textit{Mean}} & {\textit{Mean}} & {\textit{Mean}} & {\textit{Mean}} & {\textit{Mean}} & {\textit{Mean}} & {\textit{Mean}} & {\textit{Mean}} \\
+	& {\textit{StD}} & {\textit{StD}} & {\textit{StD}} & {\textit{StD}} & {\textit{StD}} & {\textit{StD}} & {\textit{StD}} & {\textit{StD}} \\
+	& {\textit{Normal}} & {\textit{Normal}} & {\textit{Normal}} & {\textit{Normal}} & {\textit{Normal}} & {\textit{Normal}} & {\textit{Normal}} & {\textit{Normal}} \\
+	\cline{2-9}
+	%%
+	\\
+	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $MV$ (\ref{eq: MV})}} \\
+	\hline 	\hline
+	& 10.99 & 10.22 & 11.74 & 1.51 & 9.46 & 12.69 & 11.02 & 10.93 \\
+	{\textit{PenH}} & 5.95 & 5.75 & 6.20 & 1.16 & 5.44 & 6.58 & 6.22 & 5.82 \\
+	& Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+	\hline
+	& 4.12 & 3.56 & 4.60 & 1.04 & 3.26 & 5.10 & 3.69 & 4.47 \\
+	{\textit{PenPD}} & 1.22 & 1.17 & 1.43 & 1.09 & 1.12 & 1.40 & 1.18 & 1.51 \\
+	& Yes & Yes & Yes & No & Yes & Yes & Yes & Yes \\
+	%%
+	\\
+	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $NVV$ (\ref{eq: NVV})}} \\
+	\hline 	\hline
+	& 0.014 & 0.013 & 0.014 & 0 & 0.013 & 0.014 & 0.014 & 0.014 \\
+	{\textit{PenH}} & 0.0007 & 0.0007 & 0.0007 & 0.0004 & 0.0006 & 0.0008 & 0.0008 & 0.0008 \\
+	& Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+	\hline
+	& 0.017 & 0.016 & 0.018 & 0.002 & 0.015 & 0.019 & 0.016 & 0.017 \\
+	{\textit{PenPD}} & 0.003 & 0.002 & 0.004 & 0.002 & 0.002 & 0.005 & 0.002 & 0.005 \\
+	& No & No & No & No & Yes & No & No & No \\
+	%%
+	\\
+	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $SDV$ (\ref{eq: SDV})}} \\
+	\hline 	\hline
+	&  2.86 & 2.63 & 3.08 & 0.45 & 2.41 & 3.33 & 2.90 & 2.81 \\
+	{\textit{PenH}} & 1.29 & 1.22 & 1.38 & 0.30 & 1.13 & 1.46 & 1.38 & 1.25 \\
+	& Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+	\hline
+	& 1.71 & 1.40 & 1.98 & 0.58 & 1.30 & 2.22 & 1.43 & 1.95 \\
+	{\textit{PenPD}} & 0.68 & 0.52 & 0.92 & 0.68 & 0.48 & 0.99 & 0.52 & 0.94 \\
+	& Yes & Yes & No & No & Yes & Yes & Yes & Yes \\
+\end{tabular*}
+\label{table:PenCTNormalityVelocity}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{\textsc{Normality of Data for Entropy-based Metrics}}
+\begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c | c  c  c  c  c  c  c  c}
+	& {\textit{ALL}} & {\textit{LH}} & {\textit{HH}} & {\textit{HLH}} & {\textit{LD}} & {\textit{HD}} & {\textit{L}} & {\textit{R}} \\
+	\cline{2-9} 
+	\cline{2-9} 
+	& {\textit{Mean}} & {\textit{Mean}} & {\textit{Mean}} & {\textit{Mean}} & {\textit{Mean}} & {\textit{Mean}} & {\textit{Mean}} & {\textit{Mean}} \\
+	& {\textit{StD}} & {\textit{StD}} & {\textit{StD}} & {\textit{StD}} & {\textit{StD}} & {\textit{StD}} & {\textit{StD}} & {\textit{StD}} \\
+	& {\textit{Normal}} & {\textit{Normal}} & {\textit{Normal}} & {\textit{Normal}} & {\textit{Normal}} & {\textit{Normal}} & {\textit{Normal}} & {\textit{Normal}} \\
+	\cline{2-9}
+	%%
+	\\
+	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $ETPv$ (\ref{eq: ETPv})}} \\
+	\hline 	\hline
+	& 3.29 & 3.2 & 3.36 & 0.15 & 3.14 & 3.46 & 3.3 & 3.27 \\
+	{\textit{PenH}} & 0.37 & 0.36 & 0.39 & 0.1 & 0.36 & 0.4 & 0.4 & 0.37 \\
+	& Yes & Yes & Yes & Yes & Yes & Yes & No & Yes \\
+	\hline
+	& 2.9 & 2.73 & 3.06 & 0.33 & 2.64 & 3.18 & 2.76 & 3.03 \\
+	{\textit{PenPD}} & 0.49 & 0.44 & 0.5 & 0.28 & 0.45 & 0.51 & 0.44 & 0.53 \\
+	& Yes & Yes & Yes & No & Yes & Yes & Yes & Yes \\
+	%%
+	\\
+	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $ETPy$ (\ref{eq: ETPy})}} \\
+	\hline 	\hline
+	& 3.93 & 3.85 & 4.02 & 0.16 & 3.64 & 4.22 & 3.99 & 3.88 \\
+	{\textit{PenH}} & 0.20 & 0.19 & 0.23 & 0.12 & 0.25 & 0.30 & 0.24 & 0.20 \\
+	& Yes & Yes & Yes & No & Yes & No & Yes & Yes \\
+	\hline
+	& 4.44 & 4.29 & 4.62 & 0.32 & 4.12 & 4.81 & 4.55 & 4.36 \\
+	{\textit{PenPD}} & 0.32 & 0.36 & 0.35 & 0.32 & 0.36 & 0.41 & 0.4 & 0.36 \\
+	& Yes & Yes & Yes & No & Yes & Yes & Yes & Yes \\
+	%%
+	\\
+	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $ETP\bar{y}$ (\ref{eq: ETPyRot})}} \\
+	\hline 	\hline
+	& 6.1 & 5.97 & 6.24 & 0.27 & 5.84 & 6.35 & 6.1 & 6.1 \\
+	{\textit{PenH}} & 0.87 & 0.87 & 0.88 & 0.2 & 0.82 & 0.86 & 0.96 & 0.8 \\
+	& Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+	\hline
+	& 7.39 & 7.22 & 7.58 & 0.35 & 7.05 & 7.71 & 7.52 & 7.28 \\
+	{\textit{PenPD}} & 0.38 & 0.36 & 0.45 & 0.26 & 0.34 & 0.44 & 0.44 & 0.42 \\
+	& Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+	\end{tabular*}
+\label{table:PenCTNormalityEntropy}
+\end{table}
 
 \subsubsection{Significance Testing}
 \label{subsubsec:PenCTSignificanceTesting}
-We conducted normality (Jarque-Berra and Liliefors tests), homoscedasticity (Levene and Brown-Forsythe tests) and means testing, both parametric (T-Test) and non-parametric (Mann-Whitney), depending on normality, within the \gls{PenPD} and \gls{PenH} populations, and their aggregation profiles, individually, as well as between them. The $p$-value for all tests was set to $0.01$. 
+The significance of each metric, both the velocity-based and the entropy-based ones would be later explored through the feature selection and classification algorithms. However, in this stage we performed means testing for all metrics and aggregation profiles to examine whether a randomly selected value from the \gls{PenPD} sample would be expected to be significantly different than a randomly selected value from the \gls{PenH} sample. Preliminary variance equality tests, such as the Brown-Forsythe (Brown and Forsythe, 1974) test, would either lead us to a Student pooled variances $t$ test or a Welch $t$ test with separate variances (Welch, 1947). Although a common practice in older papers, we decided to skip the homoscedasticity testing because as shown in (Zimmerman, 2004), when normality is satisfied, going directly for a Welch $t$ test and not pooling variances, actually produces better Type I and Type II error probabilities. 
+
+Therefore, when both samples were normally distributed we used the two-tailed Welch $t$ test, as implemented in MATLAB with the function \codeword{ttest2}\footnote{Two-sample t-test - MATLAB ttest2, accessed Aug 30, 2018 at: https://www.mathworks.com/help/stats/ttest2.html.}, setting its \codeword{`Vartype'} flag to \codeword{`unequal'}. For inter-population comparisons where at least one of the samples was not normally distributed, the non-parametric two-tailed Mann-Whitney test was used, as implemented in MATLAB with the function \codeword{ranksum}\footnote{Wilcoxon rank sum test - MATLAB ranksum, accessed Aug 30, 2018 at: https://www.mathworks.com/help/stats/ranksum.html.}. 
+
+In the following tables () the results from means testing are presented. The $p$-values are included to illustrate whether the decision for significant or non-significant differences was a close one, with confidence level $99\%$.
+
+ 
 
 
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+\subsubsection{Duration and Velocity Correlation Testing}
+\label{subsubsec:PenCTDurVelCorTesting}
 Scaling the velocity with which a path is traversed leaves the $NVV$ invariant, by definition. This is also borne out experimentally, in the fact that there was no correlation found between the duration of each effort and its $NVV$ score. We calculated the Pearson's correlation coefficient $r$, as the fraction of the covariance between the $NVV$ of each signal and the signal's duration, over the product of their standard deviations. 
 
 \begin{equation} \label{eq:penPearson}
@@ -286,6 +398,14 @@ This fraction, in theory, could take values ranging from $-1$, for total negativ
 
 and ($r=0.11$ with $p<0.001$ for \gls{PenH} and $r= -0.06$ with $p=0.04$ for \gls{PenPD}, where $r$ is the Pearson product-moment correlation coefficient calculated for effort duration and $NVV$ score). 
 
+\subsubsection{Laterality Testing}
+\label{subsubsec:PenCTLateralityTesting}
+
+\subsubsection{UPDRS Correlation Testing}
+\label{subsubsec:PenCTUPDRSCorTesting}
+
+\subsubsection{Age Effects Testing}
+\label{subsubsec:PenCTAgeEffectsTesting}
 
 The NVV value of healthy people is also not affected by their age. Using means testing for YH and H groups we found no significant differences between the two healthy subgroups’ NVV values. Although aging is accompanying with a deterioration of the performances of the various components of the central nervous system, the NVV shows that the coordination between agonists and antagonists is well preserved, at least in the upper limbs.
 By examining the NVV values between PD and H groups we found that the NVV means for the PD group were not normally distributed for all six components described in Section II.C, whereas the NVV means for the H group were normally distributed for every component. 
@@ -300,32 +420,20 @@ Focusing on the H and PD participants, we used each subject’s mean NVVALL scor
 We found $NVV$ scores to be consistent in multiple sessions for single subjects: seven of the \gls{PenH} subjects were re-tested a second or third time, over a period of several days. In six of the seven cases, means testing revealed no statistically significant differences in the subjects’ means over different testing sessions. The one volunteer who showed significant difference between the two sessions reported sleeping for only three hours the night before the second test session. Sleep deprivation is known to favor abnormal brain responses.
 
 
-
-
-
-\subsubsection{Correlation With UPDRS}
-\label{subsubsec:PenCTCorrelation}
-To establish the validity of our smartphone-based method of upper limb parkinsonian tremor quantif
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Supervised Machine Learning To Establish Discriminating Criteria}
 \label{subsec:PenCTML}
 To ultimately build a practical and ubiquitous tool which would be able to accurately assess upper limb tremor in \gls{PD} patients, 
 
-
 \subsubsection{Fit of the Metrics as Discriminating Criteria}
 \label{subsubsec:PenCTMetricsFit}
 In table 
 
-
 \subsubsection{Feature Selection for a Classification Model}
 \label{subsubsec:PenCTFeatures}
 
-
-
 \subsubsection{The Classification Model}
 \label{subsubsec:PenCTClassification}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -340,7 +448,6 @@ In table
 \label{sec:PenImplications}
 
 Recent advance
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Limitations and Future Work}

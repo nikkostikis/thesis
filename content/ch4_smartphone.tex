@@ -89,7 +89,7 @@ In order to keep the presence of the smartphone as discreet as possible we built
 \label{fig:glovCase}
 \end{figure}
 
-The smartphone itself used in \gls{SmartCT1} was an Apple iPhone 4 GSM\footnote{iphone 4 technical specifications, accessed 01/10/2017 at: \url{https://support.apple.com/kb/sp587}}, powered by iOS version 4.2\footnote{iOS 4.2 software update, accessed 01/10/2017 at: \url{https://support.apple.com/kb/dl1061}}. 
+The smartphone itself used in \gls{SmartCT1} was an Apple iPhone 4 GSM\footnote{iphone 4 technical specifications, accessed Oct 1, 2017 at: \url{https://support.apple.com/kb/sp587}}, powered by iOS version 4.2\footnote{iOS 4.2 software update, accessed Oct 1, 2017 at: \url{https://support.apple.com/kb/dl1061}}. 
 
 \subsubsection{Software}
 \label{subsubsec:smartCT1Software}
@@ -97,8 +97,8 @@ The software required for \gls{SmartCT1} consisted of the following components:
 
 \begin{enumerate}
 \item A custom made web application, built with PHP, HTML and JavaScript.
-\item An Apache\footnote{Apache http server project, accessed 02/10/2017 at: \url{https://httpd.apache.org/}} web server which hosted the web application and allowed it to store simple text files.
-\item A data processing pipeline written in MATLAB\footnote{Matlab, accessed 02/10/2017 at: \url{https://www.mathworks.com/products/matlab.html}} (various versions).
+\item An Apache\footnote{Apache http server project, accessed Oct 2, 2017 at: \url{https://httpd.apache.org/}} web server which hosted the web application and allowed it to store simple text files.
+\item A data processing pipeline written in MATLAB\footnote{Matlab, accessed Oct 2, 2017 at: \url{https://www.mathworks.com/products/matlab.html}} (various versions).
 \end{enumerate}
 
 The web application was designed to be as simple as possible, consisting of two views. The landing page was a simple view containing a form where the clinical trial associate or the support staff would fill in an anonymized unique identifier for the patient (figure \ref{fig:webAppForm1}), details about the posture assumed for every recording session, which for \gls{SmartCT1} was set by default to ``Extended'' (figure \ref{fig:webAppForm2}), and left or right hand (figure \ref{fig:webAppForm3}). All but one the controls of the form would be hidden at first and revealed gradually to enforce a step-by-step data entry procedure, discouraging the submission of partially filled forms (figure \ref{fig:webAppForm}). The button submitting the form would be the last one to be displayed, allowing the initiation of the collection. At that point the volunteer should already have resumed the required posture for the signal recording. 
@@ -892,7 +892,7 @@ In table \ref{table:ROCSmartCT2} we present the results of a receiver operating 
 
 \subsubsection{Feature Selection for a Classification Model}
 \label{subsubsec:SmartCT2Features}
-To investigate our metrics' potential as classifiers on new data, we decided to use a non-parametric decision tree-based ensemble machine learning algorithm for multivariate classification based on the work of (Breiman, 2001), as the authors of (Arora et al, 2014) did. All four metrics (\ref{eq: magAlpha2})-(\ref{eq: maxAmpOmega}) for each posture were used, resulting in a set of 16 classification features of a bootstrap aggregation for a random forest of decision trees. We used MATLAB’s \codeword{TreeBagger} class for the construction of the ensemble of trees and its function \codeword{oobPredict} to calculate the trained model's prediction accuracy. The ensemble had 500 grown trees. To overcome the problem of possible over-fitting we used each feature's out-of-bag error estimate, as defined in (Breiman, 2001). That is a measure of importance calculated by the \codeword{TreeBagger} class, defined as the increase in prediction error if the variable's values are permuted across the left out-of-bag observations. The higher the increase, the higher the importance of the given feature (see figure \ref{fig:featuresSmartCT2}). 
+To investigate our metrics' potential as classifiers on new data, we decided to use a non-parametric decision tree-based ensemble machine learning algorithm for multivariate classification based on the work of (Breiman, 2001), as the authors of (Arora et al, 2014) did. All four metrics (\ref{eq: magAlpha2})-(\ref{eq: maxAmpOmega}) for each posture were used, resulting in a set of 16 classification features of a bootstrap aggregation for a random forest of decision trees. We used MATLAB's \codeword{TreeBagger} class for the construction of the ensemble of trees and its function \codeword{oobPredict} to calculate the trained model's prediction accuracy. The ensemble had 500 grown trees. To overcome the problem of possible over-fitting we used each feature's out-of-bag error estimate, as defined in (Breiman, 2001). That is a measure of importance calculated by the \codeword{TreeBagger} class, defined as the increase in prediction error if the variable's values are permuted across the left out-of-bag observations. The higher the increase, the higher the importance of the given feature (see figure \ref{fig:featuresSmartCT2}). 
 
 
 \begin{figure}[h]
