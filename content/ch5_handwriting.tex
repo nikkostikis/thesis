@@ -75,7 +75,7 @@ Fifty-nine subjects in total participated in this study. All were right-handed, 
 \begin{table}[h]
 \centering
 \caption{\textsc{Information on Volunteers' Grouping}}
-\begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c c c c }
+\begin{tabular*}{0.6\textwidth}{@{\extracolsep{\fill}} c c c c }
 	\multirow{2}{*}{\textit{Group}} & \multirow{2}{*}{Size}
 	& \multicolumn{2}{c}{\textit{Age Statistics}} \\
 	\cline{3-4}
@@ -97,7 +97,7 @@ Group \gls{PenPD} had 24 subjects aged 58-80, all under medication. They were re
 \begin{table}[!hp]
 \centering
 \caption{\textsc{Information on PenPD group}}
-\begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c c c c c c }
+\begin{tabular*}{0.7\textwidth}{@{\extracolsep{\fill}} c c c c c c }
 	\textit{Volunteers} & \textit{Age} & \textit{Sex} & \textit{UPDRS} & \textit{H\&Y} & \textit{Years from onset} \\
 	\hline 	\hline 
  	\gls{PenPD}$_{1}$ & 70 & F & 9 & 2 & 2 \\
@@ -260,7 +260,8 @@ In the following paragraphs, a series of statistical tests on the data collected
 \label{subsubsec:PenCTNormalityTesting}
 We tested our data for normality with the Jarque-Berra and Liliefors tests, using all metrics and aggregation profiles (see \ref{subsec:PenCTData}). The MATLAB implementations \codeword{jbtest}\footnote{Jarque-Bera test - MATLAB jbtest, accessed Jul 23, 2018 at: https://www.mathworks.com/help/stats/jbtest.html.} and \codeword{lillietest}\footnote{Lilliefors test - MATLAB lillietest, accessed Jul 23, 2018, at: https://www.mathworks.com/help/stats/lillietest.html.} were used respectively, with $99\%$ confidence level. These tests were used to establish whether data could be assumed to fit the normal distribution with $99\%$ confidence. When results were contradictory, the distribution was considered as not normal. 
 
-In the following tables (\ref{table:PenCTNormalityVelocity}-\ref{table:PenCTNormalityEntropy}) normality for each metric ((\ref{eq: MV})-(\ref{eq: ETPyRot})) for \gls{PenPD} and \gls{PenH} along with mean values and standard deviations is presented.
+In tables (\ref{table:PenCTNormalityVelocity}-\ref{table:PenCTNormalityEntropy}) normality for each metric ((\ref{eq: MV})-(\ref{eq: ETPyRot})) for \gls{PenPD} and \gls{PenH} along with mean values and standard deviations is presented.
+The normality testing did not yield any important findings but we used it as a preliminary analysis of the data and to offer us intuition for the means testing that followed. 
 
 %%%%%% Normality, Mean and StD
 \begin{table}[h]
@@ -276,7 +277,7 @@ In the following tables (\ref{table:PenCTNormalityVelocity}-\ref{table:PenCTNorm
 	\cline{2-9}
 	%%
 	\\
-	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $MV$ (\ref{eq: MV})}} \\
+	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $MV$}} \\
 	\hline 	\hline
 	& 10.99 & 10.22 & 11.74 & 1.51 & 9.46 & 12.69 & 11.02 & 10.93 \\
 	{\textit{PenH}} & 5.95 & 5.75 & 6.20 & 1.16 & 5.44 & 6.58 & 6.22 & 5.82 \\
@@ -287,7 +288,7 @@ In the following tables (\ref{table:PenCTNormalityVelocity}-\ref{table:PenCTNorm
 	& Yes & Yes & Yes & No & Yes & Yes & Yes & Yes \\
 	%%
 	\\
-	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $NVV$ (\ref{eq: NVV})}} \\
+	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $NVV$}} \\
 	\hline 	\hline
 	& 0.014 & 0.013 & 0.014 & 0 & 0.013 & 0.014 & 0.014 & 0.014 \\
 	{\textit{PenH}} & 0.0007 & 0.0007 & 0.0007 & 0.0004 & 0.0006 & 0.0008 & 0.0008 & 0.0008 \\
@@ -298,7 +299,7 @@ In the following tables (\ref{table:PenCTNormalityVelocity}-\ref{table:PenCTNorm
 	& No & No & No & No & Yes & No & No & No \\
 	%%
 	\\
-	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $SDV$ (\ref{eq: SDV})}} \\
+	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $SDV$}} \\
 	\hline 	\hline
 	&  2.86 & 2.63 & 3.08 & 0.45 & 2.41 & 3.33 & 2.90 & 2.81 \\
 	{\textit{PenH}} & 1.29 & 1.22 & 1.38 & 0.30 & 1.13 & 1.46 & 1.38 & 1.25 \\
@@ -324,7 +325,7 @@ In the following tables (\ref{table:PenCTNormalityVelocity}-\ref{table:PenCTNorm
 	\cline{2-9}
 	%%
 	\\
-	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $ETPv$ (\ref{eq: ETPv})}} \\
+	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $ETPv$}} \\
 	\hline 	\hline
 	& 3.29 & 3.2 & 3.36 & 0.15 & 3.14 & 3.46 & 3.3 & 3.27 \\
 	{\textit{PenH}} & 0.37 & 0.36 & 0.39 & 0.1 & 0.36 & 0.4 & 0.4 & 0.37 \\
@@ -335,7 +336,7 @@ In the following tables (\ref{table:PenCTNormalityVelocity}-\ref{table:PenCTNorm
 	& Yes & Yes & Yes & No & Yes & Yes & Yes & Yes \\
 	%%
 	\\
-	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $ETPy$ (\ref{eq: ETPy})}} \\
+	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $ETPy$}} \\
 	\hline 	\hline
 	& 3.93 & 3.85 & 4.02 & 0.16 & 3.64 & 4.22 & 3.99 & 3.88 \\
 	{\textit{PenH}} & 0.20 & 0.19 & 0.23 & 0.12 & 0.25 & 0.30 & 0.24 & 0.20 \\
@@ -346,7 +347,7 @@ In the following tables (\ref{table:PenCTNormalityVelocity}-\ref{table:PenCTNorm
 	& Yes & Yes & Yes & No & Yes & Yes & Yes & Yes \\
 	%%
 	\\
-	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $ETP\bar{y}$ (\ref{eq: ETPyRot})}} \\
+	& \multicolumn{8}{c}{\textit{Normality of Data for Metric $ETP\bar{y}$}} \\
 	\hline 	\hline
 	& 6.1 & 5.97 & 6.24 & 0.27 & 5.84 & 6.35 & 6.1 & 6.1 \\
 	{\textit{PenH}} & 0.87 & 0.87 & 0.88 & 0.2 & 0.82 & 0.86 & 0.96 & 0.8 \\
@@ -361,12 +362,59 @@ In the following tables (\ref{table:PenCTNormalityVelocity}-\ref{table:PenCTNorm
 
 \subsubsection{Significance Testing}
 \label{subsubsec:PenCTSignificanceTesting}
-The significance of each metric, both the velocity-based and the entropy-based ones would be later explored through the feature selection and classification algorithms. However, in this stage we performed means testing for all metrics and aggregation profiles to examine whether a randomly selected value from the \gls{PenPD} sample would be expected to be significantly different than a randomly selected value from the \gls{PenH} sample. Preliminary variance equality tests, such as the Brown-Forsythe (Brown and Forsythe, 1974) test, would either lead us to a Student pooled variances $t$ test or a Welch $t$ test with separate variances (Welch, 1947). Although a common practice in older papers, we decided to skip the homoscedasticity testing because as shown in (Zimmerman, 2004), when normality is satisfied, going directly for a Welch $t$ test and not pooling variances, actually produces better Type I and Type II error probabilities. 
+The significance of each metric, both the velocity-based and the entropy-based ones would be later explored through the feature selection and classification algorithms. However, in this stage we performed means testing for all metrics and aggregation profiles to examine whether a randomly selected value from the \gls{PenPD} sample would be expected to be significantly different than a randomly selected value from the \gls{PenH} sample. Preliminary variance equality tests, such as the Brown-Forsythe test (Brown and Forsythe, 1974), would either (heteroscedasticity rejected) lead us to a Student pooled variances $t$ test or (heteroscedasticity accepted) a Welch $t$ test with separate variances (Welch, 1947). Although a common practice in older papers, we decided to skip the homoscedasticity testing because as shown in (Zimmerman, 2004), when normality is satisfied, going directly for a Welch $t$ test and not pooling variances, actually produces better Type I and Type II error probabilities. 
 
 Therefore, when both samples were normally distributed we used the two-tailed Welch $t$ test, as implemented in MATLAB with the function \codeword{ttest2}\footnote{Two-sample t-test - MATLAB ttest2, accessed Aug 30, 2018 at: https://www.mathworks.com/help/stats/ttest2.html.}, setting its \codeword{`Vartype'} flag to \codeword{`unequal'}. For inter-population comparisons where at least one of the samples was not normally distributed, the non-parametric two-tailed Mann-Whitney test was used, as implemented in MATLAB with the function \codeword{ranksum}\footnote{Wilcoxon rank sum test - MATLAB ranksum, accessed Aug 30, 2018 at: https://www.mathworks.com/help/stats/ranksum.html.}. 
 
-In the following tables () the results from means testing are presented. The $p$-values are included to illustrate whether the decision for significant or non-significant differences was a close one, with confidence level $99\%$.
+In table (\ref{table:PenCTMeansInter}) the results from means testing are presented. The $p$-values are included to illustrate whether the decision for significant or non-significant differences was a close one, with confidence level set at $99\%$. From the inter-population, i.e., \gls{PenPD} versus \gls{PenH} means testing, where the null hypothesis is equality of means, we observe the following:
+\begin{enumerate}
+\item In most cases of null hypothesis rejection the $p$-values were much lower than the $alpha$ ($1\%$).
+\end{enumerate}
 
+%%%%%% Means testing inter-population
+\begin{table}[h]
+\centering
+\caption{\textsc{Means Testing Between PenPD and PenH Populations}}
+\begin{tabular*}{0.9\textwidth}{@{\extracolsep{\fill}} c | c c c c c c}
+	& {\textit{ALL}} & {\textit{LH}} & {\textit{HH}} & {\textit{HLH}} & {\textit{LD}} & {\textit{HD}} \\
+	\cline{2-7}  
+	& {\textit{Test}} & {\textit{Test}} & {\textit{Test}} & {\textit{Test}} & {\textit{Test}} & {\textit{Test}} \\
+	& $p$-{\textit{value}} & $p$-{\textit{value}} & $p$-{\textit{value}} & $p$-{\textit{value}} & $p$-{\textit{value}} & $p$-{\textit{value}} \\
+	& {\textit{Decision}} & {\textit{Decision}} & {\textit{Decision}} & {\textit{Decision}} & {\textit{Decision}} & {\textit{Decision}} \\
+	\hline 	\hline
+	\\
+	& Welch & Welch & Welch & M/W & Welch & Welch \\
+	$MV$ & $<$0.001 & $<$0.001 & $<$0.001 & 0.2247 & $<$0.001 & $<$0.001 \\
+	& Unequal & Unequal & Unequal & Equal & Unequal & Unequal \\
+	\hline
+	\\
+	& M/W & M/W & M/W & M/W & Welch & M/W \\
+	$NVV$ & $<$0.001 & $<$0.001 & $<$0.001 & 0.0022 & $<$0.001 & $<$0.001 \\
+	& Unequal & Unequal & Unequal & Unequal & Unequal & Unequal \\
+	\hline
+	\\
+	& Welch & Welch & M/W & M/W & Welch & Welch \\
+	$SDV$ & 0.0013 & $<$0.001 & 0.0033 & 0.6973 & $<$0.001 & 0.0071 \\
+	& Unequal & Unequal & Unequal & Equal & Unequal & Unequal \\
+	\hline
+	\\
+	& Welch & Welch & Welch & Welch & Welch & Welch \\
+	$ETPv$ & 0.004 & $<$0.001 & 0.034 & 0.0074 & $<$0.001 & 0.0469 \\
+	& Unequal & Unequal & Equal & Unequal & Unequal & Equal \\	
+	\hline
+	\\
+	& Welch & Welch & Welch & M/W & Welch & M/W \\
+	$ETPy$ & $<$0.001 & $<$0.001 & $<$0.001 & 0.1988 & $<$0.001 & $<$0.001 \\
+	& Unequal & Unequal & Unequal & Equal & Unequal & Unequal \\
+	\hline
+	\\
+	& Welch & Welch & Welch & Welch & Welch & M/W \\
+	$ETPy$ & $<$0.001 & $<$0.001 & $<$0.001 & 0.2395 & $<$0.001 & $<$0.001 \\
+	& Unequal & Unequal & Unequal & Equal & Unequal & Unequal \\
+	\hline
+\end{tabular*}
+\label{table:PenCTMeansInter}
+\end{table}
  
 
 
