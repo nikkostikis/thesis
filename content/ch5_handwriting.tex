@@ -197,7 +197,7 @@ ETPy = -\sum_{i=1}^{N}P(y(i))\log_{2}(P(y(i)))
 \noindent
 The $MV$ (\ref{eq: MV}) represents the mean horizontal ($x$-axis) velocity of each drawn trace, expressed in $cm/s$. The cardinality of the $v(i)$ vector is $N-1$. The $SDV$ (\ref{eq: SDV}) is the standard deviation of the horizontal ($x$-axis) velocity, also expressed in $cm/s$. The $NVV$ (\ref{eq: NVV}) quantifies the horizontal ($x$-axis) velocity variability of each trace, expressed in $1000/s$. The summation cardinality in (\ref{eq: NVV}) is $N-2$ because it sums over differences in between the elements of $v(i)$. Finally, the $ETP$ metrics quantify each trace's horizontal velocity entropy (\ref{eq: ETPv}) and vertical ($y$-axis) displacement entropy (\ref{eq: ETPy}) respectively. 
 
-Signal entropy is a measure of disorder or uncertainty. We used the entropy of the horizontal velocity and the vertical displacement because these quantities would have low entropy due to minimal variability and deterministic nature if the line drawing motion was uniform, and higher entropy otherwise. To perform the calculation of the entropy a probability density function was required. The histogram of the values of the signal was used as an estimator for the probability density. Instead of choosing a number of bins for the histogram based on the length of the signal (i.e., square root rule or Sturges formula) or an arbitrary bin width, for each signal we created an alphabet, consisting of all the unique values in it. To avoid unnecessarily many values that would essentially be indistinguishable, but calculate misleadingly high entropies, we rounded the signals at 4 decimal digits. One of the reasons we did not use the entropy of the $x$-axis displacement was that we would end up with a dictionary containing all of the samples, whereas the velocity and the vertical displacement would most likely revolve around a small number of values per line drawn. Ultimately, the probability of each unique value would simply be the number of occurrences divided by the number of the signal samples. Both \ref{eq: ETPv} and \ref{eq: ETPy} use the binary logarithm and therefore are expressed in bits, with a higher number denoting a more information-rich signal, and hence, a higher variability in horizontal velocity or $y$-axis points visited line-drawing motion, respectively. 
+Signal entropy is a measure of disorder or uncertainty. We used the entropy of the horizontal velocity and the vertical displacement because these quantities would have low entropy due to minimal variability and deterministic nature if the line drawing motion was uniform, and higher entropy otherwise. To perform the calculation of the entropy a probability density function was required. The histogram of the values of the signal was used as an estimator for the probability density. Instead of choosing a number of bins for the histogram based on the length of the signal (i.e., square root rule or Sturges formula) or an arbitrary bin width, for each signal we created an alphabet, consisting of all the unique values in it. To avoid unnecessarily many values that would essentially be indistinguishable, but calculate misleadingly high entropies, we rounded the signals at 4 decimal digits. One of the reasons we did not use the entropy of the $x$-axis displacement was that we would end up with a dictionary containing all of the samples, whereas the velocity and the vertical displacement would most likely revolve around a small number of values per line drawn. Ultimately, the probability of each unique value would simply be the number of occurrences divided by the number of the signal samples. Both (\ref{eq: ETPv}) and (\ref{eq: ETPy}) use the binary logarithm and therefore are expressed in bits, with a higher number denoting a more information-rich signal, and hence, a higher variability in horizontal velocity or $y$-axis points visited line-drawing motion, respectively. 
 
 \begin{figure}[h]
 \centering
@@ -206,7 +206,7 @@ Signal entropy is a measure of disorder or uncertainty. We used the entropy of t
 \label{fig:yCorrection}
 \end{figure}
 
-To compensate for variability in the $y$-axis due to the positioning of the tablet during a session, a linear transformation was performed on the $y$-axis slightly rotating the trace (figure \ref{fig:yCorrection}), resulting in the corrected $\bar{y}(i)$ vector. The metric calculated from the transformed trace was considered a new variant of the $ETPy$ metric defined in \ref{eq: ETPyRot} not a replacement for \ref{eq: ETPy} because we could not be sure that the variability in the $y$-axis should be attributed to the skewed physical placement of the tablet during recording or to the actual movement of the participant. 
+To compensate for variability in the $y$-axis due to the positioning of the tablet during a session, a linear transformation was performed on the $y$-axis slightly rotating the trace (figure \ref{fig:yCorrection}), resulting in the corrected $\bar{y}(i)$ vector. The metric calculated from the transformed trace was considered a new variant of the $ETPy$ metric defined in (\ref{eq: ETPyRot}) not a replacement for (\ref{eq: ETPy}) because we could not be sure that the variability in the $y$-axis should be attributed to the skewed physical placement of the tablet during recording or to the actual movement of the participant. 
 
 \begin{equation} \label{eq: ETPyRot}
 ETP\bar{y} = -\sum_{i=1}^{N}P(\bar{y}(i))\log_{2}(P(\bar{y}(i)))
@@ -227,7 +227,7 @@ To perform the rotation for each signal:
 \end{equation}
 \item the rotation was performed and the starting point was translated back to its original coordinates. 
 \end{enumerate}
-The rotation performed for the signals collected from the \gls{PenPD} population had an average $1.58^{\circ}$, whereas the corresponding mean for the \gls{PenH} population was $1.12^{\circ}$, so the actual rotation per trace was small, but we thought it was worth investigating this as a new base for entropy calculation. 
+The rotation performed for the signals collected from the \gls{PenPD} group had an average $1.58^{\circ}$, whereas the corresponding mean for the \gls{PenH} group was $1.12^{\circ}$, so the actual rotation per trace was small, but we thought it was worth investigating this as a new base for entropy calculation. 
 
 Choosing to calculate the metrics (\ref{eq: MV})-(\ref{eq: ETPyRot}) to characterize the pen's trace in a spatiotemporal manner was based on the hypothesis that due to impaired coordination in patients with movement disorders, certain features, such as the velocity profile of the pen's tip or the ``excursions'' from the vertical, should be more pronounced compared to healthy subjects. Ideally, according to our hypothesis metrics based on variability should be statistically different between the two groups. Previous research had proven that velocity- and acceleration-based metrics of voluntary movements could separate pathological from healthy subjects. In (Broderick et al, 2009) \gls{PD} patients showed a reduced ability to modulate acceleration, leading to smaller than required movements and micrographia, and (Contreras-Vidal and Stelmach, 1995) showed  that dopamine depletion in \gls{PD} leads to smaller than normal pallidothalamic gating signals, which in turn would affect the ability to control movement speed. The variability in handwriting velocity in patients with \gls{PD} was also noted in (Van Gemmert et al, 2003), where the patients showed multiple peaks in their velocity signal whereas the controls showed just one peak. Further backing our hypothesis, in (Eichhorn et al, 1996), the velocity and acceleration profiles of \gls{PD} patients were different in relation to healthy subjects while writing circles. Finally, in a different experimental design investigating the effect of dopamine on handwriting movements, the authors of (Tucha et al, 2005) found lower values for maximum and minimum velocity in ascending and descending strokes in \gls{PD} patients than in healthy subjects. They also found that patients had significantly more inversions of velocity and acceleration than healthy people. There was also a difference between patients ON medication and OFF medication, where the number of inversions in velocity and acceleration was statistically significant. 
 
@@ -260,7 +260,7 @@ In the following paragraphs, a series of statistical tests on the data collected
 \label{subsubsec:PenCTNormalityTesting}
 We tested our data for normality with the Jarque-Berra and Liliefors tests, using all metrics and aggregation profiles (see \ref{subsec:PenCTData}). The MATLAB implementations \codeword{jbtest}\footnote{Jarque-Bera test - MATLAB jbtest, accessed Jul 23, 2018 at: https://www.mathworks.com/help/stats/jbtest.html.} and \codeword{lillietest}\footnote{Lilliefors test - MATLAB lillietest, accessed Jul 23, 2018, at: https://www.mathworks.com/help/stats/lillietest.html.} were used respectively, with $99\%$ confidence level. These tests were used to establish whether data could be assumed to fit the normal distribution with $99\%$ confidence. When results were contradictory, the distribution was considered as not normal. 
 
-In tables (\ref{table:PenCTNormalityVelocity}-\ref{table:PenCTNormalityEntropy}) normality for each metric ((\ref{eq: MV})-(\ref{eq: ETPyRot})) for \gls{PenPD} and \gls{PenH} along with mean values and standard deviations is presented.
+In tables (\ref{table:PenCTNormalityVelocity}, \ref{table:PenCTNormalityEntropy}) normality for each metric ((\ref{eq: MV})-(\ref{eq: ETPyRot})) for \gls{PenPD} and \gls{PenH} along with mean values and standard deviations is presented.
 The normality testing did not yield any important findings but we used it as a preliminary analysis of the data and to offer us intuition for the means testing that followed. 
 
 %%%%%% Normality, Mean and StD
@@ -368,14 +368,17 @@ Therefore, when both samples were normally distributed we used the two-tailed We
 
 In table (\ref{table:PenCTMeansInter}) the results from means testing are presented. The $p$-values are included to illustrate whether the decision for significant or non-significant differences was a close one, with confidence level set at $99\%$. From the inter-population, i.e., \gls{PenPD} versus \gls{PenH} means testing, where the null hypothesis is equality of means, we observe the following:
 \begin{enumerate}
-\item In most cases of null hypothesis rejection the $p$-values were much lower than the $alpha$ ($1\%$).
+\item In most cases of null hypothesis rejection the $p$-values were much lower than the $\alpha$ ($1\%$).
 %\item The aggregation profile mostly resulting in metrics producing samples with equal means was the HLH, where the difference between the highest and lowest performing hand for each metric is used as a final value. The only metrics showing differences under the HLH aggregation profile are the $NVV$ and the $ETPv$. For all other metrics the populations seem to produce similar 
+\item The only metric not producing samples with significant differences for all aggregation profiles is $ETPv$. The HH (highest performing hand) and HD (highest performing direction) aggregations of that metric resulted in calculating \gls{PenPD} and \gls{PenH} samples most likely belonging to the same distribution. However, the $p$-values of the means testing (Welch in both cases) revealed that acceptance of the null hypothesis occurred only due to the strict $\alpha$, set at $1\%$. The null hypothesis would have been rejected, indicating significantly different means had the confidence level been more relaxed at $95\%$ ($\alpha = 5\%$). 
+\item Means-testing shows that both velocity-based and entropy-based metrics calculated for the \gls{PenCT} simple task could be equally important in discriminating the two groups. 
+\item As already explained in \ref{subsec:PenCTAnalysis}, compared to the other metrics, the $NVV$ (\ref{eq: NVV}) is novel and less explored as a marker of handwriting performance for movement disorders patients. Producing significantly different samples of \gls{PenPD} and \gls{PenH} was a first step towards proving its efficacy as a good classification feature. 
 \end{enumerate}
 
 %%%%%% Means testing inter-population
 \begin{table}[h]
 \centering
-\caption{\textsc{Means Testing Between PenPD and PenH Populations}}
+\caption{\textsc{Means Testing Between PenPD and PenH Groups}}
 \begin{tabular*}{0.75\textwidth}{@{\extracolsep{\fill}} c | c c c c c}
 	& {\textit{ALL}} & {\textit{LH}} & {\textit{HH}} & {\textit{LD}} & {\textit{HD}} \\
 	\cline{2-6}  
@@ -410,42 +413,69 @@ In table (\ref{table:PenCTMeansInter}) the results from means testing are presen
 	\hline
 	\\
 	& Welch & Welch & Welch & Welch & M/W \\
-	$ETPy$ & $<$0.001 & $<$0.001 & $<$0.001 & $<$0.001 & $<$0.001 \\
+	$ETP\bar{y}$ & $<$0.001 & $<$0.001 & $<$0.001 & $<$0.001 & $<$0.001 \\
 	& Unequal & Unequal & Unequal & Unequal & Unequal \\
 	\hline
 \end{tabular*}
 \label{table:PenCTMeansInter}
 \end{table}
  
-
-
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-\subsubsection{Duration and Velocity Correlation Testing}
+\subsubsection{Duration and Velocity Correlation With NVV}
 \label{subsubsec:PenCTDurVelCorTesting}
-Scaling the velocity with which a path is traversed leaves the $NVV$ invariant, by definition. This is also borne out experimentally, in the fact that there was no correlation found between the duration of each effort and its $NVV$ score. We calculated the Pearson's correlation coefficient $r$, as the fraction of the covariance between the $NVV$ of each signal and the signal's duration, over the product of their standard deviations. 
+A potential problem regarding robustness and test-retest reliability of velocity-based metrics would be the dependence between metric performance and velocity or duration of the task performed by the same volunteer at different sessions. However, expanding the $NVV$ (\ref{eq: NVV}) essentially proves that by definition and for the specific task of drawing lines on a roughly 140 x 90mm surface, it should be invariant to the scale of the velocity, as it translates to the sum of velocity variations over the total displacement. This was borne out experimentally, in the fact that there was no significant correlation found between neither the duration nor the velocity of each session's recording and the calculated $NVV$ score, for neither of the two major \gls{PenCT} groups (\gls{PenPD} and \gls{PenH}). 
+
+We calculated the Pearson's correlation coefficient $r$, as the fraction of the covariance between the $NVV$ of each recorded signal and the signal's velocity and duration separately, over the product of their standard deviations (\ref{eq:penPearson}). 
 
 \begin{equation} \label{eq:penPearson}
-r = \frac{ \sum_{i=1}^{23} (x_{i} - \bar{x})(u_{i} - \bar{u}) } 
-		 { \sqrt{\sum_{i=1}^{23} (x_{i} - \bar{x})^{2}} \sqrt{\sum_{i=1}^{23} (u_{i} - \bar{u})^{2}} }
+r = \frac{ \sum_{i=1}^{N} (NVV_{i} - \overline{NVV})(VD_{i} - \overline{VD}) } 
+		 { \sqrt{\sum_{i=1}^{N} (NVV_{i} - \overline{NVV})^{2}} \sqrt{\sum_{i=1}^{N} (VD_{i} - \overline{VD})^{2}} }
 \end{equation}
 
 \noindent
-This fraction, in theory, could take values ranging from $-1$, for total negative linear correlation between the metric and the duration, to $+1$ for total positive linear correlation. In (\ref{eq:penPearson}), $x_{i}$ abstractly denotes each one of the signal metrics, with $i$ being each patient and $\bar{x}$ the sample mean, and $u_{i}$ denotes the corresponding \gls{UPDRS} score of each patient, with $\bar{u}$ the sample mean.
+In (\ref{eq:penPearson}) the fraction, could theoretically take values ranging from $-1$, for total negative linear correlation between the $NVV$ and the velocity or the duration, to $+1$ for total positive linear correlation. $NVV_{i}$ denotes each one of the recorded signal's $NVV$ value, with $i$ being each recording signal, $N$ being the total number of signals (1068 for \gls{PenPD} and 804 for \gls{PenH}) and $\overline{NVV}$ the total mean. $VD_{i}$ denotes the velocity or duration of each recorded signal, with $\overline{VD}$ the mean value. 
 
-and ($r=0.11$ with $p<0.001$ for \gls{PenH} and $r= -0.06$ with $p=0.04$ for \gls{PenPD}, where $r$ is the Pearson product-moment correlation coefficient calculated for effort duration and $NVV$ score). 
+In table (\ref{table:NVVCorrelation}) the correlation results for $NVV$ versus velocity and $NVV$ versus duration are presented, along with their $p$-values. In this context the $p$-values are the probabilities that the correlation test results are statistically significant. Low $p$-values mean that the calculated correlation coefficient is significant and cannot be attributed to chance with the actual correlation being in fact zero (null hypothesis of the correlation test). The results prove that the correlation between the $NVV$ and velocity or duration is little to none. 
+
+For the calculations in table (\ref{table:NVVCorrelation}) there is no mention of aggregation profile for the $NVV$ because it is calculated for each recorded signal and not aggregated over sessions. 
+
+\begin{table}[h]
+\centering
+\caption{\textsc{NVV Correlation Coefficients With Velocity and Duration}}
+\begin{tabular*}{0.4\textwidth}{@{\extracolsep{\fill}} c c c }
+	& {\textit{Velocity}} & {\textit{Duration}} \\
+	\cline{2-3}  
+	& $r$ & $r$ \\
+	& $p$-{\textit{value}} & $p$-{\textit{value}} \\
+	\hline 	\hline
+	\\
+	{\textit{PenPD}} & -0.08 & 0.1\\
+	& 0.01 & $<$0.001 \\
+	\hline
+	\\
+	{\textit{PenH}} & 0.02 & 0.07\\
+	& 0.5 & 0.05 \\
+	\hline
+\end{tabular*}
+\label{table:NVVCorrelation}
+\end{table}
+
+
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
 
 \subsubsection{Laterality Testing}
 \label{subsubsec:PenCTLateralityTesting}
@@ -458,12 +488,12 @@ and ($r=0.11$ with $p<0.001$ for \gls{PenH} and $r= -0.06$ with $p=0.04$ for \gl
 
 The NVV value of healthy people is also not affected by their age. Using means testing for YH and H groups we found no significant differences between the two healthy subgroups’ NVV values. Although aging is accompanying with a deterioration of the performances of the various components of the central nervous system, the NVV shows that the coordination between agonists and antagonists is well preserved, at least in the upper limbs.
 By examining the NVV values between PD and H groups we found that the NVV means for the PD group were not normally distributed for all six components described in Section II.C, whereas the NVV means for the H group were normally distributed for every component. 
-We found statistically significant differences between the PD and H populations’ NVV mean scores for components ALL, HH, HD, LD, HLH, suggesting that there is no overlap in the NVV measures of the two health-status-related groups. 
+We found statistically significant differences between the PD and H groups’ NVV mean scores for components ALL, HH, HD, LD, HLH, suggesting that there is no overlap in the NVV measures of the two health-status-related groups. 
 In general, the symptoms of PD appear with different intensity between the patient’s two sides (left-right). We were interested in exploring if the NVV values would reflect the laterality of the patients. 
-We found that there was 1 out of 20 (5\%) healthy subject with a statistically significant difference between his two hands. The corresponding proportion in the PD group was 14 out of 24 (58\%). Although the populations do not satisfy the standard binomial requirement and we cannot determine the significance of the difference between these two percentages, their values are not close. The NVV detected the pathology laterality correctly for the same 58\% of the patients. That means that the clinically observed (through UPDRS evaluation) most affected hand matched the NVV identified highest-performing hand for 14 out of 24 PD patients.
+We found that there was 1 out of 20 (5\%) healthy subject with a statistically significant difference between his two hands. The corresponding proportion in the PD group was 14 out of 24 (58\%). Although the samples do not satisfy the standard binomial requirement and we cannot determine the significance of the difference between these two percentages, their values are not close. The NVV detected the pathology laterality correctly for the same 58\% of the patients. That means that the clinically observed (through UPDRS evaluation) most affected hand matched the NVV identified highest-performing hand for 14 out of 24 PD patients.
 The fact that we found no significant difference between hands for 19 of 20 healthy subjects (95\%) is to be expected. The NVV index is an expression of the balance between agonists-antagonists muscular systems and this balance is similar in both sides, considering good health. On the other side, we found that within the PD group the means are statistically significantly different for the HH and LH components. Combined with the significant difference in the means of the NVVHLH component between H and PD detected earlier, this means that the NVV difference between hands, is a kind of marker of the disease and that will be useful for the classification later on. 
 NVVHLH values are the differences in NVV between the highest and lowest performing hand for each subject. Having established that there is a statistically significant difference in NVVHLH values between the H and PD groups (the latter group having on average higher NVVHLH values), we went on to compare the performance dissimilarity between the best-performing, (i.e. lowest NVV) hand of the healthy persons to the worst-performing (i.e. highest NVV) hand of PD patients. We found that the best-performing hand of PD subjects is still worse, in terms of NVV score, than the worst-performing hand of H subjects. To our knowledge, this is a result not mentioned in the literature in papers using high sample rate data. 
-Focusing on the H and PD participants, we used each subject’s mean NVVALL score to categorize them as positive (PD) or negative (H). The receiver operating characteristic (ROC) curve had an area-under-the-curve value of 0.9354. The best cutoff threshold was NVVALL=0.0165 resulting in TN=90\% (18 subjects true negative), and TP=88\% (21 subjects true positive). These high percentages along with the results from the means testing prove that there is little overlap in the NVV values between the two populations and the NVV and its components can justifiably be used as a feature in a PD versus H classification model. 
+Focusing on the H and PD participants, we used each subject’s mean NVVALL score to categorize them as positive (PD) or negative (H). The receiver operating characteristic (ROC) curve had an area-under-the-curve value of 0.9354. The best cutoff threshold was NVVALL=0.0165 resulting in TN=90\% (18 subjects true negative), and TP=88\% (21 subjects true positive). These high percentages along with the results from the means testing prove that there is little overlap in the NVV values between the two samples and the NVV and its components can justifiably be used as a feature in a PD versus H classification model. 
 
 \hlorange{NVV robustness}
 We found $NVV$ scores to be consistent in multiple sessions for single subjects: seven of the \gls{PenH} subjects were re-tested a second or third time, over a period of several days. In six of the seven cases, means testing revealed no statistically significant differences in the subjects’ means over different testing sessions. The one volunteer who showed significant difference between the two sessions reported sleeping for only three hours the night before the second test session. Sleep deprivation is known to favor abnormal brain responses.
