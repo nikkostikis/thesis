@@ -447,11 +447,9 @@ For the calculations in table (\ref{table:NVVCorrelation}) there is no mention o
 	& $r$ & $r$ \\
 	& $p$-{\textit{value}} & $p$-{\textit{value}} \\
 	\hline 	\hline
-	\\
 	{\textit{PenPD}} & -0.08 & 0.1\\
 	& 0.01 & $<$0.001 \\
 	\hline
-	\\
 	{\textit{PenH}} & 0.02 & 0.07\\
 	& 0.5 & 0.05 \\
 	\hline
@@ -506,7 +504,113 @@ To ultimately build a practical and ubiquitous tool which would be able to accur
 
 \subsubsection{Fit of the Metrics as Discriminating Criteria}
 \label{subsubsec:PenCTMetricsFit}
-In table 
+In table (\ref{table:PenCTROC}) we present the results from a receiver operating characteristic (\gls{ROC}) curve fitting analysis between \gls{PenPD} and \gls{PenH} using all metrics and aggregation profiles calculated. All metrics achieve acceptable to great results, with $MV$ ranking higher in average \gls{AUC} at 0.91876 and $ETP\bar{y}$ following close behind with average \gls{AUC} 0.91166. Our novel metric, the $NVV$, is third with average \gls{AUC} 0.8975, but it has the highest single \gls{AUC}value for the HD aggregation profile, at 0.9438, which translates to sensitivity (\gls{TP}) 87.5\%, specificity (\gls{TN}) 95\% and average accuracy more than 91\%. The worst performing metric is the $ETPv$ with an average \gls{AUC} at 0.75, however, this does not necessarily mean that it is not worth including in the feature selection process to determine an adequate machine learning classification model. 
+
+From the perspective of profiles, the one with the highest average sensitivity is ALL, with 90\%, which combined with a sensitivity average percentage of 80\%, yields the highest average accuracy rate at 85\% among all profiles. No profile disappoints, with each one of them scoring an average accuracy around 83\%.
+
+\begin{table}[!htp]
+\centering
+\footnotesize
+\caption{\textsc{ROC Analysis for all Metrics and Profiles}}
+\begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}} c c c | c c | c c | c c | c c | c c}
+	
+	& \multicolumn{2}{c}{\textit{ALL}} & \multicolumn{2}{c}{\textit{LH}} & 
+	\multicolumn{2}{c}{\textit{HH}} & \multicolumn{2}{c}{\textit{LD}} & \multicolumn{2}{c}{\textit{HD}} & \multicolumn{2}{c}{\textit{Averages}} \\
+	
+	\cline{2-13}
+	
+	& \textit{TP} & \textit{TN} & \textit{TP} & \textit{TN} & \textit{TP} & \textit{TN} & \textit{TP} & \textit{TN} & \textit{TP} & \textit{TN} & \textit{TP} & \textit{TN} \\
+
+	& \multicolumn{2}{c |}{\textit{AUC}} & \multicolumn{2}{c |}{\textit{AUC}} & 
+	\multicolumn{2}{c |}{\textit{AUC}} & \multicolumn{2}{c |}{\textit{AUC}} & \multicolumn{2}{c |}{\textit{AUC}} & \multicolumn{2}{c}{\textit{AUC}}\\
+
+	& \multicolumn{2}{c |}{\textit{CutOff}} & \multicolumn{2}{c |}{\textit{CutOff}} & 
+	\multicolumn{2}{c |}{\textit{CutOff}} & \multicolumn{2}{c |}{\textit{CutOff}} & \multicolumn{2}{c |}{\textit{CutOff}} & \multicolumn{2}{c}{\textit{CutOff}}\\
+
+	\hline \hline
+	\\
+
+	 & \textit{$96\%$} & \textit{$80\%$} & \textit{$87.5\%$} & \textit{$90\%$} & 
+	\textit{$96\%$} & \textit{$80\%$} & \textit{$83\%$} & \textit{$85\%$} & \textit{$83\%$} & \textit{$90\%$} & \textit{$89\%$} & \textit{$85\%$} \\
+
+	$MV$ & \multicolumn{2}{c |}{$0.9146$} & \multicolumn{2}{c |}{$0.9229$} & 
+	\multicolumn{2}{c |}{$0.9063$} & \multicolumn{2}{c |}{$0.925$} & \multicolumn{2}{c |}{$0.925$} & \multicolumn{2}{c}{$0.9187$} \\
+	
+	& \multicolumn{2}{c |}{$6.1116$} & \multicolumn{2}{c |}{$4.8685$} & 
+	\multicolumn{2}{c |}{$7.2686$} & \multicolumn{2}{c |}{$4.6148$} & \multicolumn{2}{c |}{$6.0927$} & \multicolumn{2}{c}{$5.7912$} \\
+	
+	\hline
+	\\
+	& \textit{$83\%$} & \textit{$90\%$} & \textit{$79\%$} & \textit{$90\%$} & 
+	\textit{$83\%$} & \textit{$95\%$} & \textit{$83\%$} & \textit{$80\%$} & \textit{$87.5\%$} & \textit{$95\%$} & \textit{$83\%$} & \textit{$90\%$} \\
+
+	$NVV$ & \multicolumn{2}{c |}{$0.9208$} & \multicolumn{2}{c |}{$0.8521$} & 
+	\multicolumn{2}{c |}{$0.9333$} & \multicolumn{2}{c |}{$0.8375$} & \multicolumn{2}{c |}{$0.9438$} & \multicolumn{2}{c}{$0.8975$} \\
+	
+	& \multicolumn{2}{c |}{$0.0145$} & \multicolumn{2}{c |}{$0.014$} & 
+	\multicolumn{2}{c |}{$0.0152$} & \multicolumn{2}{c |}{$0.0135$} & \multicolumn{2}{c |}{$0.0158$} & \multicolumn{2}{c}{$0.0146$} \\
+	
+	\hline
+	\\	
+	& \textit{$83\%$} & \textit{$75\%$} & \textit{$71\%$} & \textit{$85\%$} & 
+	\textit{$79\%$} & \textit{$75\%$} & \textit{$75\%$} & \textit{$80\%$} & \textit{$71\%$} & \textit{$75\%$} & \textit{$76\%$} & \textit{$78\%$} \\
+
+	$SDV$ & \multicolumn{2}{c |}{$0.7938$} & \multicolumn{2}{c |}{$0.8438$} & 
+	\multicolumn{2}{c |}{$0.7604$} & \multicolumn{2}{c |}{$0.8375$} & \multicolumn{2}{c |}{$0.7458$} & \multicolumn{2}{c}{$0.7962$} \\
+	
+	& \multicolumn{2}{c |}{$2.0545$} & \multicolumn{2}{c |}{$1.548$} & 
+	\multicolumn{2}{c |}{$2.2727$} & \multicolumn{2}{c |}{$1.5362$} & \multicolumn{2}{c |}{$2.4506$} & \multicolumn{2}{c}{$1.9724$} \\
+	
+	\hline
+	\\	
+	& \textit{$83\%$} & \textit{$75\%$} & \textit{$83\%$} & \textit{$70\%$} & 
+	\textit{$71\%$} & \textit{$75\%$} & \textit{$79\%$} & \textit{$75\%$} & \textit{$71\%$} & \textit{$75\%$} & \textit{$77.5\%$} & \textit{$74\%$} \\
+
+	$ETPv$ & \multicolumn{2}{c |}{$0.7479$} & \multicolumn{2}{c |}{$0.8$} & 
+	\multicolumn{2}{c |}{$0.7104$} & \multicolumn{2}{c |}{$0.8042$} & \multicolumn{2}{c |}{$0.6875$} & \multicolumn{2}{c}{$0.75$} \\
+	
+	& \multicolumn{2}{c |}{$3.1973$} & \multicolumn{2}{c |}{$3.1448$} & 
+	\multicolumn{2}{c |}{$3.303$} & \multicolumn{2}{c |}{$2.9677$} & \multicolumn{2}{c |}{$3.393$} & \multicolumn{2}{c}{$3.2011$} \\
+	
+	\hline
+	\\
+	& \textit{$96\%$} & \textit{$80\%$} & \textit{$75\%$} & \textit{$85\%$} & 
+	\textit{$87.5\%$} & \textit{$85\%$} & \textit{$92\%$} & \textit{$80\%$} & \textit{$92\%$} & \textit{$80\%$} & \textit{$88\%$} & \textit{$82\%$}\\
+
+	$ETPy$ & \multicolumn{2}{c |}{$0.9146$} & \multicolumn{2}{c |}{$0.8521$} & 
+	\multicolumn{2}{c |}{$0.9292$} & \multicolumn{2}{c |}{$0.8792$} & \multicolumn{2}{c |}{$0.8854$} & \multicolumn{2}{c}{$0.8921$} \\
+	
+	& \multicolumn{2}{c |}{$4.0483$} & \multicolumn{2}{c |}{$4.06$} & 
+	\multicolumn{2}{c |}{$4.2476$} & \multicolumn{2}{c |}{$3.8054$} & \multicolumn{2}{c |}{$4.3294$} & \multicolumn{2}{c}{$4.0981$} \\
+	
+	\hline
+	\\
+	& \textit{$100\%$} & \textit{$80\%$} & \textit{$100\%$} & \textit{$80\%$} & 
+	\textit{$83\%$} & \textit{$90\%$} & \textit{$100\%$} & \textit{$85\%$} & \textit{$79\%$} & \textit{$90\%$} & \textit{$92.5\%$} & \textit{$85\%$}\\
+
+	$ETP\bar{y}$ & \multicolumn{2}{c |}{$0.9125$} & \multicolumn{2}{c |}{$0.9$} & 
+	\multicolumn{2}{c |}{$0.9083$} & \multicolumn{2}{c |}{$0.9167$} & \multicolumn{2}{c|}{$0.9208$} & \multicolumn{2}{c}{$0.9116$}\\
+	
+	& \multicolumn{2}{c |}{$6.8514$} & \multicolumn{2}{c |}{$6.5893$} & 
+	\multicolumn{2}{c |}{$7.1514$} & \multicolumn{2}{c |}{$6.4584$} & \multicolumn{2}{c |}{$7.2747$} & \multicolumn{2}{c}{$6.865$} \\
+	
+	\hline
+	\\
+	\textit{Averages} & \textit{$90\%$} & \textit{$80\%$} & \textit{$83\%$} & \textit{$83\%$} & 
+	\textit{$83\%$} & \textit{$83\%$} & \textit{$85\%$} & \textit{$81\%$} & \textit{$80.5\%$} & \textit{$84\%$} & &\\
+
+	& \multicolumn{2}{c |}{$0.8673$} & \multicolumn{2}{c |}{$0.8618$} & 
+	\multicolumn{2}{c |}{$0.8579$} & \multicolumn{2}{c |}{$0.8666$} & \multicolumn{2}{c |}{$0.8513$} & \multicolumn{2}{c}{-}\\
+			
+
+\end{tabular*}
+\label{table:PenCTROC}
+\end{table}
+
+
+
+
+
 
 \subsubsection{Feature Selection for a Classification Model}
 \label{subsubsec:PenCTFeatures}
