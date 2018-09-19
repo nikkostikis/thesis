@@ -457,50 +457,143 @@ For the calculations in table (\ref{table:NVVCorrelation}) there is no mention o
 \label{table:NVVCorrelation}
 \end{table}
 
+\subsubsection{Age Effects Testing}
+\label{subsubsec:PenCTAgeEffectsTesting}
+Towards investigating the robustness of the metrics we calculated, we ran the \gls{PenCT} protocol on 15 young healthy volunteers, i.e., \gls{PenYH}, with mean age 36.4 years ($\pm5.94$). We followed the same path as described in section \ref{subsubsec:PenCTNormalityTesting}, analyzing the sample distribution and conducted a means testing as described in section \ref{subsubsec:PenCTSignificanceTesting} to discover the significant differences, if any, between \gls{PenYH} and \gls{PenH}. As shown in table \ref{table:PenCTMeansInterYOH}, the age effects are present in many cases. That means that some metrics and aggregation profiles produce samples, of people of the same good health status, but still with statistically significant different performances. That is not particularly a problem with the discrimination between healthy and impaired volunteers, and these metrics are still valuable inputs in such a classification model. Nevertheless, it shows that their values depend on factors other than a movement disorder, such as age.  
 
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%%%%% Means testing inter-population YOH
+\begin{table}[h]
+\centering
+\caption{\textsc{Means Testing Between PenYH and PenH Groups}}
+\begin{tabular*}{0.75\textwidth}{@{\extracolsep{\fill}} c | c c c c c}
+	& {\textit{ALL}} & {\textit{LH}} & {\textit{HH}} & {\textit{LD}} & {\textit{HD}} \\
+	\cline{2-6}  
+	& {\textit{Test}} & {\textit{Test}} & {\textit{Test}} & {\textit{Test}} & {\textit{Test}} \\
+	& $p$-{\textit{value}} & $p$-{\textit{value}} & $p$-{\textit{value}} & $p$-{\textit{value}} & $p$-{\textit{value}} \\
+	& {\textit{Decision}} & {\textit{Decision}} & {\textit{Decision}} & {\textit{Decision}} & {\textit{Decision}} \\
+	\hline 	\hline
+	\\
+	& Welch & Welch & Welch & Welch & Welch \\
+	$MV$ & $<$0.001 & $<$0.001 & $<$0.001 & $<$0.001 & $<$0.001 \\
+	& Unequal & Unequal & Unequal & Unequal & Unequal \\
+	\hline
+	\\
+	& Welch & Welch & Welch & Welch & Welch \\
+	$NVV$ & 0.1406 & 0.1106 & 0.1538 & 0.1284 & 0.2944 \\
+	& Equal & Equal & Equal & Equal & Equal \\
+	\hline
+	\\
+	& Welch & Welch & Welch & Welch & Welch \\
+	$SDV$ & $<$0.001 & $<$0.001 & $<$0.001 & $<$0.001 & $<$0.001 \\
+	& Unequal & Unequal & Unequal & Unequal & Unequal \\
+	\hline
+	\\
+	& Welch & Welch & Welch & Welch & Welch \\
+	$ETPv$ & 0.0382 & 0.0463 & 0.0581 & 0.0597 & 0.043 \\
+	& Equal & Equal & Equal & Equal & Equal \\
+	\hline
+	\\
+	& Welch & Welch & Welch & Welch & M/W \\
+	$ETPy$ & 0.0052 & 0.0082 & 0.0032 & $<$0.001 & 0.0054 \\
+	& Unequal & Unequal & Unequal & Unequal & Unequal \\
+	\hline
+	\\
+	& Welch & Welch & Welch & Welch & Welch \\
+	$ETP\bar{y}$ & $<$0.001 & $<$0.001 & $<$0.001 & $<$0.001 & $<$0.001 \\
+	& Unequal & Unequal & Unequal & Unequal & Unequal \\
+	\hline
+\end{tabular*}
+\label{table:PenCTMeansInterYOH}
+\end{table}
 
-
-
+The metrics impervious to age effects are the $NVV$ and the $ETPv$. Regardless of aggregation profile, these two metrics produce \gls{PenYH} and \gls{PenH} populations with no significant differences. This is an advantage of these two particular metrics, which, combined with the fact that they mostly produce different populations for data from \gls{PenH} and \gls{PenPD} (see table \ref{table:PenCTMeansInter}) indicates that they mostly capture characteristics of human motion impaired due to the disease and not age. Scientifically, particularly for the $NVV$, this finding means that, although aging is accompanying with a deterioration of the performances of the various components of the central nervous system, similar $NVV$ values suggest that the coordination between agonist and antagonist muscles is well preserved, at least in the upper limbs.
 
 \subsubsection{Laterality Testing}
 \label{subsubsec:PenCTLateralityTesting}
+An important characteristic physicians use to differentiate between \gls{PD} and other disorders with parkinsonian manifestations is the one-sided onset of the symptoms \ref{subsec:laterality}. The disease's laterality is defined by the side of the body most affected on \gls{PD} onset. How the disease progresses is then assessed by if and when the symptoms start to affect both sides of the human body. Regarding our metrics, being calculated from a signal originating from a very simple task, not resembling any of the standard movements used during the clinical examination, and not specifically targeting the pathophysiology of particular \gls{PD} symptoms, it was worth exploring whether they would expose the laterality of the disease.
+
+We compared the distributions of the HH versus the LH aggregation across all metrics for each of the two main groups of the \gls{PenCT} study. The results are shown in table \ref{table:PenCTMeansIntraHHLH}. Out of the six metrics, four of them resulted in HH and LH samples with significant differences for the \gls{PenPD} group. None of the metrics HH and LH aggregations resulted in identifiable differences for the \gls{PenH} group. That means that the $MV$, $SDV$, $ETPy$ and $ETP\bar{y}$ were successful at producing samples for the HH and LH aggregations with significantly different distributions regarding the patients, which is consistent with the disease's manifestations. Although the dexterity of the two hands at writing is far from equal, the simplicity of the task allowed all the metrics to produce HH and LH samples with no significant differences for the healthy volunteers, which can be considered an advantage of our method, which is agnostic to the subjects' dominant hand.
+
+%%%%%% Means testing intra-population HH vs LH
+\begin{table}[h]
+\centering
+\caption{\textsc{Means Testing Between HH and LH Aggregations For PenH and PenPD Groups}}
+\begin{tabular*}{0.6\textwidth}{@{\extracolsep{\fill}} c | c c }
+	& {\textit{PenH}} & {\textit{PenPD}} \\
+	\cline{2-3}  
+	& {\textit{Test}} & {\textit{Test}} \\
+	& $p$-{\textit{value}} & $p$-{\textit{value}} \\
+	& {\textit{Decision}} & {\textit{Decision}} \\
+	\hline 	\hline
+	\\
+	& Welch & Welch \\
+	$MV_{HH}$ vs $MV_{LH}$ & 0.4286 & 0.0085 \\
+	& Equal & Unequal \\
+	\hline
+	\\
+	& Welch & MW \\
+	$NVV_{HH}$ vs $NVV_{LH}$ & 0.028 & 0.0182 \\
+	& Equal & Equal \\
+	\hline
+	\\
+	& Welch & MW \\
+	$SDV_{HH}$ vs $SDV_{LH}$ & 0.2782 & 0.0075 \\
+	& Equal & Unequal \\
+	\hline
+	\\
+	& Welch & Welch \\
+	$ETPv_{HH}$ vs $ETPv_{LH}$ & 0.196 & 0.0188 \\
+	& Equal & Equal \\
+	\hline
+	\\
+	& Welch & Welch \\
+	$ETPy_{HH}$ vs $ETPy_{LH}$ & 0.0192 & 0.0028 \\
+	& Equal & Unequal \\
+	\hline
+	\\
+	& Welch & Welch \\
+	$ETP\bar{y}_{HH}$ vs $ETP\bar{y}_{LH}$ & 0.3329 & 0.0045 \\
+	& Equal & Unequal \\
+	\hline
+\end{tabular*}
+\label{table:PenCTMeansIntraHHLH}
+\end{table}
+
+
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%------------------------------------------------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 
 \subsubsection{UPDRS Correlation Testing}
 \label{subsubsec:PenCTUPDRSCorTesting}
 
-\subsubsection{Age Effects Testing}
-\label{subsubsec:PenCTAgeEffectsTesting}
 
-The NVV value of healthy people is also not affected by their age. Using means testing for YH and H groups we found no significant differences between the two healthy subgroups’ NVV values. Although aging is accompanying with a deterioration of the performances of the various components of the central nervous system, the NVV shows that the coordination between agonists and antagonists is well preserved, at least in the upper limbs.
-By examining the NVV values between PD and H groups we found that the NVV means for the PD group were not normally distributed for all six components described in Section II.C, whereas the NVV means for the H group were normally distributed for every component. 
-We found statistically significant differences between the PD and H groups’ NVV mean scores for components ALL, HH, HD, LD, HLH, suggesting that there is no overlap in the NVV measures of the two health-status-related groups. 
-In general, the symptoms of PD appear with different intensity between the patient’s two sides (left-right). We were interested in exploring if the NVV values would reflect the laterality of the patients. 
-We found that there was 1 out of 20 (5\%) healthy subject with a statistically significant difference between his two hands. The corresponding proportion in the PD group was 14 out of 24 (58\%). Although the samples do not satisfy the standard binomial requirement and we cannot determine the significance of the difference between these two percentages, their values are not close. The NVV detected the pathology laterality correctly for the same 58\% of the patients. That means that the clinically observed (through UPDRS evaluation) most affected hand matched the NVV identified highest-performing hand for 14 out of 24 PD patients.
-The fact that we found no significant difference between hands for 19 of 20 healthy subjects (95\%) is to be expected. The NVV index is an expression of the balance between agonists-antagonists muscular systems and this balance is similar in both sides, considering good health. On the other side, we found that within the PD group the means are statistically significantly different for the HH and LH components. Combined with the significant difference in the means of the NVVHLH component between H and PD detected earlier, this means that the NVV difference between hands, is a kind of marker of the disease and that will be useful for the classification later on. 
-NVVHLH values are the differences in NVV between the highest and lowest performing hand for each subject. Having established that there is a statistically significant difference in NVVHLH values between the H and PD groups (the latter group having on average higher NVVHLH values), we went on to compare the performance dissimilarity between the best-performing, (i.e. lowest NVV) hand of the healthy persons to the worst-performing (i.e. highest NVV) hand of PD patients. We found that the best-performing hand of PD subjects is still worse, in terms of NVV score, than the worst-performing hand of H subjects. To our knowledge, this is a result not mentioned in the literature in papers using high sample rate data. 
-Focusing on the H and PD participants, we used each subject’s mean NVVALL score to categorize them as positive (PD) or negative (H). The receiver operating characteristic (ROC) curve had an area-under-the-curve value of 0.9354. The best cutoff threshold was NVVALL=0.0165 resulting in TN=90\% (18 subjects true negative), and TP=88\% (21 subjects true positive). These high percentages along with the results from the means testing prove that there is little overlap in the NVV values between the two samples and the NVV and its components can justifiably be used as a feature in a PD versus H classification model. 
+%In general, the symptoms of PD appear with different intensity between the patient’s two sides (left-right). We were interested in exploring if the NVV values would reflect the laterality of the patients. 
+%We found that there was 1 out of 20 (5\%) healthy subject with a statistically significant difference between his two hands. The corresponding proportion in the PD group was 14 out of 24 (58\%). Although the samples do not satisfy the standard binomial requirement and we cannot determine the significance of the difference between these two percentages, their values are not close. The NVV detected the pathology laterality correctly for the same 58\% of the patients. That means that the clinically observed (through UPDRS evaluation) most affected hand matched the NVV identified highest-performing hand for 14 out of 24 PD patients.
+%The fact that we found no significant difference between hands for 19 of 20 healthy subjects (95\%) is to be expected. The NVV index is an expression of the balance between agonists-antagonists muscular systems and this balance is similar in both sides, considering good health. On the other side, we found that within the PD group the means are statistically significantly different for the HH and LH components. Combined with the significant difference in the means of the NVVHLH component between H and PD detected earlier, this means that the NVV difference between hands, is a kind of marker of the disease and that will be useful for the classification later on. 
+%NVVHLH values are the differences in NVV between the highest and lowest performing hand for each subject. Having established that there is a statistically significant difference in NVVHLH values between the H and PD groups (the latter group having on average higher NVVHLH values), we went on to compare the performance dissimilarity between the best-performing, (i.e. lowest NVV) hand of the healthy persons to the worst-performing (i.e. highest NVV) hand of PD patients. We found that the best-performing hand of PD subjects is still worse, in terms of NVV score, than the worst-performing hand of H subjects. To our knowledge, this is a result not mentioned in the literature in papers using high sample rate data. 
+%Focusing on the H and PD participants, we used each subject’s mean NVVALL score to categorize them as positive (PD) or negative (H). The receiver operating characteristic (ROC) curve had an area-under-the-curve value of 0.9354. The best cutoff threshold was NVVALL=0.0165 resulting in TN=90\% (18 subjects true negative), and TP=88\% (21 subjects true positive). These high percentages along with the results from the means testing prove that there is little overlap in the NVV values between the two samples and the NVV and its components can justifiably be used as a feature in a PD versus H classification model. 
 
-\hlorange{NVV robustness}
-We found $NVV$ scores to be consistent in multiple sessions for single subjects: seven of the \gls{PenH} subjects were re-tested a second or third time, over a period of several days. In six of the seven cases, means testing revealed no statistically significant differences in the subjects’ means over different testing sessions. The one volunteer who showed significant difference between the two sessions reported sleeping for only three hours the night before the second test session. Sleep deprivation is known to favor abnormal brain responses.
+%\hlorange{NVV robustness - test/retest reliability}
+%We found $NVV$ scores to be consistent in multiple sessions for single subjects: seven of the \gls{PenH} subjects were re-tested a second or third time, over a period of several days. In six of the seven cases, means testing revealed no statistically significant differences in the subjects’ means over different testing sessions. The one volunteer who showed significant difference between the two sessions reported sleeping for only three hours the night before the second test session. Sleep deprivation is known to favor abnormal brain responses.
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Supervised Machine Learning To Establish Discriminating Criteria}
 \label{subsec:PenCTML}
-To ultimately build a practical and ubiquitous tool which would be able to accurately assess upper limb tremor in \gls{PD} patients, 
+%To ultimately build a practical and ubiquitous tool which would be able to accurately assess upper limb tremor in \gls{PD} patients, 
 
 \subsubsection{Fit of the Metrics as Discriminating Criteria}
 \label{subsubsec:PenCTMetricsFit}
@@ -609,9 +702,6 @@ From the perspective of profiles, the one with the highest average sensitivity i
 
 
 
-
-
-
 \subsubsection{Feature Selection for a Classification Model}
 \label{subsubsec:PenCTFeatures}
 
@@ -630,7 +720,7 @@ From the perspective of profiles, the one with the highest average sensitivity i
 \section{Results and Research Implications}
 \label{sec:PenImplications}
 
-Recent advance
+%Recent advance
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Limitations and Future Work}
